@@ -145,28 +145,6 @@ function blobToDataURL(blob) {
   });
 }
 
-async function openAI(q, service, button) {
-  // Redirect with the complete text prompt + question only.
-  // Do NOT fetch or embed local question images here: cross-origin AI sites
-  // cannot reliably accept local image attachments through a URL.
-  // The ?q= parameter preserves the auto-populated text behavior.
-  const fullPrompt = `${getPrompt(q)}\n\nExam: ${q.exam || "—"} | Year: ${q.year || "—"} | Marks: ${q.marks || "—"}`;
-  const encoded = encodeURIComponent(fullPrompt);
-  const target = service === "chatgpt"
-    ? `https://chatgpt.com/?q=${encoded}`
-    : `https://gemini.google.com/?q=${encoded}`;
-
-  const popup = window.open(target, "_blank", "noopener,noreferrer");
-  if (!popup) {
-    // Popup blocked: navigate in the current tab so the feature still works.
-    window.location.assign(target);
-  } else {
-    showToast(`${service === "chatgpt" ? "ChatGPT" : "Gemini"} opened with question`);
-  }
-}
-
-
-
 function reset() {
   state.filters = createFilterState();
   els.search.value = "";
@@ -203,11 +181,7 @@ els.body.addEventListener("click", e => {
   const q = tr?._question;
   if (!q) return;
   const copy = e.target.closest(".copy-btn");
-  const chat = e.target.closest(".chatgpt");
-  const gemini = e.target.closest(".gemini");
   if (copy) copyRichQuestion(q, copy, false);
-  else if (chat) { e.preventDefault(); openAI(q, "chatgpt", chat); }
-  else if (gemini) { e.preventDefault(); openAI(q, "gemini", gemini); }
 });
 
 document.addEventListener("keydown", e => {

@@ -4,6 +4,11 @@ export function renderQuestion(q, number) {
   const tr = document.createElement("tr");
   tr.dataset.id = q.id;
   const prompt = makePrompt(q);
+  const fullPrompt = `${prompt}\n\nExam: ${q.exam || "—"} | Year: ${q.year || "—"} | Marks: ${q.marks || "—"}`;
+  const encoded = encodeURIComponent(fullPrompt);
+  const chatgptTarget = `https://chatgpt.com/?q=${encoded}`;
+  const geminiTarget = `https://gemini.google.com/?q=${encoded}`;
+
   tr.innerHTML = `
     <td class="q-number" aria-label="Question number">${number}</td>
     <td class="q-content">
@@ -20,14 +25,12 @@ export function renderQuestion(q, number) {
     <td class="actions-cell">
       <div class="ai-actions">
         <button class="ai-btn copy-btn" type="button" title="Copy question + figure" aria-label="Copy question + figure">${copyIcon()}</button>
-        <button class="ai-btn chatgpt" type="button" title="Open ChatGPT with question" aria-label="Open ChatGPT with question">${openAIIcon()}</button>
-        <button class="ai-btn gemini" type="button" title="Open Gemini with question" aria-label="Open Gemini with question">${geminiIcon()}</button>
+        <a class="ai-btn chatgpt" href="${chatgptTarget}" target="_blank" rel="noopener noreferrer" title="Open ChatGPT with question" aria-label="Open ChatGPT with question">${openAIIcon()}</a>
+        <a class="ai-btn gemini" href="${geminiTarget}" target="_blank" rel="noopener noreferrer" title="Open Gemini with question" aria-label="Open Gemini with question">${geminiIcon()}</a>
       </div>
     </td>`;
   tr._question = q;
   tr.querySelector(".copy-btn")._question = q;
-  tr.querySelector(".chatgpt")._question = q;
-  tr.querySelector(".gemini")._question = q;
   return tr;
 }
 
