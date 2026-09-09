@@ -235,9 +235,6 @@ function getPrintFilterSummary() {
   const f = state.filters;
   const items = [];
 
-  if (f.exam && f.exam !== "both") items.push(f.exam === "IFOS" ? "Exam: IFoS" : "Exam: CSE");
-  else items.push("Exam: CSE + IFoS");
-
   if (f.search) items.push(`Search: ${els.search.value.trim()}`);
 
   if (f.mode === "year-unit") {
@@ -248,7 +245,6 @@ function getPrintFilterSummary() {
     if (f.section) items.push(`Section: ${f.section}`);
     if (f.topic) items.push(`Topic: ${f.topic}`);
   }
-
   return items;
 }
 
@@ -292,7 +288,7 @@ async function printCurrentQuestions() {
     if (filterSummary.length) {
       const summary = document.createElement("div");
       summary.className = "print-filters";
-      summary.innerHTML = `<span class="print-filters-label">Filters</span>${filterSummary.map(item => `<span class="print-filter-chip">${escapeHtml(item)}</span>`).join("")}`;
+      summary.innerHTML = filterSummary.map(item => `<span class="print-filter-chip">${escapeHtml(item)}</span>`).join("");
       title.appendChild(summary);
     }
     printRoot.appendChild(title);
@@ -318,6 +314,17 @@ async function printCurrentQuestions() {
       article.appendChild(body);
       printRoot.appendChild(article);
     }
+
+    const printFooter = document.createElement("div");
+    printFooter.className = "print-footer";
+    printFooter.style.marginTop = "20pt";
+    printFooter.style.paddingTop = "10pt";
+    printFooter.style.borderTop = "1px solid #ddd";
+    printFooter.style.textAlign = "center";
+    printFooter.style.fontSize = "8.5pt";
+    printFooter.style.color = "#666";
+    printFooter.innerHTML = "Special thanks to AbhiPhysics Telegram channel for sourcing PYQs.";
+    printRoot.appendChild(printFooter);
 
     document.body.appendChild(printRoot);
     document.documentElement.classList.add("printing-ready");

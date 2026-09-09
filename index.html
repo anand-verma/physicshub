@@ -57,9 +57,8 @@
         <button id="clearBtn" class="clear-btn" type="button">Reset filters</button>
       </div>
 
-      <div id="filters" class="filter-grid"></div>
-
-      <div class="control-actions">
+      <div class="filters-row">
+        <div id="filters" class="filter-grid"></div>
         <button id="printBtn" class="print-btn" type="button" title="Print current questions">
           <span class="print-icon" aria-hidden="true">⎙</span>
           <span>Print Friendly</span>
@@ -107,8 +106,15 @@
   </main>
 
   <footer class="site-footer">
-    <span>Physics PYQ Repository</span>
-    <span>Client-side • No account • No database</span>
+    <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
+      <div class="footer-row" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
+        <span>Physics PYQ Repository</span>
+        <span>Client-side • No account • No database</span>
+      </div>
+      <div style="text-align: center; font-size: 9.5px; opacity: 0.8;">
+        Special thanks to AbhiPhysics Telegram channel for sourcing PYQs.
+      </div>
+    </div>
   </footer>
 
   <script type="module" src="assets/js/app.js"></script>
