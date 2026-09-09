@@ -1,0 +1,116 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="Physics Optional PYQ Repository — UPSC CSE & IFoS">
+  <title>Physics PYQ Repository</title>
+  <link rel="stylesheet" href="assets/styles.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <header class="site-header">
+    <div class="header-inner">
+      <div>
+        <div class="eyebrow">UPSC • PHYSICS OPTIONAL</div>
+        <h1>Physics PYQ Repository</h1>
+        <p class="subtitle">A fast, searchable archive of CSE &amp; IFoS Physics questions.</p>
+      </div>
+      <div class="header-stat">
+        <span id="headerCount">—</span>
+        <small>questions</small>
+      </div>
+    </div>
+  </header>
+
+  <main class="container">
+    <section class="controls" aria-label="Question filters">
+      <div class="toolbar-row">
+        <label class="search-box">
+          <span class="sr-only">Search questions</span>
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg>
+          <input id="searchInput" type="search" placeholder="Search questions, topics, equations…" autocomplete="off">
+          <kbd>/</kbd>
+        </label>
+
+        <label class="exam-select" aria-label="Exam filter">
+          <span>Exam</span>
+          <select id="examFilter">
+            <option value="both">CSE + IFoS</option>
+            <option value="CSE">CSE only</option>
+            <option value="IFOS">IFoS only</option>
+          </select>
+        </label>
+      </div>
+
+      <div class="mode-row">
+        <div class="mode-switch" role="radiogroup" aria-label="Filter mode">
+          <label><input type="radio" name="filterMode" value="year-unit"><span>Year + Unit</span></label>
+          <label><input type="radio" name="filterMode" value="unit-section-topic" checked><span>Unit + Section + Topic</span></label>
+        </div>
+        <button id="clearBtn" class="clear-btn" type="button">Reset filters</button>
+      </div>
+
+      <div id="filters" class="filter-grid"></div>
+
+      <div class="control-actions">
+        <button id="printBtn" class="print-btn" type="button" title="Print current questions">
+          <span class="print-icon" aria-hidden="true">⎙</span>
+          <span>Print Friendly</span>
+        </button>
+      </div>
+    </section>
+
+    <section class="results-head">
+      <div class="results-title">
+        <strong id="resultCount">Loading…</strong>
+        <span class="muted"> questions</span>
+      </div>
+      <label class="master-sort">
+        <span>Sort</span>
+        <select id="sortSelect" aria-label="Master sorting">
+          <option value="smart">Smart order</option>
+          <option value="year:desc">Year ↓</option>
+          <option value="year:asc">Year ↑</option>
+          <option value="unit:asc">Unit (syllabus)</option>
+          <option value="section:asc">Section (syllabus)</option>
+          <option value="topic:asc">Topic (syllabus)</option>
+        </select>
+      </label>
+    </section>
+
+    <section class="table-wrap">
+      <table class="question-table">
+        <thead>
+          <tr>
+            <th class="number-col">#</th>
+            <th class="qcol">Question</th>
+            <th class="actions-col" aria-label="AI solution links"></th>
+          </tr>
+        </thead>
+        <tbody id="questionBody"></tbody>
+      </table>
+      <div id="toast" class="toast" role="status" aria-live="polite"></div>
+      <div id="emptyState" class="empty-state" hidden>
+        <div class="empty-icon">∅</div>
+        <h2>No questions found</h2>
+        <p>Try changing the filters or search term.</p>
+        <button id="emptyReset" class="clear-btn" type="button">Reset filters</button>
+      </div>
+    </section>
+  </main>
+
+  <footer class="site-footer">
+    <span>Physics PYQ Repository</span>
+    <span>Client-side • No account • No database</span>
+  </footer>
+
+  <script type="module" src="assets/js/app.js"></script>
+</body>
+</html>
