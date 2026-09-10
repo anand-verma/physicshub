@@ -1,9 +1,10 @@
 import { loadQuestions, loadSyllabus, buildSyllabusOrder } from "./data.js";
 import { createFilterState, buildFilterUI, updateFilterOptions, applyFilters, sortQuestions } from "./filters.js";
 import { renderQuestion, markdownToHtml, getPrompt } from "./renderer.js";
+import { AnalysisEngine } from "./analysis.js";
 
 const state = {
-  questions: [], syllabus: null, syllabusOrder: null,
+  questions: [], syllabus: null, syllabusOrder: null, analysis: null,
   filters: createFilterState(), renderToken: 0, currentResults: [],
 };
 
@@ -32,6 +33,9 @@ async function init() {
     [state.questions, state.syllabus] = await Promise.all([loadQuestions(), loadSyllabus()]);
     state.syllabusOrder = buildSyllabusOrder(state.syllabus);
     els.headerCount.textContent = state.questions.length.toLocaleString("en-IN");
+    // Build the lightweight lexical index up front; the semantic model/index is loaded lazily.
+    state.analysis = new AnalysisEngine(state.questions);
+    state.analysis.warmSemantic?.();
 
     buildFilterUI(els.filters, state.filters, onFilterChange);
     updateFilterOptions(state.questions, els.filters, state.filters, state.syllabusOrder);
@@ -180,9 +184,156 @@ els.body.addEventListener("click", e => {
   const tr = e.target.closest("tr");
   const q = tr?._question;
   if (!q) return;
+
   const copy = e.target.closest(".copy-btn");
-  if (copy) copyRichQuestion(q, copy, false);
+  if (copy) {
+    copyRichQuestion(q, copy, false).catch(error => showToast(error.message || "Could not copy question", true));
+    return;
+  }
+
+  const analysisButton = e.target.closest(".analysis-btn");
+  if (analysisButton) toggleAnalysis(tr, q, analysisButton);
 });
+
+async function toggleAnalysis(tr, q, button) {
+  const existing = tr.nextElementSibling;
+  if (existing?.classList.contains("analysis-row")) {
+    existing.remove();
+    button.setAttribute("aria-expanded", "false");
+    return;
+  }
+
+  els.body.querySelector(".analysis-row")?.remove();
+  els.body.querySelector(".analysis-btn[aria-expanded='true']")?.setAttribute("aria-expanded", "false");
+
+  const cardRow = document.createElement("tr");
+  cardRow.className = "analysis-row";
+  const cell = document.createElement("td");
+  cell.colSpan = 3;
+  cell.innerHTML = `
+    <div class="analysis-card">
+      <div class="analysis-card-head">
+        <div>
+          <div class="analysis-eyebrow">PYQ ANALYSIS</div>
+          <h3>Exact repetitions & conceptually related PYQs</h3>
+        </div>
+        <div class="analysis-status"><span class="analysis-spinner"></span><span>Searching…</span></div>
+      </div>
+      <div class="analysis-results">
+        <div class="analysis-loading"><strong>Searching the full repository…</strong><span>Exact wording, keywords, formula patterns and conceptual similarity.</span></div>
+      </div>
+    </div>`;
+  cardRow.appendChild(cell);
+  tr.after(cardRow);
+  button.setAttribute("aria-expanded", "true");
+
+  const status = cardRow.querySelector(".analysis-status span:last-child");
+  const results = cardRow.querySelector(".analysis-results");
+
+  try {
+    const sourceIndex = state.questions.findIndex(x => x.id === q.id);
+    if (sourceIndex < 0 || !state.analysis) throw new Error("Analysis index is unavailable.");
+
+    // Fast path is entirely pre-indexed and does not wait for MiniLM.
+    const fast = state.analysis.analyzeFast(sourceIndex);
+    if (!tr.isConnected || !cardRow.isConnected) return;
+    results.innerHTML = buildAnalysisHtml(q, fast);
+    status.textContent = "Fast search complete";
+    cardRow.querySelector(".analysis-spinner")?.remove();
+    await typesetAnalysis(results);
+
+    // Semantic refinement is optional and runs against precomputed repository vectors.
+    const semantic = await state.analysis.analyzeSemantic(sourceIndex);
+    if (!tr.isConnected || !cardRow.isConnected) return;
+    if (semantic.semanticAvailable) {
+      results.innerHTML = buildAnalysisHtml(q, { ...fast, ...semantic });
+      status.textContent = "Hybrid analysis complete";
+      await typesetAnalysis(results);
+    } else if (semantic.semanticError) {
+      status.textContent = "Fast search complete";
+    }
+  } catch (error) {
+    console.error(error);
+    if (cardRow.isConnected) {
+      results.innerHTML = `<div class="analysis-error">Analysis could not be completed. ${escapeHtml(error.message || "Please try again.")}</div>`;
+      status.textContent = "Analysis unavailable";
+      cardRow.querySelector(".analysis-spinner")?.remove();
+    }
+  }
+}
+
+async function typesetAnalysis(el) {
+  if (!window.MathJax?.typesetPromise) return;
+  await (window.MathJax.startup?.promise || Promise.resolve());
+  await window.MathJax.typesetPromise([el]);
+}
+
+function displayExam(exam) { return exam === "IFOS" ? "IFoS" : (exam || "—"); }
+function displayMarks(marks) { return marks ? String(marks) : "—"; }
+
+function buildAnalysisHtml(current, result) {
+  const exact = result.exact || [];
+  const related = result.related || [];
+  const currentQuestionHtml = markdownToHtml(current.question_markdown || "", current.images || []);
+
+  const exactOccurrences = [current, ...exact].reduce((acc, q) => {
+    const key = `${displayExam(q.exam)}|${q.year}`;
+    if (!acc.some(x => x.key === key)) acc.push({ key, exam: displayExam(q.exam), year: q.year, marks: displayMarks(q.marks) });
+    return acc;
+  }, []).sort((a,b) => Number(a.year) - Number(b.year) || a.exam.localeCompare(b.exam));
+
+  const examGroups = ["CSE", "IFoS"].map(exam => ({
+    exam,
+    items: exactOccurrences.filter(x => x.exam === exam)
+  })).filter(x => x.items.length);
+
+  const exactBlock = exact.length ? `
+    <section class="analysis-section exact-section">
+      <div class="analysis-section-title">
+        <span class="analysis-badge exact">EXACT REPETITION</span>
+        <span>Same question · ${exactOccurrences.length} appearances</span>
+      </div>
+      <div class="analysis-exact-question question-main">${currentQuestionHtml}</div>
+      <div class="analysis-repeat-line">
+        ${examGroups.map(g => `<span><strong>${g.exam}:</strong> ${g.items.map(x => `${escapeHtml(x.year)} (${escapeHtml(x.marks)})`).join(", ")}</span>`).join("")}
+      </div>
+    </section>` : "";
+
+  const relatedBlock = related.length ? `
+    <section class="analysis-section">
+      <div class="analysis-section-title">
+        <span class="analysis-badge related">RELATED PYQs</span>
+        <span>${related.length} strongest conceptual matches</span>
+      </div>
+      <div class="analysis-related-list">
+        ${related.map((item, i) => {
+          const q = item.question;
+          const score = Math.round(Math.max(0, Math.min(1, item.score)) * 100);
+          const signals = [];
+          if (item.semantic >= 0.45) signals.push("Concept");
+          if (item.formula >= 0.35) signals.push("Formula");
+          if (item.lexical >= 0.25) signals.push("Keywords");
+          return `<article class="analysis-related-item">
+            <div class="analysis-related-meta">
+              <span class="analysis-rank">${i + 1}</span>
+              <strong>${escapeHtml(displayExam(q.exam))} ${escapeHtml(q.year)}</strong>
+              <span class="analysis-marks">${escapeHtml(displayMarks(q.marks))}</span>
+              <span>${escapeHtml(q.unit || "—")} · ${escapeHtml(q.section || "—")}</span>
+              <span class="analysis-score">${score}% match</span>
+              ${signals.map(s => `<span class="analysis-signal">${s}</span>`).join("")}
+            </div>
+            <div class="analysis-related-question question-main">${markdownToHtml(q.question_markdown || "", q.images || [])}</div>
+          </article>`;
+        }).join("")}
+      </div>
+    </section>` : `<div class="analysis-no-related">No sufficiently strong related PYQs were found.</div>`;
+
+  const intro = exact.length
+    ? `<div class="analysis-summary">This is an exact repetition. The question is shown once; all CSE/IFoS appearances and their marks are grouped below. Other questions are listed only when conceptually related.</div>`
+    : `<div class="analysis-summary">No exact repetition found. Related PYQs are ranked from the <strong>entire repository</strong> using lexical, formula, syllabus and semantic signals.</div>`;
+
+  return intro + exactBlock + relatedBlock;
+}
 
 document.addEventListener("keydown", e => {
   if (e.key === "/" && !["INPUT","SELECT","TEXTAREA"].includes(document.activeElement.tagName)) {
