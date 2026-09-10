@@ -1,0 +1,548 @@
+{
+  "physics_syllabus_taxonomy": {
+    "paper_1": {
+      "units": [
+        {
+          "unit_code": "U1",
+          "unit_name": "Mechanics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Mechanics Of Particles",
+              "topics": [
+                "Laws Of Motion",
+                "Covariance Of Equations Of Physics",
+                "Conservation Of Momentum",
+                "Applications To Rotating Frames",
+                "Centripetal Acceleration",
+                "Coriolis Acceleration",
+                "Motion Under A Central Force",
+                "Conservation Of Angular Momentum",
+                "Kepler’s Laws",
+                "Fields And Potentials",
+                "Gravitational Field And Potential Due To Spherical Bodies",
+                "Gravitational Gauss Equation",
+                "Gravitational Poisson Equation",
+                "Gravitational Self-Energy",
+                "Two-Body Problem",
+                "Reduced Mass",
+                "Rutherford Scattering",
+                "Centre Of Mass And Laboratory Reference Frames",
+                "Conservation Of Linear Momentum",
+                "The Rocket Equation",
+                "Galilean Transformation",
+                "Inertial And Non-Inertial Frames",
+                "Centrifugal Forces",
+                "Foucault Pendulum"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Mechanics Of Rigid Bodies",
+              "topics": [
+                "System Of Particles",
+                "Centre Of Mass For A System Of Particles",
+                "Angular Momentum Of A System Of Particles",
+                "Equations Of Motion For A System Of Particles",
+                "Conservation Theorems For Energy, Momentum And Angular Momentum",
+                "Elastic And Inelastic Collisions",
+                "Rigid Body",
+                "Degrees Of Freedom",
+                "Euler’s Theorem",
+                "Angular Velocity",
+                "Moments Of Inertia",
+                "Theorems Of Parallel And Perpendicular Axes",
+                "Equation Of Motion For Rotation",
+                "Molecular Rotations As Rigid Bodies",
+                "Di And Tri-Atomic Molecules",
+                "Precessional Motion",
+                "Top",
+                "Gyroscope",
+                "Constraints, Generalized Coordinates And Moments",
+                "Lagrange's Equation",
+                "Applications Of Lagrange's Equation To Linear Harmonic Oscillator",
+                "Applications Of Lagrange's Equation To Simple Pendulum",
+                "Applications Of Lagrange's Equation To Linear Central Force Problems",
+                "Cyclic Coordinates",
+                "Hamiltonian",
+                "Lagrange's Equation From Hamilton's Principle",
+                "Eulerian Angles",
+                "Inertia Tensor",
+                "Principal Moments Of Inertia",
+                "Euler's Equation Of Motion Of A Rigid Body",
+                "Force-Free Motion Of A Rigid Body"
+              ]
+            },
+            {
+              "section_code": "S3",
+              "section_name": "Mechanics Of Continuous Media",
+              "topics": [
+                "Elasticity",
+                "Hooke’s Law",
+                "Elastic Constants Of Isotropic Solids",
+                "Inter-Relation Of Elastic Constants",
+                "Streamline Flow",
+                "Laminar Flow",
+                "Viscosity",
+                "Poiseuille’s Equation",
+                "Bernoulli’s Equation",
+                "Stokes’ Law And Applications"
+              ]
+            },
+            {
+              "section_code": "S4",
+              "section_name": "Special Theory Of Relativity",
+              "topics": [
+                "Michelson-Morley Experiment",
+                "Implications Of Michelson-Morley Experiment",
+                "Lorentz Transformations",
+                "Length Contraction",
+                "Time Dilation",
+                "Addition Of Relativistic Velocities",
+                "Aberration",
+                "Doppler Effect",
+                "Mass-Energy Relation",
+                "Simple Applications To A Decay Process",
+                "Four Dimensional Momentum Vector",
+                "Covariance Of Equations Of Physics",
+                "Minkowski Diagram"
+              ]
+            }
+          ]
+        },
+        {
+          "unit_code": "U2",
+          "unit_name": "Waves and Optics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Waves",
+              "topics": [
+                "Simple Harmonic Motion",
+                "Damped Oscillation",
+                "Forced Oscillation",
+                "Resonance",
+                "Beats",
+                "Stationary Waves In A String",
+                "Pulses",
+                "Wave Packets",
+                "Phase And Group Velocities",
+                "Reflection And Refraction From Huygens’ Principle"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Geometrical Optics",
+              "topics": [
+                "Laws Of Reflection And Refraction From Fermat’s Principle",
+                "Matrix Method In Paraxial Optic",
+                "Thin Lens Formula",
+                "Nodal Planes",
+                "System Of Two Thin Lenses",
+                "Chromatic Aberrations",
+                "Spherical Aberrations"
+              ]
+            },
+            {
+              "section_code": "S3",
+              "section_name": "Interference",
+              "topics": [
+                "Interference Of Light",
+                "Young’s Experiment",
+                "Newton’s Rings",
+                "Interference By Thin Films",
+                "Michelson Interferometer",
+                "Multiple Beam Interference",
+                "Fabry Perot Interferometer",
+                "Holography And Applications"
+              ]
+            },
+            {
+              "section_code": "S4",
+              "section_name": "Diffraction",
+              "topics": [
+                "Fraunhofer Diffraction",
+                "Single Slit",
+                "Double Slit",
+                "Diffraction Grating",
+                "Resolving Power",
+                "Diffraction By A Circular Aperture",
+                "Airy Pattern",
+                "Fresnel Diffraction",
+                "Half-Period Zones",
+                "Zone Plates",
+                "Fresnel Integrals",
+                "Application Of Cornu's Spiral"
+              ]
+            },
+            {
+              "section_code": "S5",
+              "section_name": "Polarisation And Modern Optics",
+              "topics": [
+                "Production And Detection Of Linearly Polarized Light",
+                "Production And Detection Of Circularly Polarized Light",
+                "Double Refraction",
+                "Quarter Wave Plate",
+                "Optical Activity",
+                "Principles Of Fibre Optics",
+                "Attenuation",
+                "Pulse Dispersion In Step Index And Parabolic Index Fibres",
+                "Material Dispersion",
+                "Single Mode Fibers",
+                "Lasers",
+                "Einstein A And B Coefficients",
+                "Ruby Lasers",
+                "He-Ne Lasers",
+                "Spatial Coherence",
+                "Temporal Coherence",
+                "Focusing Of Laser Beams",
+                "Three-Level Scheme For Laser Operation"
+              ]
+            }
+          ]
+        },
+        {
+          "unit_code": "U3",
+          "unit_name": "Electricity, Magnetism and Electromagnetic Waves",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Electrostatics And Magnetostatics",
+              "topics": [
+                "Electrostatic Gauss Law",
+                "Electric Fields And Potentials",
+                "Laplace And Poisson Equations In Electrostatics",
+                "Applications Of Laplace And Poisson Equations",
+                "Energy Of A System Of Charges",
+                "Multipole Expansion Of Scalar Potential",
+                "Method Of Images",
+                "Applications Of Method Of Images",
+                "Potential And Field Due To A Dipole",
+                "Force And Torque On A Dipole In An External Field",
+                "Dielectrics",
+                "Polarisation",
+                "Solutions To Boundary-Value Problems",
+                "Conducting And Dielectric Spheres In A Uniform Electric Field",
+                "Magnetic Shell",
+                "Uniformly Magnetised Sphere",
+                "Ferromagnetic Materials",
+                "Hysteresis",
+                "Energy Loss"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Current Electricity",
+              "topics": [
+                "Kirchhoff's Laws",
+                "Biot-Savart Law",
+                "Ampere’s Law",
+                "Faraday’s Law",
+                "Lenz’ Law",
+                "Self- And Mutual-Inductances",
+                "Mean And Rms Values In AC Circuits",
+                "DC And AC Circuits With R, L And C Components",
+                "Series Resonance",
+                "Parallel Resonance",
+                "Quality Factor",
+                "Principle Of Transformer"
+              ]
+            },
+            {
+              "section_code": "S3",
+              "section_name": "Electromagnetic Theory",
+              "topics": [
+                "Displacement Current",
+                "Maxwell’s Equations",
+                "Wave Equations In Vacuum",
+                "Poynting Theorem",
+                "Vector And Scalar Potentials",
+                "Gauge Invariance",
+                "Lorentz And Coulomb Gauges",
+                "Electromagnetic Field Tensor",
+                "Covariance Of Maxwell’s Equations",
+                "Wave Equations In Isotropic Dielectrics",
+                "Reflection And Refraction At The Boundary Of Two Dielectrics",
+                "Fresnel’s Relations",
+                "Total Internal Reflection",
+                "Normal And Anomalous Dispersion",
+                "Rayleigh Scattering"
+              ]
+            },
+            {
+              "section_code": "S4",
+              "section_name": "Black Body Radiation",
+              "topics": [
+                "Blackbody Radiation",
+                "Planck’s Radiation Law",
+                "Stefan-Boltzmann Law",
+                "Wien’s Displacement Law",
+                "Rayleigh-Jeans Law",
+                "Planck Mass, Length, Time, Temperature And Energy"
+              ]
+            }
+          ]
+        },
+        {
+          "unit_code": "U4",
+          "unit_name": "Thermal and Statistical Physics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Thermodynamics",
+              "topics": [
+                "Laws Of Thermodynamics",
+                "Reversible And Irreversible Processes",
+                "Entropy",
+                "Isothermal, Adiabatic, Isobaric, And Isochoric Processes",
+                "Entropy Changes",
+                "Otto And Diesel Engines",
+                "Gibbs’ Phase Rule",
+                "Chemical Potential",
+                "Van Der Waals Equation Of State Of A Real Gas",
+                "Critical Constants",
+                "Maxwell-Boltzmann Distribution Of Molecular Velocities",
+                "Transport Phenomena",
+                "Equipartition And Virial Theorems",
+                "Dulong-Petit, Einstein, And Debye's Theories Of Specific Heat Of Solids",
+                "Maxwell Relations And Applicaitons",
+                "Clausius-Clapeyron Equation",
+                "Adiabatic Demagnetisation",
+                "Joule-Kelvin Effect",
+                "Liquefaction Of Gases"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Statistical Physics",
+              "topics": [
+                "Macro And Micro States",
+                "Statistical Distributions",
+                "Maxwell-Boltzmann Distributions",
+                "Bose-Einstein Distributions",
+                "Fermi-Dirac Distributions",
+                "Applications To Specific Heat Of Gases",
+                "Applications To Blackbody Radiation",
+                "Concept Of Negative Temperatures",
+                "Saha Ionization Formula",
+                "Bose-Einstein Condensation",
+                "Thermodynamic Behavior Of An Ideal Fermi Gas",
+                "Chandrasekhar Limit",
+                "Elementary Ideas About Neutron Stars",
+                "Pulsars",
+                "Brownian Motion As A Random Walk",
+                "Diffusion Process"
+              ]
+            }
+          ]
+        }
+      ]
+    },
+    "paper_2": {
+      "units": [
+        {
+          "unit_code": "U5",
+          "unit_name": "Quantum Mechanics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Foundations Of Quantum Mechanics",
+              "topics": [
+                "Wave-Particle Duality",
+                "Schroedinger Equation",
+                "Expectation Values",
+                "Uncertainty Principle"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Schrodinger's Wave Equation And Applications",
+              "topics": [
+                "Solutions Of The One-Dimensional Schroedinger Equation For Free Particle",
+                "Gaussian Wave-Packet",
+                "Particle In A Box",
+                "Particle In A Finite Well",
+                "Quantum Linear Harmonic Oscillator",
+                "Probability Current Density",
+                "Reflection And Transmission By A Step Potential",
+                "Reflection And Transmission By A Rectangular Barrier",
+                "Use Of WKB Formula For The Life-Time Calculation In The Alpha-Decay Problem",
+                "Particle In A Three Dimensional Box",
+                "Density Of States",
+                "Free Electron Theory Of Metals"
+              ]
+            },
+            {
+              "section_code": "S3",
+              "section_name": "Angular Momentum, Spin Etc.",
+              "topics": [
+                "Quantum Angular Momentum",
+                "Quantum Mechanical Hydrogen Atom",
+                "Spin Half Particles",
+                "Properties Of Pauli Spin Matrices"
+              ]
+            }
+          ]
+        },
+        {
+          "unit_code": "U6",
+          "unit_name": "Atomic and Molecular Physics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Atomic Physics",
+              "topics": [
+                "Stern-Gerlach Experiment",
+                "Electron Spin",
+                "Fine Structure Of Hydrogen Atom",
+                "L-S Coupling",
+                "J-J Coupling",
+                "Spectroscopic Notation Of Atomic States",
+                "Zeeman Effect",
+                "Lamb Shift"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Molecular Physics",
+              "topics": [
+                "Franck-Condon Principle And Applicaitions",
+                "Rotational, Vibrational And Electronic Spectra Of Diatomic Molecules",
+                "Raman Effect",
+                "Molecular Structure",
+                "Laser Raman Spectroscopy",
+                "Importance Of Neutral Hydrogen Atom, Molecular Hydrogen And Molecular Hydrogen Ion In Astronomy",
+                "Fluorescence",
+                "Phosphorescence",
+                "NMR",
+                "EPR"
+              ]
+            }
+          ]
+        },
+        {
+          "unit_code": "U7",
+          "unit_name": "Nuclear and Particle Physics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Nuclear Physics",
+              "topics": [
+                "Basic Nuclear Properties",
+                "Nuclear Size",
+                "Nuclear Binding Energy",
+                "Nuclear Angular Momentum",
+                "Nuclear Parity",
+                "Nuclear Magnetic Moment",
+                "Semi-Empirical Mass Formula And Applications",
+                "Mass Parabolas",
+                "Ground State Of A Deuteron",
+                "Magnetic Moment Of A Deuteron",
+                "Non-Central Forces",
+                "Meson Theory Of Nuclear Forces",
+                "Salient Features Of Nuclear Forces",
+                "Shell Model Of The Nucleus",
+                "Success And Limitations Of Shell Model",
+                "Violation Of Parity In Beta Decay",
+                "Gamma Decay",
+                "Internal Conversion",
+                "Elementary Ideas About Mossbauer Spectroscopy",
+                "Q-Value Of Nuclear Reactions",
+                "Nuclear Fission And Fusion",
+                "Energy Production In Stars",
+                "Nuclear Reactors"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Particle Physics",
+              "topics": [
+                "Classification Of Elementary Particles",
+                "Interactions Of Elementary Particles",
+                "Conservation Laws Of Particle Physics",
+                "Quark Structure Of Hadrons",
+                "Field Quanta Of Electroweak And Strong Interactions",
+                "Elementary Ideas About Unification Of Forces",
+                "Physics Of Neutrinos"
+              ]
+            }
+          ]
+        },
+        {
+          "unit_code": "U8",
+          "unit_name": "Solid State Physics, Devices and Electronics",
+          "sections": [
+            {
+              "section_code": "S1",
+              "section_name": "Crystal Structure & Its Determination",
+              "topics": [
+                "Crystalline And Amorphous Structure Of Matter",
+                "Different Crystal Systems",
+                "Space Groups",
+                "Methods Of Determination Of Crystal Structure",
+                "X-Ray Diffraction",
+                "Scanning And Transmission Electron Microscopies",
+                "Cubic Crystal Structure"
+              ]
+            },
+            {
+              "section_code": "S2",
+              "section_name": "Band Theory Of Solids",
+              "topics": [
+                "Band Theory Of Solids",
+                "Conductors, Insulators And Semi-Conductors",
+                "Thermal Properties Of Solids",
+                "Solid State Specific Heat",
+                "Debye Theory In Solid State",
+                "Magnetism",
+                "Dia, Para And Ferromagnetism"
+              ]
+            },
+            {
+              "section_code": "S3",
+              "section_name": "Superconductivity",
+              "topics": [
+                "Elements Of Super-Conductivity",
+                "Meissner Effect",
+                "BCS Theory",
+                "Type-I And Type-II Superconductors",
+                "London Equation",
+                "Josephson Junctions And Applications",
+                "Elementary Ideas About High Temperature Super-Conductivity"
+              ]
+            },
+            {
+              "section_code": "S4",
+              "section_name": "Semiconductors/Solar Cell",
+              "topics": [
+                "Intrinsic And Extrinsic Semi-Conductors",
+                "P-N-P And N-P-N Transistors",
+                "Amplifiers",
+                "Oscillators",
+                "Op-Amps",
+                "FET, JFET, MOSFET",
+                "Thermistors",
+                "Solar Cells"
+              ]
+            },
+            {
+              "section_code": "S5",
+              "section_name": "Digital Electronics/Microprocessors",
+              "topics": [
+                "Digital Electronics",
+                "Boolean Identities",
+                "De Morgan’s Laws",
+                "Logic Gates",
+                "Truth Tables",
+                "Karnaugh Map",
+                "Simple Logic Circuits",
+                "Fundamentals Of Microprocessors",
+                "Digital Computers"
+              ]
+            }
+          ]
+        }
+      ]
+    }
+  }
+}

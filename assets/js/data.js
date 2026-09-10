@@ -24,8 +24,8 @@ export async function loadQuestions() {
 
 export async function loadSyllabus() {
   if (syllabusCache) return syllabusCache;
-  const response = await fetch("data/physics-syllabus.json", { cache: "force-cache" });
-  if (!response.ok) throw new Error(`physics-syllabus.json: HTTP ${response.status}`);
+  const response = await fetch("data/syllabus.json", { cache: "force-cache" });
+  if (!response.ok) throw new Error(`syllabus.json: HTTP ${response.status}`);
   syllabusCache = await response.json();
   return syllabusCache;
 }

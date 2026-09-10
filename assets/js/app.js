@@ -219,6 +219,10 @@ function getPrintFilterSummary() {
     if (f.section) items.push(`Section: ${f.section}`);
     if (f.topic) items.push(`Topic: ${f.topic}`);
   }
+
+  if (f.exam && f.exam !== "both") items.push(f.exam === "IFOS" ? "Exam: IFoS" : "Exam: CSE");
+  else items.push("Exam: CSE + IFoS");
+  
   return items;
 }
 
