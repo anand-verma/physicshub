@@ -1,8 +1,4 @@
-/* PhysicsHub Analysis Engine
- * Build-time indexed hybrid retrieval.
- * Runtime never embeds the 2,925-question corpus. It loads precomputed
- * MiniLM vectors and embeds only the clicked question in a Web Worker.
- */
+import { CONFIG } from "./config.js";
 
 const STOPWORDS = new Set(`a an and are as at be been being by can could did do does for from had has have how i if in into is it its may more most of on or our should than that the their them then there these they this to under was we were what when where which who why will with would you your`.split(/\s+/));
 
@@ -55,7 +51,8 @@ const pending = new Map();
 
 function ensureWorker() {
   if (worker) return worker;
-  worker = new Worker(new URL("./analysis-worker.js", import.meta.url), { type: "module" });
+  const workerUrl = CONFIG.assetUrl("./analysis-worker.js", "analysisWorker");
+  worker = new Worker(new URL(workerUrl, import.meta.url), { type: "module" });
   worker.onmessage = e => {
     const { id, type, ...payload } = e.data || {};
     if (id && pending.has(id)) { const r = pending.get(id); pending.delete(id); r({ type, ...payload }); }
@@ -81,7 +78,8 @@ export class AnalysisEngine {
 
   async loadIndex() {
     try {
-      const r = await fetch("data/analysis-index.json", { cache: "force-cache" });
+      const url = CONFIG.assetUrl("data/analysis-index.json", "analysisIndex");
+      const r = await fetch(url, { cache: CONFIG.cachePolicy.analysisIndex });
       if (!r.ok) throw new Error(`analysis-index.json: HTTP ${r.status}`);
       this.index = await r.json();
     } catch (e) { console.warn("Analysis pre-index unavailable; using runtime lexical fallback.", e); this.index = null; }
@@ -139,14 +137,16 @@ export class AnalysisEngine {
   }
 
   warmSemantic() {
-    const start = () => workerCall("warm", { vectorUrl:"data/analysis-vectors.bin", expectedCount:this.questions.length, model:"Xenova/all-MiniLM-L6-v2" }).catch(()=>null);
+    const vectorsUrl = CONFIG.assetUrl("data/analysis-vectors.bin", "analysisVectors");
+    const start = () => workerCall("warm", { vectorUrl: vectorsUrl, cachePolicy: CONFIG.cachePolicy.analysisVectors, expectedCount: this.questions.length, model: "Xenova/all-MiniLM-L6-v2" }).catch(() => null);
     if ("requestIdleCallback" in window) requestIdleCallback(start, { timeout: 2500 });
     else setTimeout(start, 1200);
   }
 
   async analyzeSemantic(index) {
     await this.indexPromise;
-    const response=await workerCall("query",{ text:this.prepared[index].text, vectorUrl:"data/analysis-vectors.bin", expectedCount:this.questions.length, model:"Xenova/all-MiniLM-L6-v2" });
+    const vectorsUrl = CONFIG.assetUrl("data/analysis-vectors.bin", "analysisVectors");
+    const response = await workerCall("query", { text: this.prepared[index].text, vectorUrl: vectorsUrl, cachePolicy: CONFIG.cachePolicy.analysisVectors, expectedCount: this.questions.length, model: "Xenova/all-MiniLM-L6-v2" });
     if (response.type!=="result" || !response.scores) return {semanticAvailable:false,semanticPending:false,semanticError:response.message||"Precomputed semantic vector index is unavailable."};
     const ranked=this.makeRank(index,response.scores).filter(r=>r.score>=.30).slice(0,7);
     return {related:ranked,semanticAvailable:true,semanticPending:false};

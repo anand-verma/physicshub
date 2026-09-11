@@ -5,7 +5,7 @@
   <meta name="viewport" content="width=device-width, initial-scale=1">
   <meta name="description" content="Physics Optional PYQ Repository — UPSC CSE & IFoS">
   <title>Physics PYQ Repository</title>
-  <link rel="stylesheet" href="assets/styles.css">
+  <link id="siteStyles" rel="stylesheet" href="assets/styles.css">
   <script>
     window.MathJax = {
       tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
@@ -106,7 +106,7 @@
   <footer class="site-footer">
     <div style="display: flex; flex-direction: column; gap: 12px; width: 100%;">
       <div class="footer-row" style="display: flex; justify-content: space-between; flex-wrap: wrap; gap: 6px;">
-        <span>Physics PYQ Repository</span>
+        <span>Physics PYQ Repository <span id="appVersion" style="margin-left: 5px; font-weight: 600; opacity: 0.75;"></span></span>
         <span>Client-side • No account • No database</span>
       </div>
       <div style="text-align: center; font-size: 9.5px; opacity: 0.8;">
@@ -115,6 +115,11 @@
     </div>
   </footer>
 
-  <script type="module" src="assets/js/app.js"></script>
+  <script type="module">
+    import { CONFIG } from "./assets/js/config.js";
+    const styles = document.getElementById("siteStyles");
+    if (styles) styles.href = CONFIG.assetUrl("assets/styles.css", "styles");
+    import(CONFIG.assetUrl("./assets/js/app.js", "app"));
+  </script>
 </body>
 </html>

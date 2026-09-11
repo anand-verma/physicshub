@@ -17,9 +17,9 @@ async function ensureModel(model) {
   }
 }
 
-async function loadVectors(url, expectedCount) {
+async function loadVectors(url, expectedCount, cachePolicy = "no-cache") {
   if (vectors && count===expectedCount) return true;
-  const r=await fetch(url,{cache:"force-cache"});
+  const r=await fetch(url,{cache:cachePolicy});
   if (!r.ok) throw new Error(`Precomputed semantic index missing (HTTP ${r.status}). Run build_search_index.py.`);
   const buf=await r.arrayBuffer();
   const header=new DataView(buf,0,16);
@@ -41,10 +41,10 @@ function cosineQuery(q) {
 }
 
 self.onmessage=async e=>{
-  const {type,id,text,vectorUrl,expectedCount,model}=e.data||{};
+  const {type,id,text,vectorUrl,cachePolicy,expectedCount,model}=e.data||{};
   try{
     if(type!=="query" && type!=="warm") return;
-    await loadVectors(vectorUrl,expectedCount);
+    await loadVectors(vectorUrl,expectedCount,cachePolicy);
     await ensureModel(model);
     if(type==="warm"){ self.postMessage({type:"result",id,warmed:true}); return; }
     const out=await extractor([text],{pooling:"mean",normalize:true});

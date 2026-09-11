@@ -1,9 +1,12 @@
+import { CONFIG } from "./config.js";
+
 let questionsCache = null;
 let syllabusCache = null;
 
 export async function loadQuestions() {
   if (questionsCache) return questionsCache;
-  const response = await fetch("data/questions.json", { cache: "force-cache" });
+  const url = CONFIG.assetUrl("data/questions.json", "questions");
+  const response = await fetch(url, { cache: CONFIG.cachePolicy.questions });
   if (!response.ok) throw new Error(`questions.json: HTTP ${response.status}`);
   const raw = await response.json();
 
@@ -24,7 +27,8 @@ export async function loadQuestions() {
 
 export async function loadSyllabus() {
   if (syllabusCache) return syllabusCache;
-  const response = await fetch("data/syllabus.json", { cache: "force-cache" });
+  const url = CONFIG.assetUrl("data/syllabus.json", "syllabus");
+  const response = await fetch(url, { cache: CONFIG.cachePolicy.syllabus });
   if (!response.ok) throw new Error(`syllabus.json: HTTP ${response.status}`);
   syllabusCache = await response.json();
   return syllabusCache;

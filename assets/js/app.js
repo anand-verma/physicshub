@@ -1,3 +1,4 @@
+import { CONFIG } from "./config.js";
 import { loadQuestions, loadSyllabus, buildSyllabusOrder } from "./data.js";
 import { createFilterState, buildFilterUI, updateFilterOptions, applyFilters, sortQuestions } from "./filters.js";
 import { renderQuestion, markdownToHtml, getPrompt } from "./renderer.js";
@@ -21,7 +22,8 @@ const els = {
   sort: document.querySelector("#sortSelect"),
   sortLabel: document.querySelector("#sortLabel"),
   toast: document.querySelector("#toast"),
-  print: document.querySelector("#printBtn")
+  print: document.querySelector("#printBtn"),
+  version: document.querySelector("#appVersion")
 };
 
 let searchTimer = 0;
@@ -29,6 +31,7 @@ let mathObserver;
 
 async function init() {
   try {
+    if (els.version) els.version.textContent = `v${CONFIG.version}`;
     [state.questions, state.syllabus] = await Promise.all([loadQuestions(), loadSyllabus()]);
     state.syllabusOrder = buildSyllabusOrder(state.syllabus);
     // Build the lightweight lexical index up front; the semantic model/index is loaded lazily.
@@ -118,7 +121,7 @@ async function copyRichQuestion(q, button, includePrompt = false) {
   // Convert local figures to embedded data URLs so rich clipboard carries the actual pixels.
   const images = [...holder.querySelectorAll("img")];
   await Promise.all(images.map(async img => {
-    const response = await fetch(img.src, { cache: "force-cache" });
+    const response = await fetch(img.src);
     if (!response.ok) throw new Error(`Could not load image: ${img.src}`);
     const blob = await response.blob();
     img.removeAttribute("loading");
