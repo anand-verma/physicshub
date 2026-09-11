@@ -61,7 +61,7 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .sr-only{position:absolute;width:1px;height:1px;padding:0;margin:-1px;overflow:hidden;clip:rect(0,0,0,0);white-space:nowrap;border:0}
 @media(max-width:960px){.toolbar-row{flex-wrap:wrap}.search-box{flex:1 1 100%}.filters-row{flex-wrap:wrap}.mode-switch-wrap{width:100%}.mode-switch{width:100%}.mode-switch label{flex:1}.mode-switch span{justify-content:center;width:100%}}
 @media(max-width:800px){.actions-col{width:112px}.header-inner{padding:26px 16px 22px}.container{padding:14px 12px 32px}.question-table th,.question-table td{padding:13px 12px}.question-main{font-size:15px}.actions-col{width:76px}}
-@media(max-width:560px){.toolbar-row{align-items:stretch;flex-direction:column}.exam-select{width:100%}.exam-select select{flex:1}.clear-btn{justify-content:center;width:100%}.filter-grid{flex-direction:column;width:100%}.filters-row{flex-direction:column;align-items:stretch}.print-btn{width:100%}.question-meta{align-items:flex-start;flex-direction:column;gap:4px}.meta-right{text-align:left}.ai-actions{flex-direction:column}.ai-btn{width:30px;height:30px}.question-main img{max-height:360px}.site-footer{padding:0 12px 22px;flex-direction:column;gap:5px}}
+@media(max-width:560px){.toolbar-row{align-items:stretch;flex-direction:column}.exam-select{width:100%}.exam-select select{flex:1}.clear-btn{justify-content:center;width:100%}.bookmark-filter-btn{justify-content:center;width:100%}.filter-grid{flex-direction:column;width:100%}.filters-row{flex-direction:column;align-items:stretch}.print-btn{width:100%}.question-meta{align-items:flex-start;flex-direction:column;gap:4px}.meta-right{text-align:left}.ai-actions{flex-direction:column}.ai-btn{width:30px;height:30px}.question-main img{max-height:360px}.site-footer{padding:0 12px 22px;flex-direction:column;gap:5px}.bookmark-btn{width:22px;height:22px}.bookmark-btn svg{width:13px;height:13px}}
 
 /* Performance-oriented controls */
 .exam-select{height:44px;border:1px solid var(--line);border-radius:9px;padding:0 8px 0 12px;display:flex;align-items:center;gap:8px;font-size:12px;font-weight:700;white-space:nowrap;background:#fff;transition:border-color .15s,box-shadow .15s}
@@ -96,6 +96,25 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 }
 
 .toast{position:fixed;left:50%;bottom:24px;transform:translate(-50%,12px);opacity:0;pointer-events:none;background:#20252b;color:#fff;padding:9px 14px;border-radius:9px;font-size:12px;font-weight:700;box-shadow:0 8px 24px rgba(0,0,0,.16);transition:.18s ease;z-index:1000}.toast.show{opacity:1;transform:translate(-50%,0)}.toast.error{background:#a33b3b}
+
+/* Bookmark star in column 1 */
+.bookmark-btn{display:flex;align-items:center;justify-content:center;width:26px;height:26px;padding:0;border:none;border-radius:6px;background:transparent;color:#b0b6bd;cursor:pointer;transition:all .15s ease;margin:4px auto 0}
+.bookmark-btn svg{width:16px;height:16px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:all .15s ease}
+.bookmark-btn:hover{color:#d4a017;background:rgba(212,160,23,.08)}
+.bookmark-btn:hover svg{transform:scale(1.12)}
+.bookmark-btn.active{color:#d4a017}
+.bookmark-btn.active svg{fill:#d4a017;stroke:#d4a017;filter:drop-shadow(0 1px 3px rgba(212,160,23,.25))}
+.bookmark-btn:active{transform:scale(.92)}
+
+/* Bookmark filter toolbar button */
+.bookmark-filter-btn{height:44px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#374151;font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:0 13px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;transition:all .15s ease}
+.bookmark-filter-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:all .15s ease}
+.bookmark-filter-btn:hover{border-color:#d4a017;color:#b8860b;background:#fffef5}
+.bookmark-filter-btn:hover svg{color:#d4a017}
+.bookmark-filter-btn.active{border-color:#d4a017;background:linear-gradient(135deg,#fffdf5,#fff8e1);color:#8b6914;box-shadow:0 0 0 3px rgba(212,160,23,.1)}
+.bookmark-filter-btn.active svg{fill:#d4a017;stroke:#d4a017}
+.bookmark-count{display:inline-flex;align-items:center;justify-content:center;min-width:18px;height:18px;padding:0 5px;border-radius:999px;background:#d4a017;color:#fff;font-size:10px;font-weight:800;line-height:1}
+
 
 /* Print-friendly question sheet */
 .print-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border:1px solid #3157d5;background:#3157d5;color:#fff;border-radius:9px;padding:0 15px;font-size:12px;font-weight:700;letter-spacing:.01em;cursor:pointer;box-shadow:0 3px 10px rgba(49,87,213,.18);transition:.15s ease}.print-btn:hover{background:#2749b8;border-color:#2749b8;transform:translateY(-1px);box-shadow:0 5px 14px rgba(49,87,213,.22)}.print-btn:active{transform:translateY(0)}.print-btn:disabled{opacity:.65;cursor:wait;transform:none}.print-icon{font-size:17px;line-height:1}

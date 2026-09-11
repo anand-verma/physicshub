@@ -3,10 +3,12 @@ import { loadQuestions, loadSyllabus, buildSyllabusOrder } from "./data.js";
 import { createFilterState, buildFilterUI, updateFilterOptions, applyFilters, sortQuestions } from "./filters.js";
 import { renderQuestion, markdownToHtml, getPrompt } from "./renderer.js";
 import { AnalysisEngine } from "./analysis.js";
+import { initBookmarks, isBookmarked, toggleBookmark, getBookmarkCount, getBookmarkedIds, onChange as onBookmarkChange } from "./bookmarks.js";
 
 const state = {
   questions: [], syllabus: null, syllabusOrder: null, analysis: null,
   filters: createFilterState(), renderToken: 0, currentResults: [],
+  bookmarkFilterActive: false,
 };
 
 const els = {
@@ -23,7 +25,9 @@ const els = {
   sortLabel: document.querySelector("#sortLabel"),
   toast: document.querySelector("#toast"),
   print: document.querySelector("#printBtn"),
-  version: document.querySelector("#appVersion")
+  version: document.querySelector("#appVersion"),
+  bookmarkFilter: document.querySelector("#bookmarkFilterBtn"),
+  bookmarkCount: document.querySelector("#bookmarkCount")
 };
 
 let searchTimer = 0;
@@ -32,6 +36,9 @@ let mathObserver;
 async function init() {
   try {
     if (els.version) els.version.textContent = `v${CONFIG.version}`;
+    await initBookmarks();
+    updateBookmarkBadge();
+    onBookmarkChange(updateBookmarkBadge);
     [state.questions, state.syllabus] = await Promise.all([loadQuestions(), loadSyllabus()]);
     state.syllabusOrder = buildSyllabusOrder(state.syllabus);
     // Build the lightweight lexical index up front; the semantic model/index is loaded lazily.
@@ -64,7 +71,12 @@ function render() {
   state.filters.exam = els.exam.value;
   state.filters.sort = els.sort.value;
 
-  const results = sortQuestions(applyFilters(state.questions, state.filters), state.filters, state.syllabusOrder);
+  let results = sortQuestions(applyFilters(state.questions, state.filters), state.filters, state.syllabusOrder);
+  // When bookmark filter is active, show only bookmarked questions
+  if (state.bookmarkFilterActive) {
+    const ids = getBookmarkedIds();
+    results = results.filter(q => ids.has(q.id));
+  }
   state.currentResults = results;
   els.resultCount.textContent = results.length.toLocaleString("en-IN");
   els.empty.hidden = results.length !== 0;
@@ -152,6 +164,8 @@ function blobToDataURL(blob) {
 
 function reset() {
   state.filters = createFilterState();
+  state.bookmarkFilterActive = false;
+  els.bookmarkFilter?.classList.remove("active");
   els.search.value = "";
   els.exam.value = "both";
   els.sort.value = "smart";
@@ -186,6 +200,13 @@ els.body.addEventListener("click", e => {
   const q = tr?._question;
   if (!q) return;
 
+  // Bookmark toggle
+  const bmBtn = e.target.closest(".bookmark-btn");
+  if (bmBtn) {
+    handleBookmarkClick(bmBtn, q);
+    return;
+  }
+
   const copy = e.target.closest(".copy-btn");
   if (copy) {
     copyRichQuestion(q, copy, false).catch(error => showToast(error.message || "Could not copy question", true));
@@ -194,6 +215,33 @@ els.body.addEventListener("click", e => {
 
   const analysisButton = e.target.closest(".analysis-btn");
   if (analysisButton) toggleAnalysis(tr, q, analysisButton);
+});
+
+async function handleBookmarkClick(btn, q) {
+  const nowBookmarked = await toggleBookmark(q.id);
+  btn.classList.toggle("active", nowBookmarked);
+  btn.setAttribute("aria-pressed", String(nowBookmarked));
+  btn.setAttribute("title", nowBookmarked ? "Remove bookmark" : "Bookmark this question");
+  btn.innerHTML = nowBookmarked
+    ? `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" fill="currentColor"></path></svg>`
+    : `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`;
+  showToast(nowBookmarked ? "Bookmarked" : "Bookmark removed");
+  // If viewing bookmarks and just unbookmarked, re-render to remove from view
+  if (state.bookmarkFilterActive && !nowBookmarked) render();
+}
+
+function updateBookmarkBadge() {
+  const count = getBookmarkCount();
+  if (els.bookmarkCount) {
+    els.bookmarkCount.textContent = count;
+    els.bookmarkCount.hidden = count === 0;
+  }
+}
+
+els.bookmarkFilter?.addEventListener("click", () => {
+  state.bookmarkFilterActive = !state.bookmarkFilterActive;
+  els.bookmarkFilter.classList.toggle("active", state.bookmarkFilterActive);
+  render();
 });
 
 async function toggleAnalysis(tr, q, button) {
