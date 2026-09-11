@@ -134,7 +134,7 @@ export class AnalysisEngine {
 
   analyzeFast(index) {
     const exact=this.exact(index);
-    const ranked=this.makeRank(index).filter(r=>r.score>=.20).slice(0,5);
+    const ranked=this.makeRank(index).filter(r=>r.score>=.20).slice(0,7);
     return { exact:exact.map(i=>this.questions[i]), related:ranked, semanticAvailable:false, semanticPending:true };
   }
 

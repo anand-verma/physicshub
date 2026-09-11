@@ -14,7 +14,6 @@ const els = {
   filters: document.querySelector("#filters"),
   body: document.querySelector("#questionBody"),
   resultCount: document.querySelector("#resultCount"),
-  headerCount: document.querySelector("#headerCount"),
   empty: document.querySelector("#emptyState"),
   clear: document.querySelector("#clearBtn"),
   emptyReset: document.querySelector("#emptyReset"),
@@ -32,7 +31,6 @@ async function init() {
   try {
     [state.questions, state.syllabus] = await Promise.all([loadQuestions(), loadSyllabus()]);
     state.syllabusOrder = buildSyllabusOrder(state.syllabus);
-    els.headerCount.textContent = state.questions.length.toLocaleString("en-IN");
     // Build the lightweight lexical index up front; the semantic model/index is loaded lazily.
     state.analysis = new AnalysisEngine(state.questions);
     state.analysis.warmSemantic?.();
