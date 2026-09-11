@@ -45,7 +45,16 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .question-table td{padding:17px 18px;border-bottom:1px solid var(--line);vertical-align:top}.question-table tr:last-child td{border-bottom:0}
 .number-col{width:48px}.qcol{width:auto}.actions-col{width:126px;text-align:center}
 .question-main{font-family:"Source Serif 4",Georgia,serif;font-size:16px;line-height:1.62;max-width:1020px}.question-main p{margin:.15em 0 .65em}.question-main p:last-child{margin-bottom:0}.question-main ol,.question-main ul{margin:.3em 0 .65em;padding-left:24px}.question-main img{display:block;max-width:min(100%,620px);max-height:480px;object-fit:contain;margin:12px 0;border:1px solid var(--line);border-radius:7px;background:#fff}.question-meta{display:flex;justify-content:space-between;align-items:flex-end;gap:18px;margin-top:11px;font-family:Inter,system-ui,sans-serif;font-size:12px;color:#7b848e;line-height:1.45}.meta-left{min-width:0}.meta-left span{display:inline-block}.meta-left span+span:before{content:"·";margin:0 7px;color:#b0b6bd}.meta-right{text-align:right;white-space:nowrap}.exam{font-weight:700;color:#4f5964;font-size:12.5px}.marks{margin-left:5px}
-.ai-actions{display:flex;justify-content:center;gap:7px;padding-top:1px}.ai-btn{width:32px;height:32px;border:1px solid var(--line);border-radius:8px;background:#fff;display:inline-flex;align-items:center;justify-content:center;color:#69737e;text-decoration:none;transition:.15s;flex-shrink:0}.ai-btn:hover{border-color:#b8c1cc;background:#f8fafc;color:#334155;transform:translateY(-1px)}.ai-btn.chatgpt:hover{border-color:#a7d7c5;background:#f4fbf8;color:#10a37f}.ai-btn svg{width:16px;height:16px;display:block;fill:none;stroke:currentColor;stroke-width:1.6;stroke-linecap:round;stroke-linejoin:round}.ai-btn.chatgpt svg{width:15px;height:15px;fill:currentColor;stroke:none}
+.ai-actions{display:flex;justify-content:center;gap:7px;padding-top:1px}
+.ai-btn{width:34px;height:34px;border:1px solid #cbd5e1;border-radius:8px;background:#fff;display:inline-flex;align-items:center;justify-content:center;color:#334155;text-decoration:none;box-shadow:0 1px 2px rgba(15,23,42,.05);transition:all .15s ease;flex-shrink:0}
+.ai-btn:hover{border-color:#94a3b8;background:#f8fafc;color:#0f172a;transform:translateY(-1px);box-shadow:0 2px 5px rgba(15,23,42,.08)}
+.ai-btn:active{transform:translateY(0);box-shadow:none}
+.ai-btn.copy-btn:hover{border-color:#94a3b8;color:#0f172a;background:#f8fafc}
+.ai-btn.chatgpt{color:#1e293b}
+.ai-btn.chatgpt:hover{border-color:#34d399;background:#f0fdf4;color:#059669}
+.ai-btn.analysis-btn:hover{border-color:#93c5fd;background:#eff6ff;color:#2563eb}
+.ai-btn svg{width:17px;height:17px;display:block;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+.ai-btn.chatgpt svg{width:16px;height:16px;fill:currentColor;stroke:none}
 .empty-state{text-align:center;padding:65px 20px}.empty-icon{font-size:30px;color:#a2aab3}.empty-state h2{font-size:17px;margin:10px 0 4px}.empty-state p{font-size:13px;color:var(--muted);margin:0 0 12px}
 .site-footer{max-width:1280px;margin:auto;padding:0 28px 28px;display:flex;justify-content:space-between;color:#929aa3;font-size:10px}
 .loading{text-align:center;color:var(--muted);padding:50px}
@@ -138,8 +147,9 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .analysis-related-item:last-child{border-bottom:0}
 .analysis-related-meta{display:flex;align-items:center;flex-wrap:wrap;gap:6px;margin-bottom:7px;font-size:10px;color:var(--muted)}
 .analysis-rank{display:grid;place-items:center;width:20px;height:20px;border-radius:6px;background:var(--surface-2);color:#68727e;font-weight:800}
-.analysis-related-meta strong{color:#4a5561}
-.analysis-score{margin-left:auto;font-weight:800;color:var(--accent)}
+.analysis-score{margin-left:auto;font-size:9.5px;font-weight:800;padding:2px 7px;border-radius:999px;white-space:nowrap}
+.analysis-score.direct-repeat{color:#15803d;background:#f0fdf4;border:1px solid #bbf7d0}
+.analysis-score.strong-overlap{color:#1d4ed8;background:#eff6ff;border:1px solid #bfdbfe}
 .analysis-signal{padding:2px 5px;border:1px solid var(--line);border-radius:999px;background:#fff;color:#68727e;font-size:8px;font-weight:700}
 .analysis-related-question{font-size:13.5px;line-height:1.5;color:#28323c}
 .analysis-related-question p{margin:.1em 0 .5em}

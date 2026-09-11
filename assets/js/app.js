@@ -311,13 +311,15 @@ function buildAnalysisHtml(current, result) {
           if (item.semantic >= 0.45) signals.push("Concept");
           if (item.formula >= 0.35) signals.push("Formula");
           if (item.lexical >= 0.25) signals.push("Keywords");
+          const matchLabel = score >= 35 ? "Direct Repeat" : "Strong Overlap";
+          const matchClass = score >= 35 ? "direct-repeat" : "strong-overlap";
           return `<article class="analysis-related-item">
             <div class="analysis-related-meta">
               <span class="analysis-rank">${i + 1}</span>
               <strong>${escapeHtml(displayExam(q.exam))} ${escapeHtml(q.year)}</strong>
               <span class="analysis-marks">${escapeHtml(displayMarks(q.marks))}</span>
               <span>${escapeHtml(q.unit || "—")} · ${escapeHtml(q.section || "—")}</span>
-              <span class="analysis-score">${score}% match</span>
+              <span class="analysis-score ${matchClass}" title="${score}% match">${matchLabel}</span>
               ${signals.map(s => `<span class="analysis-signal">${s}</span>`).join("")}
             </div>
             <div class="analysis-related-question question-main">${markdownToHtml(q.question_markdown || "", q.images || [])}</div>
