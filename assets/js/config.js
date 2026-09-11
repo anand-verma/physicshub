@@ -11,12 +11,12 @@
  */
 export const CONFIG = {
   // Master application release version
-  version: "1.3.0",
+  version: "1.3.2",
 
   // Granular version tags for all critical assets and datasets
   assets: {
-    styles: "1.3.0",
-    app: "1.3.0",
+    styles: "1.3.2",
+    app: "1.3.2",
     questions: "2026.1",
     syllabus: "1.0",
     analysisIndex: "1.3.0",
