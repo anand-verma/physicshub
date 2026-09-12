@@ -221,6 +221,7 @@ async function init() {
     state.selectedIds = new Set(loadSelectionIds());
 
     buildFilterUI(els.filters, state.filters, onFilterChange);
+    updateFilterOptions(state.questions, els.filters, state.filters, state.syllabusOrder);
     syncFilterControls();
 
     mathObserver = new IntersectionObserver(onRowsVisible, { rootMargin: "700px 0px" });
