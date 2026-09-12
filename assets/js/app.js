@@ -24,7 +24,6 @@ const els = {
   sort: document.querySelector("#sortSelect"),
   sortLabel: document.querySelector("#sortLabel"),
   toast: document.querySelector("#toast"),
-  print: document.querySelector("#printBtn"),
   version: document.querySelector("#appVersion"),
   bookmarkFilter: document.querySelector("#bookmarkFilterBtn"),
   bookmarkCount: document.querySelector("#bookmarkCount")
@@ -49,6 +48,17 @@ async function init() {
     updateFilterOptions(state.questions, els.filters, state.filters, state.syllabusOrder);
 
     mathObserver = new IntersectionObserver(onRowsVisible, { rootMargin: "700px 0px" });
+
+    // Deep-link support: the shared site shell points here with ?bookmarks=1.
+    // Activate the bookmark view after IndexedDB is ready so navigation from any tab
+    // opens the actual bookmarked-question list rather than just the repository.
+    const params = new URLSearchParams(window.location.search);
+    const bookmarkView = params.get("bookmarks") === "1" || window.location.hash === "#bookmarks";
+    if (bookmarkView) {
+      state.bookmarkFilterActive = true;
+      els.bookmarkFilter?.classList.add("active");
+    }
+
     els.sort.addEventListener("change", () => {
       state.filters.sort = els.sort.value;
       render();
@@ -431,137 +441,5 @@ function showToast(message, error = false) {
   toastTimer = setTimeout(() => els.toast.classList.remove("show"), 1800);
 }
 
-
-let printReadyPromise = null;
-
-function getPrintFilterSummary() {
-  const f = state.filters;
-  const items = [];
-
-  if (f.search) items.push(`Search: ${els.search.value.trim()}`);
-
-  if (f.mode === "year-unit") {
-    if (f.year) items.push(`Year: ${f.year}`);
-    if (f.unit) items.push(`Unit: ${f.unit}`);
-  } else {
-    if (f.unit) items.push(`Unit: ${f.unit}`);
-    if (f.section) items.push(`Section: ${f.section}`);
-    if (f.topic) items.push(`Topic: ${f.topic}`);
-  }
-
-  if (f.exam && f.exam !== "both") items.push(f.exam === "IFOS" ? "Exam: IFoS" : "Exam: CSE");
-  else items.push("Exam: CSE + IFoS");
-  
-  return items;
-}
-
-async function printCurrentQuestions() {
-  const questions = state.currentResults || [];
-  if (!questions.length) {
-    showToast("No questions to print", true);
-    return;
-  }
-
-  const tokenAtStart = state.renderToken;
-  const originalText = els.print?.textContent || "Print";
-  if (els.print) {
-    els.print.disabled = true;
-    els.print.textContent = "Preparing…";
-  }
-
-  try {
-    // Wait until the progressive on-screen renderer has finished its current batch.
-    await new Promise(resolve => {
-      const check = () => {
-        if (tokenAtStart !== state.renderToken || els.body.querySelectorAll("tr").length >= questions.length) resolve();
-        else requestAnimationFrame(check);
-      };
-      check();
-    });
-    if (tokenAtStart !== state.renderToken) return;
-
-    const printRoot = document.createElement("section");
-    printRoot.id = "printRoot";
-    printRoot.className = "print-root";
-    const title = document.createElement("div");
-    title.className = "print-title";
-
-    const heading = document.createElement("div");
-    heading.className = "print-heading";
-    heading.innerHTML = `<strong>Physics PYQ Repository</strong><span>${questions.length.toLocaleString("en-IN")} questions</span>`;
-    title.appendChild(heading);
-
-    const filterSummary = getPrintFilterSummary();
-    if (filterSummary.length) {
-      const summary = document.createElement("div");
-      summary.className = "print-filters";
-      summary.innerHTML = filterSummary.map(item => `<span class="print-filter-chip">${escapeHtml(item)}</span>`).join("");
-      title.appendChild(summary);
-    }
-    printRoot.appendChild(title);
-
-    const sourceRows = [...els.body.querySelectorAll("tr")];
-    const sourceById = new Map(sourceRows.map(row => [row.dataset.id, row]));
-    for (let i = 0; i < questions.length; i++) {
-      const q = questions[i];
-      const source = sourceById.get(q.id);
-      const article = document.createElement("article");
-      article.className = "print-question";
-      const content = source?.querySelector(".question-main")?.cloneNode(true);
-      const meta = source?.querySelector(".meta-right")?.cloneNode(true);
-      article.innerHTML = `<div class="print-number">${i + 1}.</div>`;
-      const body = document.createElement("div");
-      body.className = "print-question-body";
-      if (content) body.appendChild(content);
-      else body.innerHTML = markdownToHtml(q.question_markdown || "", q.images || []);
-      const metaWrap = document.createElement("div");
-      metaWrap.className = "print-meta";
-      metaWrap.innerHTML = `<strong>${escapeHtml(q.exam || "—")} | ${escapeHtml(q.year || "—")} | ${escapeHtml(q.marks || "—")}</strong>`;
-      body.appendChild(metaWrap);
-      article.appendChild(body);
-      printRoot.appendChild(article);
-    }
-
-    const printFooter = document.createElement("div");
-    printFooter.className = "print-footer";
-    printFooter.style.marginTop = "20pt";
-    printFooter.style.paddingTop = "10pt";
-    printFooter.style.borderTop = "1px solid #ddd";
-    printFooter.style.textAlign = "center";
-    printFooter.style.fontSize = "8.5pt";
-    printFooter.style.color = "#666";
-    printFooter.innerHTML = "Special thanks to AbhiPhysics Telegram channel for sourcing PYQs.";
-    printRoot.appendChild(printFooter);
-
-    document.body.appendChild(printRoot);
-    document.documentElement.classList.add("printing-ready");
-
-    // Ensure images are available before opening the browser print preview.
-    const imgs = [...printRoot.querySelectorAll("img")];
-    await Promise.all(imgs.map(img => img.complete ? Promise.resolve() : new Promise(resolve => { img.onload = img.onerror = resolve; })));
-
-    // Re-typeset only the print container. This keeps the normal browsing view untouched.
-    if (window.MathJax?.typesetPromise) {
-      await (window.MathJax.startup?.promise || Promise.resolve());
-      await window.MathJax.typesetPromise([printRoot]);
-    }
-
-    // Give layout a frame to settle before invoking the native print dialog.
-    await new Promise(requestAnimationFrame);
-    window.print();
-  } catch (error) {
-    console.error(error);
-    showToast("Could not prepare print view", true);
-  } finally {
-    document.documentElement.classList.remove("printing-ready");
-    document.getElementById("printRoot")?.remove();
-    if (els.print) {
-      els.print.disabled = false;
-      els.print.textContent = originalText;
-    }
-  }
-}
-
-els.print?.addEventListener("click", printCurrentQuestions);
 
 init();

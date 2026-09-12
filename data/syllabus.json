@@ -38,7 +38,7 @@
             },
             {
               "section_code": "S2",
-              "section_name": "Mechanics Of Rigid Bodies",
+              "section_name": "System Of Particles And Analytical Mechanics",
               "topics": [
                 "System Of Particles",
                 "Centre Of Mass For A System Of Particles",
@@ -46,8 +46,22 @@
                 "Equations Of Motion For A System Of Particles",
                 "Conservation Theorems For Energy, Momentum And Angular Momentum",
                 "Elastic And Inelastic Collisions",
-                "Rigid Body",
                 "Degrees Of Freedom",
+                "Constraints, Generalized Coordinates And Moments",
+                "Lagrange's Equation",
+                "Applications Of Lagrange's Equation To Linear Harmonic Oscillator",
+                "Applications Of Lagrange's Equation To Simple Pendulum",
+                "Applications Of Lagrange's Equation To Linear Central Force Problems",
+                "Cyclic Coordinates",
+                "Hamiltonian",
+                "Lagrange's Equation From Hamilton's Principle"
+              ]
+            },
+            {
+              "section_code": "S3",
+              "section_name": "Rigid Body Dynamics",
+              "topics": [
+                "Rigid Body",
                 "Euler’s Theorem",
                 "Angular Velocity",
                 "Moments Of Inertia",
@@ -58,14 +72,6 @@
                 "Precessional Motion",
                 "Top",
                 "Gyroscope",
-                "Constraints, Generalized Coordinates And Moments",
-                "Lagrange's Equation",
-                "Applications Of Lagrange's Equation To Linear Harmonic Oscillator",
-                "Applications Of Lagrange's Equation To Simple Pendulum",
-                "Applications Of Lagrange's Equation To Linear Central Force Problems",
-                "Cyclic Coordinates",
-                "Hamiltonian",
-                "Lagrange's Equation From Hamilton's Principle",
                 "Eulerian Angles",
                 "Inertia Tensor",
                 "Principal Moments Of Inertia",
@@ -74,7 +80,7 @@
               ]
             },
             {
-              "section_code": "S3",
+              "section_code": "S4",
               "section_name": "Mechanics Of Continuous Media",
               "topics": [
                 "Elasticity",
@@ -90,7 +96,7 @@
               ]
             },
             {
-              "section_code": "S4",
+              "section_code": "S5",
               "section_name": "Special Theory Of Relativity",
               "topics": [
                 "Michelson-Morley Experiment",

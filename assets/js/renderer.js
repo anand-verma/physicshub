@@ -59,7 +59,10 @@ export function markdownToHtml(md, images) {
   s = s.replace(/!\[([^\]]*)\]\(([^)]+)\)/g, (_, alt, src) => {
     const file = src.split("/").pop();
     const actual = images.find(x => x.split("/").pop() === file) || file;
-    return `<img src="data/images/${encodeURIComponent(actual)}" alt="${esc(alt || "Question figure")}" loading="lazy" decoding="async">`;
+    // Resolve images from this shared module's location so the same renderer
+    // works from the repository, Notes, Tracker and QCAB subdirectories.
+    const imageUrl = new URL(`../../data/images/${encodeURIComponent(actual)}`, import.meta.url).href;
+    return `<img src="${imageUrl}" alt="${esc(alt || "Question figure")}" loading="lazy" decoding="async">`;
   });
   s = s.replace(/\$\$([\s\S]*?)\$\$/g, "\\[$1\\]");
   s = s.replace(/(^|\n)\s*[-*]\s+(.+?)(?=\n|$)/g, "$1• $2");

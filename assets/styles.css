@@ -1,16 +1,3 @@
-@import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,450;8..60,500&display=swap');
-
-:root{
-  --bg:#f6f7f9; --surface:#fff; --surface-2:#f1f3f5; --text:#18202a;
-  --muted:#525d6b; --line:#d8dee4; --accent:#3157d5; --accent-soft:#edf1ff;
-  --shadow:0 8px 28px rgba(20,30,45,.06);
-  --radius:12px;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:smooth}
-body{margin:0;background:var(--bg);color:var(--text);font-family:Inter,system-ui,-apple-system,Segoe UI,sans-serif}
-.site-header{background:var(--surface);border-bottom:1px solid var(--line)}
-.header-inner{max-width:1280px;margin:auto;padding:34px 28px 28px;display:flex;flex-direction:column;align-items:center;text-align:center}
 h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:-.03em}
 .subtitle{margin:0;color:var(--muted);font-size:14px;line-height:1.5}
 .container{max-width:1280px;margin:auto;padding:22px 28px 44px}
@@ -160,26 +147,6 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 
 /* Print-friendly question sheet */
 .print-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border:1px solid #3157d5;background:#3157d5;color:#fff;border-radius:9px;padding:0 15px;font-size:12px;font-weight:700;letter-spacing:.01em;cursor:pointer;box-shadow:0 3px 10px rgba(49,87,213,.18);transition:.15s ease}.print-btn:hover{background:#2749b8;border-color:#2749b8;transform:translateY(-1px);box-shadow:0 5px 14px rgba(49,87,213,.22)}.print-btn:active{transform:translateY(0)}.print-btn:disabled{opacity:.65;cursor:wait;transform:none}.print-icon{font-size:17px;line-height:1}
-.print-root{display:none}
-@media print{
-  @page{size:A4;margin:16mm 15mm 16mm 15mm}
-  body > *:not(#printRoot){display:none!important}
-  #printRoot{display:block!important;color:#111;background:#fff;font-family:Georgia,"Times New Roman",serif;font-size:11.5pt;line-height:1.45}
-  .print-title{border-bottom:1px solid #bbb;padding-bottom:8pt;margin-bottom:12pt}
-  .print-heading{display:flex;justify-content:space-between;align-items:baseline;font-size:10pt}
-  .print-heading strong{font-size:13pt}
-  .print-filters{display:flex;flex-wrap:wrap;align-items:center;gap:4pt 6pt;margin-top:7pt;font-family:Arial,Helvetica,sans-serif;font-size:8.5pt;color:#333}
-  .print-filters-label{font-weight:700;color:#666;margin-right:2pt}
-  .print-filter-chip{font-weight:500}
-  .print-question{display:grid;grid-template-columns:24pt minmax(0,1fr);column-gap:5pt;margin:0 0 13pt;break-inside:avoid-page;page-break-inside:avoid}
-  .print-number{font-weight:700;font-size:11.5pt;padding-top:1pt}
-  .print-question-body{min-width:0}
-  .print-question-body p{margin:0 0 6pt}
-  .print-question-body img{display:block;max-width:100%;height:auto;max-height:120mm;object-fit:contain;margin:5pt 0 7pt;break-inside:avoid}
-  .print-meta{margin-top:7pt;font-family:Arial,Helvetica,sans-serif;font-size:9pt;color:#333;text-align:right;border-top:1px solid #ddd;padding-top:3pt}
-  .print-question .MathJax{font-size:100%!important}
-}
-
 
 /* Analysis: client-side hybrid similarity panel */
 .analysis-btn{cursor:pointer}
@@ -232,78 +199,3 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .analysis-marks{font-weight:800;color:var(--text);padding:2px 5px;border-radius:5px;background:var(--surface-2)}
 .analysis-exact-question{font-size:14px;line-height:1.55}
 .analysis-related-question{font-size:13.5px;line-height:1.55}
-
-/* ─── Responsive Nav (Hamburger) ─────────────────────────────────────────── */
-.menu-toggle {
-  display: none;
-  background: transparent;
-  border: none;
-  padding: 8px;
-  margin-left: -8px;
-  margin-right: 8px;
-  cursor: pointer;
-  color: #18202a;
-}
-.menu-toggle svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; }
-.nav-overlay {
-  display: none;
-  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
-  background: rgba(0,0,0,0.5); z-index: 900;
-  opacity: 0; transition: opacity 0.3s;
-}
-
-@media (min-width: 769px) {
-  .nav-links { display: flex; flex: 1; justify-content: flex-start; align-items: center; }
-  .nav-links-inner { display: flex; flex: 1; align-items: center; gap: 4px; }
-}
-
-@media (max-width: 768px) {
-  .menu-toggle { display: block; }
-  .site-nav { padding: 0 16px; justify-content: flex-start; position: relative; }
-  .site-nav-brand { position: absolute; left: 50%; transform: translateX(-50%); margin: 0; padding: 0; }
-  .nav-links {
-    position: fixed; top: 0; left: 0; bottom: 0; width: 260px;
-    background: #fff; z-index: 1000;
-    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
-    transform: translateX(-100%); transition: transform 0.3s ease;
-    display: flex; flex-direction: column;
-  }
-  .nav-links-inner {
-    display: flex; flex-direction: column; height: 100%;
-    padding: 24px 16px; gap: 8px;
-  }
-  .nav-tab {
-    height: 44px; justify-content: flex-start; border-bottom: none;
-    border-radius: 8px; padding: 0 12px;
-  }
-  .nav-tab.active { background: #f1f3f5; border: none; }
-  
-  .user-menu-container {
-    margin: auto 0 0 0;
-    width: 100%; border-top: 1px solid #d8dee4;
-    padding-top: 16px;
-  }
-  .user-dropdown {
-    position: static; box-shadow: none; border: none; width: 100%;
-    opacity: 1; visibility: visible; transform: none; padding: 0; margin-top: 12px;
-  }
-  .user-menu-btn { display: none; }
-  
-  body.nav-open { overflow: hidden; }
-  body.nav-open .nav-links { transform: translateX(0); }
-  body.nav-open .nav-overlay { display: block; opacity: 1; }
-}
-
-/* ─── Scroll to Top Button ───────────────────────────────────────────────── */
-.scroll-top-btn {
-  position: fixed; bottom: 24px; right: 24px;
-  width: 44px; height: 44px; border-radius: 50%;
-  background: var(--accent, #3157d5); color: #fff;
-  border: none; box-shadow: 0 4px 12px rgba(49,87,213,0.3);
-  cursor: pointer; display: flex; align-items: center; justify-content: center;
-  opacity: 0; visibility: hidden; transform: translateY(10px);
-  transition: all 0.3s ease; z-index: 900;
-}
-.scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
-.scroll-top-btn:hover { background: #2749b8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(49,87,213,0.4); }
-.scroll-top-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }

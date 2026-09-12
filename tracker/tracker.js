@@ -262,56 +262,6 @@ function updateStats() {
     `Notes: ${notesChecked}/${totalSections} · CSE PYQs: ${cseChecked}/${totalSections} · IFoS PYQs: ${ifosChecked}/${totalSections}`;
 }
 
-// User Menu & Mobile Nav Setup
-function setupUserMenu() {
-  const btn = document.getElementById("userMenuBtn");
-  const dropdown = document.getElementById("userDropdown");
-  if (btn && dropdown) {
-    btn.addEventListener("click", (e) => {
-      e.stopPropagation();
-      const expanded = btn.getAttribute("aria-expanded") === "true";
-      btn.setAttribute("aria-expanded", !expanded);
-      dropdown.classList.toggle("show", !expanded);
-    });
-    
-    document.addEventListener("click", (e) => {
-      if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
-        btn.setAttribute("aria-expanded", "false");
-        dropdown.classList.remove("show");
-      }
-    });
-  }
-
-  // Mobile Menu Toggle
-  const mobileBtn = document.getElementById('mobileMenuBtn');
-  const navOverlay = document.getElementById('navOverlay');
-  if (mobileBtn && navOverlay) {
-    const toggleMenu = () => {
-      const isOpen = document.body.classList.contains('nav-open');
-      document.body.classList.toggle('nav-open', !isOpen);
-      mobileBtn.setAttribute('aria-expanded', !isOpen);
-    };
-    mobileBtn.addEventListener('click', toggleMenu);
-    navOverlay.addEventListener('click', toggleMenu);
-  }
-
-  // Scroll to Top Logic
-  const scrollTopBtn = document.getElementById('scrollTopBtn');
-  if (scrollTopBtn) {
-    window.addEventListener('scroll', () => {
-      if (window.scrollY > 100) {
-        scrollTopBtn.classList.add('show');
-      } else {
-        scrollTopBtn.classList.remove('show');
-      }
-    });
-    scrollTopBtn.addEventListener('click', () => {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    });
-  }
-}
-
 document.addEventListener("DOMContentLoaded", () => {
-  setupUserMenu();
   init();
 });

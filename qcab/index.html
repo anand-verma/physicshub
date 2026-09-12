@@ -1,0 +1,78 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="description" content="PhysicsHub — build a custom PYQ test and print it as QCAB answer sheets">
+  <title>PYQ Test | PhysicsHub</title>
+  <link rel="icon" type="image/jpeg" href="../assets/favicon.jpg">
+  <link rel="stylesheet" href="../assets/site.css">
+  <link rel="stylesheet" href="../assets/styles.css">
+  <link rel="stylesheet" href="./qcab.css">
+  <script>
+    window.MathJax = {
+      tex: { inlineMath: [['\\(','\\)'], ['$', '$']], displayMath: [['\\[','\\]'], ['$$','$$']] },
+      svg: { fontCache: 'global' }
+    };
+  </script>
+  <script defer src="https://cdn.jsdelivr.net/npm/mathjax@3/es5/tex-svg.js"></script>
+</head>
+<body>
+  <nav class="site-nav" aria-label="Site navigation">
+    <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h16" stroke-linecap="round"/></svg></button>
+    <a class="site-nav-brand" href="../index.html"><span class="brand-prefix">UPSC </span>Physics<span class="brand-suffix">Hub</span></a>
+    <div class="nav-links" id="navLinks"><div class="nav-links-inner">
+      <a class="nav-tab" href="../index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h8M4 18h6"/></svg>PYQ Repository</a>
+      <a class="nav-tab" href="../notes/index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>Notes</a>
+      <a class="nav-tab active" href="./index.html" aria-current="page"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/></svg>QCAB</a>
+      <div class="user-menu-container">
+        <button class="user-menu-btn" id="userMenuBtn" aria-expanded="false" aria-label="User menu"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"/><circle cx="12" cy="7" r="4"/></svg></button>
+        <div class="user-dropdown" id="userDropdown">
+          <a class="user-dropdown-item" href="../tracker/index.html"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"/><polyline points="9 22 9 12 15 12 15 22"/></svg>Tracking Dashboard</a>
+          <a class="user-dropdown-item" href="../index.html?bookmarks=1"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"/></svg>Bookmarks</a>
+        </div>
+      </div>
+    </div></div>
+  </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+  <script src="../assets/js/site.js"></script>
+
+  <header class="page-header"><div class="page-header-inner">
+    <h1>PYQ Test</h1>
+    <p>Select previous-year questions, arrange the test, and print it in the standard QCAB format.</p>
+  </div></header>
+
+  <main class="container qcab-container">
+    <section class="qcab-selection-view" id="selectionView">
+      <div class="controls" aria-label="Question filters">
+        <div class="toolbar-row">
+          <label class="search-box"><span class="sr-only">Search questions</span><svg viewBox="0 0 24 24" aria-hidden="true"><path d="m21 21-4.3-4.3m2.3-5.2a7.5 7.5 0 1 1-15 0 7.5 7.5 0 0 1 15 0Z"/></svg><input id="searchInput" type="search" placeholder="Search questions, topics, equations…" autocomplete="off"><kbd>/</kbd></label>
+          <label class="exam-select" aria-label="Exam filter"><span>Exam</span><select id="examFilter"><option value="both">CSE + IFoS</option><option value="CSE">CSE only</option><option value="IFOS">IFoS only</option></select></label>
+          <button id="clearBtn" class="clear-btn" type="button" title="Reset all filters"><svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 12a9 9 0 1 0 9-9 9.75 9.75 0 0 0-6.74 2.74L3 8"/><path d="M3 3v5h5"/></svg><span>Reset</span></button>
+        </div>
+        <div class="filters-row">
+          <div class="mode-switch-wrap"><span class="filter-label">Browse by</span><div class="mode-switch" role="radiogroup" aria-label="Filter mode"><label><input type="radio" name="filterMode" value="year-unit"><span>Year + Unit</span></label><label><input type="radio" name="filterMode" value="unit-section-topic" checked><span>Unit + Section + Topic</span></label></div></div>
+          <div id="filters" class="filter-grid"></div>
+          <button id="generateTestBtn" class="print-btn qcab-action-btn" type="button" title="Continue to selected questions"><span class="print-icon" aria-hidden="true">▣</span><span>Generate Test</span></button>
+        </div>
+      </div>
+
+      <section class="selection-summary-card" aria-live="polite">
+        <div><strong id="selectedCount">0</strong><span> questions selected</span></div>
+        <div class="selection-composition" id="selectionComposition">No questions selected</div>
+        <div class="selection-total"><span>Total Marks</span><strong id="selectedMarks">0</strong></div>
+      </section>
+
+      <section class="results-head"><div class="results-title"><strong id="resultCount">Loading…</strong><span class="muted"> questions</span></div><label class="master-sort"><span>Sort</span><select id="sortSelect" aria-label="Master sorting"><option value="smart">Smart order</option><option value="year:desc">Year ↓</option><option value="year:asc">Year ↑</option><option value="unit:asc">Unit (syllabus)</option><option value="section:asc">Section (syllabus)</option><option value="topic:asc">Topic (syllabus)</option></select></label></section>
+
+      <section class="table-wrap qcab-table-wrap">
+        <table class="question-table qcab-question-table"><thead><tr><th class="select-col">Select</th><th>Question</th></tr></thead><tbody id="questionBody"></tbody></table>
+        <div id="emptyState" class="empty-state" hidden><div class="empty-icon">∅</div><h2>No questions found</h2><p>Try changing the filters or search term.</p><button id="emptyReset" class="clear-btn" type="button">Reset filters</button></div>
+      </section>
+    </section>
+  </main>
+  <footer class="site-footer"><div style="display:flex;flex-direction:column;gap:12px;width:100%;"><div class="footer-row" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;"><span>PhysicsHub • PYQ Test</span><span>Client-side • Temporary test selection</span></div></div></footer>
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top"><svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg></button>
+  <script type="module" src="./qcab-selection.js"></script>
+</body>
+</html>
