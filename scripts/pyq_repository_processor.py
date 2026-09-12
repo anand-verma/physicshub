@@ -11,407 +11,274 @@ import os
 import json
 import re
 import shutil
-import uuid
-from google.colab import files
 import zipfile
+from collections import defaultdict
+from google.colab import files
 
 def extract_and_setup():
-    print("📂 Please upload your ZIP file containing 'questions.json', 'syllabus.json', and the 'images/' folder.")
+    print("📂 Step 1: Please upload your ZIP file ('questions.json', 'syllabus.json', 'images/' folder)")
     uploaded = files.upload()
 
     if not uploaded:
-        raise ValueError("No file uploaded. Please run the cell again.")
+        raise ValueError("No file uploaded. Execution halted.")
 
     zip_filename = list(uploaded.keys())[0]
-    extract_dir = "working_dir"
+    work_dir = "working_dir"
 
-    # Cleanup previous runs
-    if os.path.exists(extract_dir):
-        shutil.rmtree(extract_dir)
-    os.makedirs(extract_dir)
+    if os.path.exists(work_dir): shutil.rmtree(work_dir)
+    os.makedirs(work_dir)
 
-    # Extract
     with zipfile.ZipFile(zip_filename, 'r') as zip_ref:
-        zip_ref.extractall(extract_dir)
+        zip_ref.extractall(work_dir)
 
-    print(f"✅ Extracted {zip_filename} successfully.")
-    return extract_dir
+    print(f"   ✅ Extracted {zip_filename} successfully.")
+    return work_dir
 
 def build_taxonomy_map(syllabus_path):
+    print("🗺️ Step 2: Building Syllabus Taxonomy Map for Sorting...")
     with open(syllabus_path, "r", encoding="utf-8") as f:
         syllabus = json.load(f)
 
     topic_map = {}
     taxonomy = syllabus.get("physics_syllabus_taxonomy", {})
 
+    unit_order, section_order, topic_order = 0, 0, 0
+
     for paper_key, paper_val in taxonomy.items():
         for unit in paper_val.get("units", []):
-            u_code = unit.get("unit_code")
-            u_name = unit.get("unit_name")
+            unit_order += 1
+            u_code = unit.get("unit_code", "").strip()
+            u_name = unit.get("unit_name", "").strip()
+
             for section in unit.get("sections", []):
-                s_code = section.get("section_code")
-                s_name = section.get("section_name")
+                section_order += 1
+                s_code = section.get("section_code", "").strip()
+                s_name = section.get("section_name", "").strip()
+
                 for topic in section.get("topics", []):
+                    topic_order += 1
                     normalized_topic = str(topic).strip().lower()
                     topic_map[normalized_topic] = {
                         "unit_code": u_code,
                         "unit_name": u_name,
                         "section_code": s_code,
                         "section_name": s_name,
-                        "canonical_topic": topic
+                        "canonical_topic": topic.strip(),
+                        "u_idx": unit_order,
+                        "s_idx": section_order,
+                        "t_idx": topic_order
                     }
+    print(f"   ✅ Mapped {len(topic_map)} unique syllabus topics with hierarchical indices.")
     return topic_map
 
-def parse_old_id(old_id):
-    if not old_id:
-        return "UNKNOWN", 0, 999
-    # Pattern: PH-U1-S1-CSE2018-01
-    match = re.match(r'PH-U\d+-S\d+-([A-Za-z]+)(\d{4})-(\d+)', str(old_id))
-    if match:
-        return match.group(1), int(match.group(2)), int(match.group(3))
-    # Safe Fallback to prevent TypeError during chronological sorting
-    return "UNKNOWN", 0, 999
+def pre_verification(questions, images_dir):
+    print("\n🔍 Step 3: Running Strict Pre-Verification Checks...")
+    errors = []
+    seen_ids = set()
 
-def pre_run_verification(questions, images_dir, topic_map):
-    """
-    Validates all constraints before executing reassignment logic.
-    Returns (discrepancies_list, id_was_updated, updated_questions)
-    """
-    discrepancies = []
-    id_updated = False
+    for i, q in enumerate(questions):
+        q_id = q.get("id")
+        q_errors = []
+
+        # 1. Unique Alphanumeric ID Check
+        if not q_id or not str(q_id).strip():
+            q_errors.append("Missing or empty 'id'.")
+        else:
+            if not re.match(r"^[a-zA-Z0-9_]+$", str(q_id)):
+                q_errors.append(f"ID '{q_id}' is not strictly alphanumeric/underscore.")
+            if q_id in seen_ids:
+                q_errors.append(f"Duplicate ID found: '{q_id}'.")
+            seen_ids.add(q_id)
+
+        # 2. Non-empty Metadata/Markdown Check
+        q_md = q.get("question_markdown", "")
+        q_meta = q.get("question_metadata", "")
+        if not str(q_md).strip() and not str(q_meta).strip():
+            q_errors.append("Both 'question_markdown' and 'question_metadata' are totally empty.")
+
+        # 3. Non-empty Topic Check
+        topics = q.get("syllabus_topic", [])
+        if not topics or not isinstance(topics, list) or len(topics) == 0:
+            q_errors.append("Missing or empty 'syllabus_topic' array.")
+        elif not str(topics[0]).strip():
+            q_errors.append("Primary syllabus topic is an empty string.")
+
+        # 4. Image Consistency Check
+        img_array = q.get("images", [])
+        combined_text = str(q_md) + " " + str(q_meta)
+        found_in_text = re.findall(r'[\w\-\.]+\.(?:png|jpe?g|gif)', combined_text, re.IGNORECASE)
+
+        # Array vs Text
+        for img_in_text in found_in_text:
+            if img_in_text not in img_array:
+                q_errors.append(f"Image '{img_in_text}' is in text but missing from 'images' array.")
+
+        # Array vs Physical Folder
+        for img_name in img_array:
+            if not images_dir or not os.path.exists(os.path.join(images_dir, img_name)):
+                q_errors.append(f"Image '{img_name}' is in array but missing from physical images folder.")
+
+        if q_errors:
+            errors.append({"id": q_id if q_id else f"Row {i}", "errors": q_errors})
+
+    if errors:
+        print(f"   ❌ Pre-verification FAILED. Found discrepancies in {len(errors)} questions.")
+        for e in errors[:5]:
+            print(f"      - ID {e['id']}: {', '.join(e['errors'])}")
+        if len(errors) > 5: print(f"      ... and {len(errors) - 5} more.")
+    else:
+        print("   ✅ All pre-verification checks passed successfully.")
+
+    return errors
+
+def assign_and_sort(questions, topic_map):
+    print("\n⚙️ Step 4: Assigning Taxonomy and Sorting...")
+    processed_items = []
+    unmapped_errors = []
 
     for q in questions:
         q_id = q.get("id")
-        original_id = q.get("original_id", q_id)
-        q_discrepancy = {"question_id": q_id, "errors": []}
+        exam = str(q.get("exam", "UNKNOWN")).strip().upper()
 
-        # 0. Check ID presence
-        if not q_id or str(q_id).strip() == "":
-            new_hash_id = f"TEMP-{uuid.uuid4().hex[:8].upper()}"
-            q["id"] = new_hash_id
-            q["original_id"] = original_id if original_id else new_hash_id
-            q_discrepancy["question_id"] = new_hash_id
-            q_discrepancy["errors"].append("Missing ID. Assigned temporary hash ID.")
-            id_updated = True
+        # Ensure year is integer for sorting
+        try:
+            year = int(q.get("year", 0))
+        except ValueError:
+            year = 0
 
-        # 1. Check for empty question or empty topics array
-        q_text = q.get("question_markdown", "") or q.get("Question_metadata", "")
-        if not q_text or str(q_text).strip() == "":
-            q_discrepancy["errors"].append("Question text/metadata is totally empty.")
+        # Taxonomy Mapping
+        primary_topic = str(q.get("syllabus_topic", [""])[0]).strip().lower()
+        taxonomy_info = topic_map.get(primary_topic)
 
-        topics = q.get("syllabus_topic", [])
-        if not topics or len(topics) == 0:
-            q_discrepancy["errors"].append("Syllabus topics array is empty.")
-        else:
-            # 1b. Check if ALL topics strictly match syllabus dictionary
-            for topic in topics:
-                if str(topic).strip().lower() not in topic_map:
-                    q_discrepancy["errors"].append(f"Topic '{topic}' does not strictly match any official syllabus topic.")
+        if not taxonomy_info:
+            unmapped_errors.append({"id": q_id, "topic": primary_topic, "error": "Primary topic not found in Syllabus Map."})
+            continue
 
-        # 2. Check Image integrity
-        img_array = q.get("images", [])
+        # Update Unit and Section directly
+        q["unit"] = taxonomy_info["unit_name"]
+        q["section"] = taxonomy_info["section_name"]
 
-        # 2a. Find all image-like filenames physically mentioned in the text
-        found_in_text = re.findall(r'[\w\-\.]+\.(?:png|jpe?g|gif)', str(q_text), re.IGNORECASE)
-        for img_in_text in found_in_text:
-            if img_in_text not in img_array:
-                q_discrepancy["errors"].append(f"Image '{img_in_text}' is mentioned in text but missing from 'images' JSON array.")
+        # 1. Year (descending) -> 2. Exam (CSE first) -> 3. Unit -> 4. Section -> 5. Topic
+        exam_rank = 0 if exam == "CSE" else 1 if exam == "IFOS" else 2
+        sort_key = (
+            -year,
+            exam_rank,
+            taxonomy_info["u_idx"],
+            taxonomy_info["s_idx"],
+            taxonomy_info["t_idx"]
+        )
 
-        # 2b. Check if all items in images array exist physically in the folder
-        for img_name in img_array:
-            if not images_dir:
-                q_discrepancy["errors"].append(f"Image file '{img_name}' is listed in JSON, but no 'images' folder exists in the uploaded ZIP.")
-                continue
+        processed_items.append({
+            "q": q,
+            "sort_key": sort_key,
+            "u_code": taxonomy_info["unit_code"],
+            "s_code": taxonomy_info["section_code"],
+            "exam": exam,
+            "year": year
+        })
 
-            img_path = os.path.join(images_dir, img_name)
-            if not os.path.exists(img_path):
-                q_discrepancy["errors"].append(f"Image file '{img_name}' is missing from the physical 'images' folder.")
+    # Sort the list based on the updated tuple
+    processed_items.sort(key=lambda x: x["sort_key"])
+    print(f"   ✅ Sorted {len(processed_items)} questions primarily by Year/Exam, then Syllabus Taxonomy.")
+    return processed_items, unmapped_errors
 
-        # Append to master log if issues exist
-        if q_discrepancy["errors"]:
-            discrepancies.append(q_discrepancy)
+def generate_display_ids(sorted_items):
+    print("\n🏷️ Step 5: Generating Display IDs with Conflict Resolution...")
+    prefix_counters = defaultdict(int)
+    final_questions = []
 
-    return discrepancies, id_updated, questions
+    for item in sorted_items:
+        q = item["q"]
+        prefix = f"PH-{item['u_code']}-{item['s_code']}-{item['exam']}{item['year']}"
+
+        # Conflict Resolution: Increment counter per prefix
+        prefix_counters[prefix] += 1
+        serial_number = prefix_counters[prefix]
+
+        q["display_id"] = f"{prefix}-{serial_number:02d}"
+        final_questions.append(q)
+
+    print("   ✅ Assigned unique display IDs successfully.")
+    return final_questions
 
 def process_repository():
-    extract_dir = extract_and_setup()
+    # Setup
+    work_dir = extract_and_setup()
+    questions_path, syllabus_path, images_dir = None, None, None
 
-    # File Paths
-    questions_path = None
-    syllabus_path = None
-    images_dir = None
-
-    # Locate files dynamically inside the extracted folder
-    for root, dirs, files_list in os.walk(extract_dir):
-        if "questions.json" in files_list:
-            questions_path = os.path.join(root, "questions.json")
-        if "syllabus.json" in files_list:
-            syllabus_path = os.path.join(root, "syllabus.json")
-        if "images" in dirs:
-            images_dir = os.path.join(root, "images")
+    for root, dirs, files_list in os.walk(work_dir):
+        if "questions.json" in files_list: questions_path = os.path.join(root, "questions.json")
+        if "syllabus.json" in files_list: syllabus_path = os.path.join(root, "syllabus.json")
+        if "images" in dirs: images_dir = os.path.join(root, "images")
 
     if not questions_path or not syllabus_path:
-        raise FileNotFoundError("Could not find 'questions.json' or 'syllabus.json' in the uploaded zip.")
+        raise FileNotFoundError("Missing 'questions.json' or 'syllabus.json'.")
 
-    topic_map = build_taxonomy_map(syllabus_path)
-
+    # Load Data
     with open(questions_path, "r", encoding="utf-8") as f:
         questions = json.load(f)
 
-    print("\n🔎 Running Pre-Run Verification Phase...")
-    discrepancies, id_updated, questions = pre_run_verification(questions, images_dir, topic_map)
+    topic_map = build_taxonomy_map(syllabus_path)
 
-    if discrepancies:
-        print(f"⚠️ Verification Failed! Found {len(discrepancies)} questions with discrepancies.")
-        error_out_dir = "verification_failures"
-        if os.path.exists(error_out_dir): shutil.rmtree(error_out_dir)
-        os.makedirs(error_out_dir)
+    # 1. Pre-verification
+    verification_errors = pre_verification(questions, images_dir)
 
-        # Save the discrepancy log
-        with open(os.path.join(error_out_dir, "verification_errors.json"), "w", encoding="utf-8") as f:
-            json.dump(discrepancies, f, indent=2, ensure_ascii=False)
+    # 2 & 3. Assign Taxonomy and Sort
+    sorted_items, mapping_errors = assign_and_sort(questions, topic_map)
 
-        # Output the modified JSON if hash IDs were injected
-        if id_updated:
-            with open(os.path.join(error_out_dir, "temporaryid_questions.json"), "w", encoding="utf-8") as f:
-                json.dump(questions, f, indent=2, ensure_ascii=False)
-            print("📝 Missing IDs were found. Exporting 'temporaryid_questions.json'")
+    # 4. Assign Display IDs
+    final_questions = generate_display_ids(sorted_items)
 
-        # Zip and return the error data
-        error_zip = "verification_failed_logs.zip"
-        with zipfile.ZipFile(error_zip, 'w', zipfile.ZIP_DEFLATED) as zipf:
-            for root, dirs, files_list in os.walk(error_out_dir):
-                for file in files_list:
-                    file_path = os.path.join(root, file)
-                    zipf.write(file_path, os.path.relpath(file_path, error_out_dir))
+    # 5. Final Empty Metadata Check
+    print("\n🔎 Step 6: Running Final Check for Empty Metadata...")
+    final_empty_metadata = []
+    for q in final_questions:
+        q_md = str(q.get("question_markdown", "")).strip()
+        q_meta = str(q.get("question_metadata", "")).strip()
+        if not q_md and not q_meta:
+            final_empty_metadata.append({"id": q.get("id"), "display_id": q.get("display_id")})
 
-        print("⛔ Halting processing. Downloading verification logs...")
-        files.download(error_zip)
-        return # STOP execution here.
+    if final_empty_metadata:
+        print(f"   ⚠️ WARNING: {len(final_empty_metadata)} questions ended up with empty metadata/markdown.")
+    else:
+        print("   ✅ Final metadata check passed.")
 
-    print("✅ Pre-Run Verification Passed! Proceeding with Taxonomy mapping...")
-
-    # --- MAIN EXECUTION LOGIC CONTINUES ---
-    section_changes_log = []
-    unit_section_changes_log = []
-    image_correction_log = []
-    error_log = []
-    processed_items = []
-
-    # --- STEP 1: Analyze and Map New Taxonomy ---
-    for q in questions:
-        current_id = q.get("id", "")
-        original_id = q.get("original_id", current_id)
-        topics = q.get("syllabus_topic", [])
-
-        exam, year, old_serial = parse_old_id(current_id)
-        primary_topic = topics[0]
-        taxonomy_info = topic_map.get(str(primary_topic).strip().lower())
-
-        if not taxonomy_info:
-            # Should theoretically be caught by pre-run verification, but keeping as a safety net.
-            error_log.append({
-                "original_id": original_id,
-                "current_id": current_id,
-                "reason": f"CRITICAL: Topic '{primary_topic}' bypassed validation but isn't in topic map."
-            })
-            processed_items.append({"q": q, "skip": True, "sort_key": ("Z", "Z", -9999, "Z", 999)})
-            continue
-
-        if exam == "UNKNOWN" or year == 0:
-            error_log.append({
-                "original_id": original_id,
-                "current_id": current_id,
-                "reason": f"Format error: Could not parse Exam/Year from ID '{current_id}'. Chronological sorting will fail for this item."
-            })
-            processed_items.append({"q": q, "skip": True, "sort_key": ("Z", "Z", -9999, "Z", 999)})
-            continue
-
-        item = {
-            "q": q,
-            "skip": False,
-            "original_id": original_id,
-            "old_id": current_id,
-            "exam": exam,
-            "year": year,
-            "old_serial": old_serial,
-            "new_unit_code": taxonomy_info["unit_code"],
-            "new_unit_name": taxonomy_info["unit_name"],
-            "new_section_code": taxonomy_info["section_code"],
-            "new_section_name": taxonomy_info["section_name"]
-        }
-
-        # Chronological Sort Hierarchy
-        item["sort_key"] = (
-            item["new_unit_code"],
-            item["new_section_code"],
-            -item["year"],
-            item["exam"],
-            item["old_serial"]
-        )
-        processed_items.append(item)
-
-    # --- STEP 2: Sort chronologically, Assign IDs, and Enforce Image Naming ---
-    processed_items.sort(key=lambda x: x["sort_key"])
-
-    current_prefix = ""
-    counter = 1
-    image_rename_queue = []
-    final_questions = []
-
-    for item in processed_items:
-        q = item["q"]
-        if item["skip"]:
-            final_questions.append(q)
-            continue
-
-        prefix = f"PH-{item['new_unit_code']}-{item['new_section_code']}-{item['exam']}{item['year']}"
-
-        if prefix == current_prefix:
-            counter += 1
-        else:
-            current_prefix = prefix
-            counter = 1
-
-        new_id = f"{prefix}-{counter:02d}"
-        old_id = item["old_id"]
-        original_id = item["original_id"]
-
-        # 🚨 FIX: Extract old values BEFORE updating JSON properties
-        old_unit = q.get("unit", "N/A")
-        old_section = q.get("section", "N/A")
-
-        changed_unit = (item["new_unit_name"] != old_unit)
-        changed_section = (item["new_section_name"] != old_section)
-        id_changed = (new_id != old_id)
-
-        # Generate the reason for image/ID corrections for verbose logging
-        id_change_reason = "No ID Change"
-        if id_changed:
-            if changed_unit:
-                id_change_reason = f"Unit reassignment ({old_unit} ➔ {item['new_unit_name']}) forced an ID update."
-            elif changed_section:
-                id_change_reason = f"Section reassignment ({old_section} ➔ {item['new_section_name']}) forced an ID update."
-            else:
-                id_change_reason = f"Chronological/Sequence ID conflict resolution forced an update."
-
-        new_images_list = []
-        markdown = q.get("question_markdown", "")
-        metadata = q.get("Question_metadata", "")
-        images_corrected = False
-
-        for idx, old_img in enumerate(q.get("images", [])):
-            ext = os.path.splitext(old_img)[1]
-            expected_img_name = f"{new_id}_img_{idx+1}{ext}"
-            new_images_list.append(expected_img_name)
-
-            if old_img != expected_img_name:
-                images_corrected = True
-                if images_dir:
-                    old_path = os.path.join(images_dir, old_img)
-                    new_path = os.path.join(images_dir, expected_img_name)
-                    if os.path.exists(old_path):
-                        image_rename_queue.append((old_path, new_path))
-
-                if markdown:
-                    markdown = markdown.replace(old_img, expected_img_name)
-                if metadata:
-                    metadata = metadata.replace(old_img, expected_img_name)
-
-        # APPLY modifications to JSON Dictionary
-        q["id"] = new_id
-        q["unit"] = item["new_unit_name"]
-        q["section"] = item["new_section_name"]
-        q["images"] = new_images_list
-        if markdown: q["question_markdown"] = markdown
-        if metadata: q["Question_metadata"] = metadata
-
-        # Generate Logs
-        log_entry = {
-            "original_id": original_id,
-            "old_id": old_id if id_changed else None,
-            "current_id": new_id,
-            "topic_triggered": q.get("syllabus_topic")[0]
-        }
-
-        if changed_unit:
-            log_entry["old_unit"] = old_unit
-            log_entry["new_unit"] = item["new_unit_name"]
-            log_entry["old_section"] = old_section
-            log_entry["new_section"] = item["new_section_name"]
-            log_entry["reason"] = f"Unit updated to match Primary Topic '{log_entry['topic_triggered']}'"
-            unit_section_changes_log.append(log_entry)
-        elif changed_section:
-            log_entry["old_section"] = old_section
-            log_entry["new_section"] = item["new_section_name"]
-            log_entry["reason"] = f"Section updated to match Primary Topic '{log_entry['topic_triggered']}'"
-            section_changes_log.append(log_entry)
-
-        if images_corrected:
-            image_correction_log.append({
-                "original_id": original_id,
-                "old_id": old_id if id_changed else None,
-                "current_id": new_id,
-                "reason": id_change_reason
-            })
-
-        final_questions.append(q)
-
-    # --- STEP 3: Secure Two-Pass Image Renaming ---
-    # UUIDs prevent A->B and B->C overwrite cycles (Conflict Resolution)
-    if image_rename_queue:
-        print(f"🔄 Processing {len(image_rename_queue)} image file renames...")
-        temp_rename_queue = []
-        for old_path, new_path in image_rename_queue:
-            if old_path == new_path: continue
-            temp_path = os.path.join(os.path.dirname(old_path), f"temp_{uuid.uuid4().hex}.jpeg")
-            os.rename(old_path, temp_path)
-            temp_rename_queue.append((temp_path, new_path))
-
-        for temp_path, new_path in temp_rename_queue:
-            os.rename(temp_path, new_path)
-
-    # --- STEP 4: Save Outputs ---
-    out_dir = "updated_output"
+    # Packaging
+    print("\n📦 Step 7: Packaging Outputs...")
+    out_dir = "final_output"
     if os.path.exists(out_dir): shutil.rmtree(out_dir)
     os.makedirs(out_dir)
 
-    with open(os.path.join(out_dir, "questions.json"), "w", encoding="utf-8") as f:
+    with open(os.path.join(out_dir, "mapped_questions.json"), "w", encoding="utf-8") as f:
         json.dump(final_questions, f, indent=2, ensure_ascii=False)
 
-    with open(os.path.join(out_dir, "log_section_changes.json"), "w", encoding="utf-8") as f:
-        json.dump(section_changes_log, f, indent=2, ensure_ascii=False)
+    if verification_errors:
+        with open(os.path.join(out_dir, "error_pre_verification.json"), "w", encoding="utf-8") as f:
+            json.dump(verification_errors, f, indent=2, ensure_ascii=False)
 
-    with open(os.path.join(out_dir, "log_unit_changes.json"), "w", encoding="utf-8") as f:
-        json.dump(unit_section_changes_log, f, indent=2, ensure_ascii=False)
+    if mapping_errors:
+        with open(os.path.join(out_dir, "error_taxonomy_mapping.json"), "w", encoding="utf-8") as f:
+            json.dump(mapping_errors, f, indent=2, ensure_ascii=False)
 
-    with open(os.path.join(out_dir, "log_image_corrections.json"), "w", encoding="utf-8") as f:
-        json.dump(image_correction_log, f, indent=2, ensure_ascii=False)
-
-    with open(os.path.join(out_dir, "log_errors.json"), "w", encoding="utf-8") as f:
-        json.dump(error_log, f, indent=2, ensure_ascii=False)
+    if final_empty_metadata:
+        with open(os.path.join(out_dir, "error_empty_metadata_final.json"), "w", encoding="utf-8") as f:
+            json.dump(final_empty_metadata, f, indent=2, ensure_ascii=False)
 
     if images_dir and os.path.exists(images_dir):
-        shutil.move(images_dir, os.path.join(out_dir, "images"))
+        shutil.copytree(images_dir, os.path.join(out_dir, "images"))
 
-    # --- STEP 5: Zip and Download ---
-    output_zip = "updated_repository.zip"
+    output_zip = "final_mapped_repository.zip"
     with zipfile.ZipFile(output_zip, 'w', zipfile.ZIP_DEFLATED) as zipf:
         for root, dirs, files_list in os.walk(out_dir):
             for file in files_list:
                 file_path = os.path.join(root, file)
-                arcname = os.path.relpath(file_path, out_dir)
-                zipf.write(file_path, arcname)
+                zipf.write(file_path, os.path.relpath(file_path, out_dir))
 
-    print("\n🎉 Deployment Processing Complete!")
-    print(f"📊 Summary:")
-    print(f"  - Total Questions Validated: {len(final_questions)}")
-    print(f"  - Unit & Section Updates: {len(unit_section_changes_log)}")
-    print(f"  - Section-Only Updates: {len(section_changes_log)}")
-    print(f"  - Image Mismatches Corrected: {len(image_rename_queue)} files")
-    print(f"  - Unhandled/Errors: {len(error_log)}")
-
+    print("\n🎉 Process Complete!")
+    print(f"   📊 Processed {len(final_questions)} Questions.")
+    print(f"   📥 Initiating Download...")
     files.download(output_zip)
 
-# Execute the main function
-process_repository()
+# Run the script
+if __name__ == "__main__":
+    process_repository()

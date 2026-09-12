@@ -166,8 +166,11 @@ class BatchSplitResponse(BaseModel):
 
 SPLIT_PROMPT = """
 Evaluate the provided batch of exam questions.
-- IF a question text contains entirely different, independent questions glued together, split them. Allocate metadata and images accurately to the split parts.
-- IF they are just sub-parts (e.g., (i) and (ii)) of one unified question, DO NOT SPLIT (is_merged=false).
+- APPLY STRICT SPLITTING CRITERIA: ONLY split a question if the parts belong to completely different, unrelated topics OR if multiple distinct numbered questions (e.g., Q5 and Q6) were accidentally concatenated.
+- DO NOT SPLIT if a question contains a theoretical derivation and an associated numerical problem. These are practically part of the same unified question.
+- DO NOT SPLIT if multiple sub-questions share a common preliminary context paragraph, reading passage, or data table.
+- DO NOT SPLIT if the sub-questions share a common diagram/image. If both parts refer to the same visual, they must remain merged.
+- IF they are just sub-parts (e.g., (i) and (ii)) of one unified question number, DO NOT SPLIT (is_merged=false).
 - INHERITANCE RULE: If a split daughter question does not have its own distinct exam, year, marks, or original_id visibly stated in the text, you MUST output the parent's original exam, year, marks, and original_id for that daughter question.
 - Always provide a clear 'reason' for your decision.
 """
@@ -220,31 +223,80 @@ def process_split_batch(batch, b_idx, is_retry=False):
             continue
 
         ev = ev_by_id[q_id]
+
         if ev.get("is_merged") and ev.get("split_items"):
+
+            # --- VALIDATION: Check for shared diagrams across daughters ---
+            shared_images_found = False
+            all_assigned_images = set()
+            for sq in ev["split_items"]:
+                for img in sq.get("images", []):
+                    if img in all_assigned_images:
+                        shared_images_found = True
+                        break
+                    all_assigned_images.add(img)
+                if shared_images_found:
+                    break
+
+            if shared_images_found:
+                print(f"   🚫 Split rejected for {q_id}: Daughter questions incorrectly share common diagrams.")
+                continue # Abort split for this specific question
+
             print(f"   ✂️ Split applied to {q_id} (Orig ID: {q_orig_id})")
 
             if q_id in questions_dict:
                 orig_q = questions_dict.pop(q_id)
                 daughter_ids = []
 
-                for sq in ev["split_items"]:
+                for index, sq in enumerate(ev["split_items"]):
                     new_q = orig_q.copy()
 
-                    # Force Python-level inheritance if LLM missed it
+                    # Force Python-level inheritance
                     if not sq.get("exam") or sq.get("exam") == "UNKNOWN": sq["exam"] = orig_q.get("exam")
                     if not sq.get("year") or sq.get("year") == 0: sq["year"] = orig_q.get("year")
                     if not sq.get("marks"): sq["marks"] = orig_q.get("marks")
-                    if not sq.get("original_id"): sq["original_id"] = orig_q.get("original_id")
+                    new_q["original_id"] = orig_q.get("original_id")
 
                     new_q.update(sq)
 
-                    while True:
-                        fresh_id = generate_short_id()
-                        if fresh_id not in used_ids: break
-                    new_q["id"] = fresh_id
-                    used_ids.add(fresh_id)
-                    questions_dict[fresh_id] = new_q
-                    daughter_ids.append(fresh_id)
+                    # ID Logic: First daughter keeps parent ID, subsequent get new ID
+                    if index == 0:
+                        assigned_id = q_id
+                    else:
+                        while True:
+                            assigned_id = generate_short_id()
+                            if assigned_id not in used_ids: break
+                        used_ids.add(assigned_id)
+
+                    new_q["id"] = assigned_id
+
+                    # --- IMAGE RENAMING: Move files exclusively to the new daughter ---
+                    if index > 0 and new_q.get("images"):
+                        updated_images = []
+                        current_markdown = new_q.get("question_markdown", "")
+
+                        for img_idx, old_img_name in enumerate(new_q["images"]):
+                            ext = os.path.splitext(old_img_name)[1] or ".jpeg"
+                            new_img_name = f"{assigned_id}_img_{img_idx+1}{ext}"
+
+                            # Rename on filesystem (Move since mutual exclusivity is confirmed)
+                            old_img_path = os.path.join(out_images_dir, old_img_name)
+                            new_img_path = os.path.join(out_images_dir, new_img_name)
+
+                            if os.path.exists(old_img_path):
+                                shutil.move(old_img_path, new_img_path)
+                            else:
+                                log_error(assigned_id, orig_q.get("original_id"), "Split Image Rename", f"Missing image during split: {old_img_name}")
+
+                            # Update markdown & list
+                            current_markdown = current_markdown.replace(old_img_name, new_img_name)
+                            updated_images.append(new_img_name)
+
+                        new_q["images"] = updated_images
+                        new_q["question_markdown"] = current_markdown
+
+                    questions_dict[assigned_id] = new_q
+                    daughter_ids.append(assigned_id)
 
                 # Log the split
                 split_logs.append({
@@ -262,7 +314,7 @@ for original_idx, batch in batches_to_run:
         process_split_batch(batch, original_idx, is_retry=False)
         print(f"   ✅ Processed Split Batch {display_num}")
     except Exception as e:
-        print(f"   ⚠️ Error on Split Batch {display_num}. Queued for retry.")
+        print(f"   ⚠️ Error on Split Batch {display_num}. Exception: {str(e)}. Queued for retry.")
         failed_split_batches.append((original_idx, batch))
         time.sleep(5)
 
@@ -276,7 +328,7 @@ if failed_split_batches:
             print(f"   ✅ Retry successful for Split Batch {display_num}")
         except Exception as e:
             err_msg = str(e)
-            print(f"   ❌ Complete Failure on Split Batch {display_num}: {err_msg}")
+            print(f"   ❌ Complete Failure on Split Batch {display_num}. Exception: {err_msg}")
             failed_batch_logs.append({
                 "batch_number": display_num,
                 "step": "Question Splitting Pass 2",
