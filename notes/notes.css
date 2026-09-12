@@ -35,9 +35,10 @@ body {
   padding: 0 28px;
   gap: 4px;
   height: 52px;
+  position: relative;
 }
 .site-nav-brand {
-  font-size: 14px;
+  font-size: 20px;
   font-weight: 700;
   color: var(--text);
   text-decoration: none;
@@ -45,7 +46,8 @@ body {
   margin-right: 12px;
   white-space: nowrap;
 }
-.site-nav-brand span { color: var(--accent); }
+.site-nav-brand .brand-prefix { color: #64748b; font-weight: 500; }
+.site-nav-brand .brand-suffix { color: var(--accent); }
 .nav-tab {
   display: inline-flex;
   align-items: center;
@@ -66,7 +68,32 @@ body {
 }
 .nav-tab:hover { color: var(--text); border-bottom-color: var(--line); }
 .nav-tab.active { color: var(--accent); border-bottom-color: var(--accent); }
+.nav-tab.disabled { color: #aab0b8; cursor: not-allowed; pointer-events: none; }
 .nav-tab svg { width: 15px; height: 15px; fill: none; stroke: currentColor; stroke-width: 2; stroke-linecap: round; stroke-linejoin: round; }
+
+/* User Menu */
+.user-menu-container { margin-left: auto; position: relative; }
+.user-menu-btn {
+  display: inline-flex; align-items: center; justify-content: center;
+  width: 36px; height: 36px; border-radius: 50%; border: 1px solid var(--line);
+  background: var(--surface-2); color: var(--muted); cursor: pointer; transition: all .15s;
+}
+.user-menu-btn:hover, .user-menu-btn[aria-expanded="true"] { background: #e2e8f0; color: var(--text); border-color: #cbd5e1; }
+.user-menu-btn svg { width: 18px; height: 18px; fill: none; stroke: currentColor; stroke-width: 2; }
+.user-dropdown {
+  position: absolute; top: 100%; right: 0; margin-top: 8px; width: 220px;
+  background: var(--surface); border: 1px solid var(--line); border-radius: 8px;
+  box-shadow: var(--shadow); opacity: 0; visibility: hidden;
+  transform: translateY(-10px); transition: opacity .2s, transform .2s, visibility .2s; z-index: 100; padding: 8px 0;
+}
+.user-dropdown.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.user-dropdown-item {
+  display: flex; align-items: center; gap: 10px; width: 100%; padding: 10px 16px;
+  border: none; background: none; text-align: left; font: inherit; font-size: 13px;
+  font-weight: 500; color: var(--text); cursor: pointer; text-decoration: none; transition: background .15s;
+}
+.user-dropdown-item:hover { background: var(--surface-2); }
+.user-dropdown-item svg { width: 16px; height: 16px; color: var(--muted); }
 
 /* ─── Index page ─────────────────────────────────────────────────────────── */
 .notes-index-header {
@@ -232,7 +259,7 @@ body {
   flex-wrap: wrap;
 }
 .breadcrumb a { color: var(--accent); text-decoration: none; font-weight: 600; }
-.breadcrumb a:hover { text-decoration: underline; }
+.breadcrumb a:hover { text-decoration: underline;  }
 .breadcrumb-sep { color: #aab0b8; font-size: 11px; }
 
 /* Prose content card */
@@ -471,3 +498,99 @@ body {
   h2, h3 { page-break-after: avoid; }
   table, blockquote { page-break-inside: avoid; }
 }
+
+/* ─── Responsive Nav (Hamburger) ─────────────────────────────────────────── */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  margin-left: -8px;
+  margin-right: 8px;
+  cursor: pointer;
+  color: var(--text);
+}
+.menu-toggle svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; }
+.nav-overlay {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 900;
+  opacity: 0; transition: opacity 0.3s;
+}
+
+@media (min-width: 769px) {
+  .nav-links { display: flex; flex: 1; justify-content: flex-start; align-items: center; }
+  .nav-links-inner { display: flex; flex: 1; align-items: center; gap: 4px; }
+}
+
+/* ─── Mobile Responsiveness ──────────────────────────────────────────────── */
+@media (max-width: 768px) {
+  .viewer-layout {
+    grid-template-columns: 1fr;
+    padding: 16px 14px 40px;
+  }
+  .viewer-sidebar {
+    position: static;
+    margin-top: 24px;
+    padding-left: 0;
+    border-left: none;
+    border-top: 1px solid var(--line);
+    padding-top: 24px;
+  }
+  .prose-card {
+    padding: 24px 20px;
+  }
+  .breadcrumb {
+    padding: 12px 20px;
+    font-size: 11px;
+  }
+  
+  .menu-toggle { display: block; }
+  .site-nav { padding: 0 16px; justify-content: flex-start; position: relative; }
+  .site-nav-brand { position: absolute; left: 50%; transform: translateX(-50%); margin: 0; padding: 0; }
+  .nav-links {
+    position: fixed; top: 0; left: 0; bottom: 0; width: 260px;
+    background: var(--surface); z-index: 1000;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    transform: translateX(-100%); transition: transform 0.3s ease;
+    display: flex; flex-direction: column;
+  }
+  .nav-links-inner {
+    display: flex; flex-direction: column; height: 100%;
+    padding: 24px 16px; gap: 8px;
+  }
+  .nav-tab {
+    height: 44px; justify-content: flex-start; border-bottom: none;
+    border-radius: 8px; padding: 0 12px;
+  }
+  .nav-tab.active { background: var(--surface-2); border: none; }
+  
+  .user-menu-container {
+    margin: auto 0 0 0;
+    width: 100%; border-top: 1px solid var(--line);
+    padding-top: 16px;
+  }
+  .user-dropdown {
+    position: static; box-shadow: none; border: none; width: 100%;
+    opacity: 1; visibility: visible; transform: none; padding: 0; margin-top: 12px;
+  }
+  .user-menu-btn { display: none; }
+  
+  body.nav-open { overflow: hidden; }
+  body.nav-open .nav-links { transform: translateX(0); }
+  body.nav-open .nav-overlay { display: block; opacity: 1; }
+}
+
+/* ─── Scroll to Top Button ───────────────────────────────────────────────── */
+.scroll-top-btn {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent, #3157d5); color: #fff;
+  border: none; box-shadow: 0 4px 12px rgba(49,87,213,0.3);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: all 0.3s ease; z-index: 900;
+}
+.scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top-btn:hover { background: #2749b8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(49,87,213,0.4); }
+.scroll-top-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }

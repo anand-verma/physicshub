@@ -10,12 +10,56 @@
   <style>
     /* Inline nav styles so they render before the versioned stylesheet loads */
     .site-nav{background:#fff;border-bottom:1px solid #d8dee4;display:flex;align-items:center;padding:0 28px;gap:4px;height:52px}
-    .site-nav-brand{font-size:14px;font-weight:700;color:#18202a;text-decoration:none;letter-spacing:-.02em;margin-right:12px;white-space:nowrap}
-    .site-nav-brand span{color:#3157d5}
+    .site-nav-brand{font-size:20px;font-weight:700;color:#18202a;text-decoration:none;letter-spacing:-.02em;margin-right:12px;white-space:nowrap}
+    .site-nav-brand .brand-prefix{color:#64748b;font-weight:500}
+    .site-nav-brand .brand-suffix{color:#3157d5}
     .nav-tab{display:inline-flex;align-items:center;gap:6px;height:52px;padding:0 14px;border:none;background:transparent;color:#525d6b;font:inherit;font-size:13px;font-weight:600;cursor:pointer;text-decoration:none;border-bottom:2px solid transparent;transition:color .15s,border-color .15s;white-space:nowrap}
     .nav-tab:hover{color:#18202a;border-bottom-color:#d8dee4}
     .nav-tab.active{color:#3157d5;border-bottom-color:#3157d5}
+    .nav-tab.disabled{color:#aab0b8;cursor:not-allowed;pointer-events:none}
     .nav-tab svg{width:15px;height:15px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round}
+
+    .user-menu-container{margin-left:auto;position:relative}
+    .user-menu-btn{display:inline-flex;align-items:center;justify-content:center;width:36px;height:36px;border-radius:50%;border:1px solid #d8dee4;background:#f1f3f5;color:#525d6b;cursor:pointer;transition:all .15s}
+    .user-menu-btn:hover,.user-menu-btn[aria-expanded="true"]{background:#e2e8f0;color:#18202a;border-color:#cbd5e1}
+    .user-menu-btn svg{width:18px;height:18px;fill:none;stroke:currentColor;stroke-width:2}
+    .user-dropdown{position:absolute;top:100%;right:0;margin-top:8px;width:220px;background:#fff;border:1px solid #d8dee4;border-radius:8px;box-shadow:0 8px 28px rgba(20,30,45,.06);opacity:0;visibility:hidden;transform:translateY(-10px);transition:opacity .2s,transform .2s,visibility .2s;z-index:100;padding:8px 0}
+    .user-dropdown.show{opacity:1;visibility:visible;transform:translateY(0)}
+    .user-dropdown-item{display:flex;align-items:center;gap:10px;width:100%;padding:10px 16px;border:none;background:none;text-align:left;font:inherit;font-size:13px;font-weight:500;color:#18202a;cursor:pointer;text-decoration:none;transition:background .15s}
+    .user-dropdown-item:hover{background:#f1f3f5}
+    .user-dropdown-item svg{width:16px;height:16px;color:#525d6b}
+
+    /* Mobile overrides inline */
+    .menu-toggle { display: none; background: transparent; border: none; padding: 8px; margin-left: -8px; margin-right: 8px; cursor: pointer; color: #18202a; }
+    .menu-toggle svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; }
+    .nav-overlay { display: none; position: fixed; top: 0; left: 0; right: 0; bottom: 0; background: rgba(0,0,0,0.5); z-index: 900; opacity: 0; transition: opacity 0.3s; }
+    
+    @media (min-width: 769px) { 
+      .nav-links { display: flex; flex: 1; justify-content: flex-start; align-items: center; } 
+      .nav-links-inner { display: flex; flex: 1; align-items: center; gap: 4px; } 
+    }
+    
+    @media (max-width: 768px) {
+      .menu-toggle { display: block; }
+      .site-nav { padding: 0 16px; justify-content: flex-start; position: relative; }
+      .site-nav-brand { position: absolute; left: 50%; transform: translateX(-50%); margin: 0; padding: 0; }
+      .nav-links { position: fixed; top: 0; left: 0; bottom: 0; width: 260px; background: #fff; z-index: 1000; box-shadow: 2px 0 12px rgba(0,0,0,0.1); transform: translateX(-100%); transition: transform 0.3s ease; display: flex; flex-direction: column; }
+      .nav-links-inner { display: flex; flex-direction: column; height: 100%; padding: 24px 16px; gap: 8px; }
+      .nav-tab { height: 44px; justify-content: flex-start; border-bottom: none; border-radius: 8px; padding: 0 12px; }
+      .nav-tab.active { background: #f1f3f5; border: none; }
+      .user-menu-container { margin: auto 0 0 0; width: 100%; border-top: 1px solid #d8dee4; padding-top: 16px; }
+      .user-dropdown { position: static; box-shadow: none; border: none; width: 100%; opacity: 1; visibility: visible; transform: none; padding: 0; margin-top: 12px; }
+      .user-menu-btn { display: none; }
+      body.nav-open { overflow: hidden; }
+      body.nav-open .nav-links { transform: translateX(0); }
+      body.nav-open .nav-overlay { display: block; opacity: 1; }
+    }
+
+    /* Scroll to Top Button */
+    .scroll-top-btn { position: fixed; bottom: 24px; right: 24px; width: 44px; height: 44px; border-radius: 50%; background: #3157d5; color: #fff; border: none; box-shadow: 0 4px 12px rgba(49,87,213,0.3); cursor: pointer; display: flex; align-items: center; justify-content: center; opacity: 0; visibility: hidden; transform: translateY(10px); transition: all 0.3s ease; z-index: 900; }
+    .scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+    .scroll-top-btn:hover { background: #2749b8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(49,87,213,0.4); }
+    .scroll-top-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
   </style>
   <script>
     window.MathJax = {
@@ -29,16 +73,118 @@
 <body>
   <!-- ── Site Nav ──────────────────────────────────────────────────────── -->
   <nav class="site-nav" aria-label="Site navigation">
-    <a class="site-nav-brand" href="./index.html">Physics<span>Hub</span></a>
+    <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 12h16M4 6h16M4 18h16" stroke-linecap="round"/></svg>
+    </button>
+    <a class="site-nav-brand" href="./index.html"><span class="brand-prefix">UPSC </span>Physics<span class="brand-suffix">Hub</span></a>
+    
+    <div class="nav-links" id="navLinks">
+      <div class="nav-links-inner">
+    
     <a class="nav-tab active" href="./index.html" aria-current="page">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M4 6h16M4 10h16M4 14h8M4 18h6"/></svg>
       PYQ Repository
     </a>
+    
     <a class="nav-tab" href="./notes/index.html">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
       Notes
     </a>
+    
+    <a class="nav-tab disabled" href="#" title="Coming Soon">
+      <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"></path><polyline points="14 2 14 8 20 8"></polyline><line x1="16" y1="13" x2="8" y2="13"></line><line x1="16" y1="17" x2="8" y2="17"></line><polyline points="10 9 9 9 8 9"></polyline></svg>
+      QCAB
+    </a>
+
+    <!-- User Menu -->
+    <div class="user-menu-container">
+      <button class="user-menu-btn" id="userMenuBtn" aria-expanded="false" aria-label="User menu">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
+      </button>
+      <div class="user-dropdown" id="userDropdown">
+        <a class="user-dropdown-item" href="./tracker/index.html">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
+          Tracking Dashboard
+        </a>
+        <button class="user-dropdown-item" id="navBookmarkBtn" type="button">
+          <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>
+          Bookmarks
+        </button>
+      </div>
+    </div>
+      </div>
+    </div>
   </nav>
+  <div class="nav-overlay" id="navOverlay"></div>
+
+  <script>
+    // User Menu UI logic
+    document.addEventListener('DOMContentLoaded', () => {
+      const btn = document.getElementById('userMenuBtn');
+      const dropdown = document.getElementById('userDropdown');
+      
+      if (btn && dropdown) {
+        btn.addEventListener('click', (e) => {
+          e.stopPropagation();
+          const expanded = btn.getAttribute('aria-expanded') === 'true';
+          btn.setAttribute('aria-expanded', !expanded);
+          dropdown.classList.toggle('show', !expanded);
+        });
+        
+        document.addEventListener('click', (e) => {
+          if (!btn.contains(e.target) && !dropdown.contains(e.target)) {
+            btn.setAttribute('aria-expanded', 'false');
+            dropdown.classList.remove('show');
+          }
+        });
+      }
+
+      // Wiring Bookmarks dropdown link to the filter button
+      const navBookmarkBtn = document.getElementById('navBookmarkBtn');
+      if (navBookmarkBtn) {
+        navBookmarkBtn.addEventListener('click', () => {
+          // Close dropdown
+          if (btn) btn.setAttribute('aria-expanded', 'false');
+          if (dropdown) dropdown.classList.remove('show');
+          
+          // Click the actual bookmark filter button
+          const filterBtn = document.getElementById('bookmarkFilterBtn');
+          if (filterBtn) filterBtn.click();
+          
+          // Also close mobile drawer if open
+          document.body.classList.remove('nav-open');
+        });
+      }
+
+      // Mobile Menu Toggle
+      const mobileBtn = document.getElementById('mobileMenuBtn');
+      const navOverlay = document.getElementById('navOverlay');
+      if (mobileBtn && navOverlay) {
+        const toggleMenu = () => {
+          const isOpen = document.body.classList.contains('nav-open');
+          document.body.classList.toggle('nav-open', !isOpen);
+          mobileBtn.setAttribute('aria-expanded', !isOpen);
+        };
+        mobileBtn.addEventListener('click', toggleMenu);
+        navOverlay.addEventListener('click', toggleMenu);
+      }
+
+      // Scroll to Top Logic
+      const scrollTopBtn = document.getElementById('scrollTopBtn');
+      if (scrollTopBtn) {
+        window.addEventListener('scroll', () => {
+          if (window.scrollY > 100) {
+            scrollTopBtn.classList.add('show');
+          } else {
+            scrollTopBtn.classList.remove('show');
+          }
+        });
+        scrollTopBtn.addEventListener('click', () => {
+          window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+      }
+    });
+  </script>
 
   <header class="site-header">
     <div class="header-inner">
@@ -144,6 +290,10 @@
       </div>
     </div>
   </footer>
+
+  <button class="scroll-top-btn" id="scrollTopBtn" aria-label="Scroll to top">
+    <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
+  </button>
 
   <script type="module">
     import { CONFIG } from "./assets/js/config.js";

@@ -232,3 +232,78 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .analysis-marks{font-weight:800;color:var(--text);padding:2px 5px;border-radius:5px;background:var(--surface-2)}
 .analysis-exact-question{font-size:14px;line-height:1.55}
 .analysis-related-question{font-size:13.5px;line-height:1.55}
+
+/* ─── Responsive Nav (Hamburger) ─────────────────────────────────────────── */
+.menu-toggle {
+  display: none;
+  background: transparent;
+  border: none;
+  padding: 8px;
+  margin-left: -8px;
+  margin-right: 8px;
+  cursor: pointer;
+  color: #18202a;
+}
+.menu-toggle svg { width: 24px; height: 24px; stroke: currentColor; stroke-width: 2; fill: none; }
+.nav-overlay {
+  display: none;
+  position: fixed; top: 0; left: 0; right: 0; bottom: 0;
+  background: rgba(0,0,0,0.5); z-index: 900;
+  opacity: 0; transition: opacity 0.3s;
+}
+
+@media (min-width: 769px) {
+  .nav-links { display: flex; flex: 1; justify-content: flex-start; align-items: center; }
+  .nav-links-inner { display: flex; flex: 1; align-items: center; gap: 4px; }
+}
+
+@media (max-width: 768px) {
+  .menu-toggle { display: block; }
+  .site-nav { padding: 0 16px; justify-content: flex-start; position: relative; }
+  .site-nav-brand { position: absolute; left: 50%; transform: translateX(-50%); margin: 0; padding: 0; }
+  .nav-links {
+    position: fixed; top: 0; left: 0; bottom: 0; width: 260px;
+    background: #fff; z-index: 1000;
+    box-shadow: 2px 0 12px rgba(0,0,0,0.1);
+    transform: translateX(-100%); transition: transform 0.3s ease;
+    display: flex; flex-direction: column;
+  }
+  .nav-links-inner {
+    display: flex; flex-direction: column; height: 100%;
+    padding: 24px 16px; gap: 8px;
+  }
+  .nav-tab {
+    height: 44px; justify-content: flex-start; border-bottom: none;
+    border-radius: 8px; padding: 0 12px;
+  }
+  .nav-tab.active { background: #f1f3f5; border: none; }
+  
+  .user-menu-container {
+    margin: auto 0 0 0;
+    width: 100%; border-top: 1px solid #d8dee4;
+    padding-top: 16px;
+  }
+  .user-dropdown {
+    position: static; box-shadow: none; border: none; width: 100%;
+    opacity: 1; visibility: visible; transform: none; padding: 0; margin-top: 12px;
+  }
+  .user-menu-btn { display: none; }
+  
+  body.nav-open { overflow: hidden; }
+  body.nav-open .nav-links { transform: translateX(0); }
+  body.nav-open .nav-overlay { display: block; opacity: 1; }
+}
+
+/* ─── Scroll to Top Button ───────────────────────────────────────────────── */
+.scroll-top-btn {
+  position: fixed; bottom: 24px; right: 24px;
+  width: 44px; height: 44px; border-radius: 50%;
+  background: var(--accent, #3157d5); color: #fff;
+  border: none; box-shadow: 0 4px 12px rgba(49,87,213,0.3);
+  cursor: pointer; display: flex; align-items: center; justify-content: center;
+  opacity: 0; visibility: hidden; transform: translateY(10px);
+  transition: all 0.3s ease; z-index: 900;
+}
+.scroll-top-btn.show { opacity: 1; visibility: visible; transform: translateY(0); }
+.scroll-top-btn:hover { background: #2749b8; transform: translateY(-2px); box-shadow: 0 6px 16px rgba(49,87,213,0.4); }
+.scroll-top-btn svg { width: 20px; height: 20px; fill: none; stroke: currentColor; stroke-width: 2.5; stroke-linecap: round; stroke-linejoin: round; }
