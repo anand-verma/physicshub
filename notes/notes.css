@@ -335,7 +335,7 @@
   @page {
     size: A4;
     /* Top/bottom generous; left normal; right wide for the margin bar */
-    margin: 18mm 48mm 18mm 18mm;
+    margin: 18mm 18mm 18mm 18mm;
   }
 
   /* Hide everything except the prose card */
@@ -360,9 +360,9 @@
     position: fixed;
     top: 0;
     bottom: 0;
-    right: 14mm;   /* sits inside the 48mm right margin */
+    right: 75mm;   /* sits just inside the 80mm right margin */
     width: 1px;
-    background: #bbb;
+    background: #0e0d0d;
   }
 
   /* Prose print tweaks */
