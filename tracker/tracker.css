@@ -197,3 +197,16 @@
 .rev-counter.rev-2 .rev-count { color: #f59e0b; } /* Yellow/Orange */
 .rev-counter.rev-3 .rev-count { color: #22c55e; } /* Green */
 .rev-counter.rev-4 .rev-count { color: #3157d5; } /* Blue for >= 4 */
+
+/* ─── Tracker Footer ──────────────────────────────────────────────────────── */
+.tracker-container + .site-footer {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 24px 40px;
+}
+@media (max-width: 768px) {
+  .tracker-container + .site-footer {
+    padding: 0 16px 28px;
+    margin-top: 8px;
+  }
+}

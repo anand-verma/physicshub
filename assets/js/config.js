@@ -1,5 +1,5 @@
 /**
- * PhysicsHub Configuration & Versioning
+ * UPSC PhysicsHub Configuration & Versioning
  * 
  * Updating versions here automatically updates asset URLs and cache keys across the entire app.
  * 

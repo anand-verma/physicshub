@@ -1,4 +1,4 @@
-# Physics PYQ Repository — PhysicsHub
+# Physics PYQ Repository — UPSC PhysicsHub
 
 Static, client-side UPSC Physics Optional PYQ repository, preparation tracker, and QCAB test generator for CSE and IFoS.
 
@@ -27,7 +27,7 @@ Static, client-side UPSC Physics Optional PYQ repository, preparation tracker, a
 
 ## Overview
 
-**PhysicsHub** is an offline-first, client-side web application providing an archive of ~2,925 previous year questions (PYQs) for the UPSC Civil Services Examination (CSE) and Indian Forest Service Examination (IFoS) Physics Optional.
+**UPSC PhysicsHub** is an offline-first, client-side web application providing an archive of ~2,925 previous year questions (PYQs) for the UPSC Civil Services Examination (CSE) and Indian Forest Service Examination (IFoS) Physics Optional.
 
 Key features include:
 - **Taxonomy-driven browsing**: Browse questions mapped to the official syllabus taxonomy across Paper I and Paper II.

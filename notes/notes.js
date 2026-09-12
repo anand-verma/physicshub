@@ -93,7 +93,7 @@ async function init() {
   const printTitle = isFormula
     ? `${unit ? unit.name : unitSlug} — Formula Sheet`
     : `${section ? section.name : fileName} — Short Notes`;
-  document.title = `${printTitle} | Physics Notes`;
+  document.title = `${printTitle} | UPSC PhysicsHub`;
 
   // Update breadcrumb
   updateBreadcrumb(unit, section, isFormula);

@@ -1,4 +1,4 @@
-/* Shared PhysicsHub shell behavior. Keep page-specific logic out of this file. */
+/* Shared UPSC PhysicsHub shell behavior. Keep page-specific logic out of this file. */
 (function () {
   function closeNav() {
     document.body.classList.remove('nav-open');

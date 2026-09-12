@@ -73,7 +73,7 @@ function listPage(pageNumber) {
   p.appendChild(title);
   const subtitle = document.createElement("div");
   subtitle.className = "qcab-list-subtitle";
-  subtitle.textContent = `PhysicsHub • PYQ Test • Page ${pageNumber}`;
+  subtitle.textContent = `UPSC PhysicsHub • PYQ Test • Page ${pageNumber}`;
   p.appendChild(subtitle);
   const box = document.createElement("div");
   box.className = "qcab-list-items";

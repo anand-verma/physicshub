@@ -386,3 +386,16 @@
   h2, h3 { page-break-after: avoid; }
   table, blockquote { page-break-inside: avoid; }
 }
+
+/* ─── Notes Lander Footer ─────────────────────────────────────────────────── */
+.notes-grid + .site-footer {
+  max-width: 1100px;
+  margin: 16px auto 0;
+  padding: 0 28px 40px;
+}
+@media (max-width: 768px) {
+  .notes-grid + .site-footer {
+    padding: 0 16px 28px;
+    margin-top: 8px;
+  }
+}
