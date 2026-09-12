@@ -24,6 +24,7 @@ const els = {
   sort: document.querySelector("#sortSelect"),
   sortLabel: document.querySelector("#sortLabel"),
   toast: document.querySelector("#toast"),
+  print: document.querySelector("#printBtn"),
   version: document.querySelector("#appVersion"),
   bookmarkFilter: document.querySelector("#bookmarkFilterBtn"),
   bookmarkCount: document.querySelector("#bookmarkCount")
@@ -441,5 +442,71 @@ function showToast(message, error = false) {
   toastTimer = setTimeout(() => els.toast.classList.remove("show"), 1800);
 }
 
+
+let printReadyPromise = null;
+
+function getPrintFilterSummary() {
+  const f = state.filters;
+  const items = [];
+  if (f.search) items.push(`Search: ${els.search.value.trim()}`);
+  if (f.mode === "year-unit") {
+    if (f.year) items.push(`Year: ${f.year}`);
+    if (f.unit) items.push(`Unit: ${f.unit}`);
+  } else {
+    if (f.unit) items.push(`Unit: ${f.unit}`);
+    if (f.section) items.push(`Section: ${f.section}`);
+    if (f.topic) items.push(`Topic: ${f.topic}`);
+  }
+  if (f.exam && f.exam !== "both") items.push(f.exam === "IFOS" ? "Exam: IFoS" : "Exam: CSE");
+  else items.push("Exam: CSE + IFoS");
+  return items;
+}
+
+async function printCurrentQuestions() {
+  const questions = state.currentResults || [];
+  if (!questions.length) { showToast("No questions to print", true); return; }
+  const tokenAtStart = state.renderToken;
+  const originalText = els.print?.textContent || "Print Friendly";
+  if (els.print) { els.print.disabled = true; els.print.textContent = "Preparing…"; }
+  try {
+    const printRoot = document.createElement("section");
+    printRoot.id = "printRoot";
+    printRoot.className = "print-root";
+    const title = document.createElement("div"); title.className = "print-title";
+    const heading = document.createElement("div"); heading.className = "print-heading";
+    heading.innerHTML = `<strong>Physics PYQ Repository</strong><span>${questions.length.toLocaleString("en-IN")} questions</span>`;
+    title.appendChild(heading);
+    const filterSummary = getPrintFilterSummary();
+    const summary = document.createElement("div"); summary.className = "print-filters";
+    summary.innerHTML = `<span class="print-filters-label">Filter Specification:</span>${filterSummary.map(item => `<span class="print-filter-chip">${escapeHtml(item)}</span>`).join("")}`;
+    title.appendChild(summary); printRoot.appendChild(title);
+    // Build directly from data so printing never depends on progressive DOM completion.
+    for (let i=0;i<questions.length;i++) {
+      if (tokenAtStart !== state.renderToken) return;
+      const q=questions[i], article=document.createElement("article"); article.className="print-question";
+      article.innerHTML=`<div class="print-number">${i+1}.</div>`;
+      const body=document.createElement("div"); body.className="print-question-body";
+      body.innerHTML=markdownToHtml(q.question_markdown || "", q.images || []);
+      const meta=document.createElement("div"); meta.className="print-meta";
+      meta.innerHTML=`<strong>${escapeHtml(q.exam || "—")} | ${escapeHtml(q.year || "—")} | ${escapeHtml(q.marks || "—")}</strong>`;
+      body.appendChild(meta); article.appendChild(body); printRoot.appendChild(article);
+    }
+    const footer=document.createElement("div"); footer.className="print-footer";
+    footer.innerHTML="Special thanks to AbhiPhysics Telegram channel for sourcing PYQs."; printRoot.appendChild(footer);
+    document.body.appendChild(printRoot); document.documentElement.classList.add("printing-ready");
+    const imgs=[...printRoot.querySelectorAll("img")];
+    await Promise.all(imgs.map(img=>img.complete?Promise.resolve():new Promise(resolve=>{img.onload=img.onerror=resolve;})));
+    if (window.MathJax?.typesetPromise) {
+      await (window.MathJax.startup?.promise || Promise.resolve());
+      await window.MathJax.typesetPromise([printRoot]);
+    }
+    await new Promise(requestAnimationFrame);
+    if (tokenAtStart !== state.renderToken) return;
+    window.print();
+  } catch(error) { console.error("Print preparation failed",error); showToast("Could not prepare print view",true); }
+  finally { document.documentElement.classList.remove("printing-ready"); document.getElementById("printRoot")?.remove(); if(els.print){els.print.disabled=false;els.print.textContent=originalText;} }
+}
+
+els.print?.addEventListener("click", printCurrentQuestions);
 
 init();

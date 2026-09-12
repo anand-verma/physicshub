@@ -6,12 +6,41 @@
       "name": "Mechanics",
       "slug": "u1-mechanics",
       "sections": [
-        { "code": "S1", "name": "Mechanics of Particles",      "file": "s1-particles",       "available": true },
-        { "code": "S2", "name": "Mechanics of Rigid Bodies",    "file": "s2-rigid-bodies",    "available": false },
-        { "code": "S3", "name": "Mechanics of Continuous Media","file": "s3-continuous-media","available": false },
-        { "code": "S4", "name": "Special Theory of Relativity", "file": "s4-special-relativity","available": false }
+        {
+          "code": "S1",
+          "name": "Mechanics Of Particles",
+          "file": "s1-particles",
+          "available": true
+        },
+        {
+          "code": "S2",
+          "name": "System Of Particles And Analytical Mechanics",
+          "file": "s2-system-analytical",
+          "available": false
+        },
+        {
+          "code": "S3",
+          "name": "Rigid Body Dynamics",
+          "file": "s3-rigid-body",
+          "available": false
+        },
+        {
+          "code": "S4",
+          "name": "Mechanics Of Continuous Media",
+          "file": "s4-continuous-media",
+          "available": false
+        },
+        {
+          "code": "S5",
+          "name": "Special Theory Of Relativity",
+          "file": "s5-special-relativity",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": true }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": true
+      }
     },
     {
       "code": "U2",
@@ -19,13 +48,41 @@
       "name": "Waves and Optics",
       "slug": "u2-waves-optics",
       "sections": [
-        { "code": "S1", "name": "Waves",                         "file": "s1-waves",           "available": false },
-        { "code": "S2", "name": "Geometrical Optics",            "file": "s2-geometrical-optics","available": false },
-        { "code": "S3", "name": "Interference",                  "file": "s3-interference",    "available": false },
-        { "code": "S4", "name": "Diffraction",                   "file": "s4-diffraction",     "available": false },
-        { "code": "S5", "name": "Polarisation and Modern Optics","file": "s5-polarisation",    "available": false }
+        {
+          "code": "S1",
+          "name": "Waves",
+          "file": "s1-waves",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Geometrical Optics",
+          "file": "s2-geometrical-optics",
+          "available": false
+        },
+        {
+          "code": "S3",
+          "name": "Interference",
+          "file": "s3-interference",
+          "available": false
+        },
+        {
+          "code": "S4",
+          "name": "Diffraction",
+          "file": "s4-diffraction",
+          "available": false
+        },
+        {
+          "code": "S5",
+          "name": "Polarisation and Modern Optics",
+          "file": "s5-polarisation",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     },
     {
       "code": "U3",
@@ -33,12 +90,35 @@
       "name": "Electricity, Magnetism and EM Waves",
       "slug": "u3-electricity-magnetism",
       "sections": [
-        { "code": "S1", "name": "Electrostatics and Magnetostatics","file": "s1-electrostatics",  "available": false },
-        { "code": "S2", "name": "Current Electricity",             "file": "s2-current-electricity","available": false },
-        { "code": "S3", "name": "Electromagnetic Theory",          "file": "s3-em-theory",       "available": false },
-        { "code": "S4", "name": "Black Body Radiation",            "file": "s4-blackbody",       "available": false }
+        {
+          "code": "S1",
+          "name": "Electrostatics and Magnetostatics",
+          "file": "s1-electrostatics",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Current Electricity",
+          "file": "s2-current-electricity",
+          "available": false
+        },
+        {
+          "code": "S3",
+          "name": "Electromagnetic Theory",
+          "file": "s3-em-theory",
+          "available": false
+        },
+        {
+          "code": "S4",
+          "name": "Black Body Radiation",
+          "file": "s4-blackbody",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     },
     {
       "code": "U4",
@@ -46,10 +126,23 @@
       "name": "Thermal and Statistical Physics",
       "slug": "u4-thermal-statistical",
       "sections": [
-        { "code": "S1", "name": "Thermodynamics",  "file": "s1-thermodynamics", "available": false },
-        { "code": "S2", "name": "Statistical Physics","file": "s2-statistical",  "available": false }
+        {
+          "code": "S1",
+          "name": "Thermodynamics",
+          "file": "s1-thermodynamics",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Statistical Physics",
+          "file": "s2-statistical",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     },
     {
       "code": "U5",
@@ -57,11 +150,29 @@
       "name": "Quantum Mechanics",
       "slug": "u5-quantum-mechanics",
       "sections": [
-        { "code": "S1", "name": "Foundations of Quantum Mechanics",         "file": "s1-foundations",   "available": false },
-        { "code": "S2", "name": "Schrödinger's Wave Equation & Applications","file": "s2-schrodinger",   "available": false },
-        { "code": "S3", "name": "Angular Momentum, Spin etc.",               "file": "s3-angular-momentum","available": false }
+        {
+          "code": "S1",
+          "name": "Foundations of Quantum Mechanics",
+          "file": "s1-foundations",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Schrödinger's Wave Equation & Applications",
+          "file": "s2-schrodinger",
+          "available": false
+        },
+        {
+          "code": "S3",
+          "name": "Angular Momentum, Spin etc.",
+          "file": "s3-angular-momentum",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     },
     {
       "code": "U6",
@@ -69,10 +180,23 @@
       "name": "Atomic and Molecular Physics",
       "slug": "u6-atomic-molecular",
       "sections": [
-        { "code": "S1", "name": "Atomic Physics",   "file": "s1-atomic",   "available": false },
-        { "code": "S2", "name": "Molecular Physics", "file": "s2-molecular","available": false }
+        {
+          "code": "S1",
+          "name": "Atomic Physics",
+          "file": "s1-atomic",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Molecular Physics",
+          "file": "s2-molecular",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     },
     {
       "code": "U7",
@@ -80,10 +204,23 @@
       "name": "Nuclear and Particle Physics",
       "slug": "u7-nuclear-particle",
       "sections": [
-        { "code": "S1", "name": "Nuclear Physics",  "file": "s1-nuclear",  "available": false },
-        { "code": "S2", "name": "Particle Physics", "file": "s2-particle", "available": false }
+        {
+          "code": "S1",
+          "name": "Nuclear Physics",
+          "file": "s1-nuclear",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Particle Physics",
+          "file": "s2-particle",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     },
     {
       "code": "U8",
@@ -91,13 +228,41 @@
       "name": "Solid State Physics, Devices and Electronics",
       "slug": "u8-solid-state-electronics",
       "sections": [
-        { "code": "S1", "name": "Crystal Structure & Its Determination", "file": "s1-crystal-structure","available": false },
-        { "code": "S2", "name": "Band Theory of Solids",                 "file": "s2-band-theory",     "available": false },
-        { "code": "S3", "name": "Superconductivity",                     "file": "s3-superconductivity","available": false },
-        { "code": "S4", "name": "Semiconductors / Solar Cell",           "file": "s4-semiconductors",  "available": false },
-        { "code": "S5", "name": "Digital Electronics / Microprocessors", "file": "s5-digital-electronics","available": false }
+        {
+          "code": "S1",
+          "name": "Crystal Structure & Its Determination",
+          "file": "s1-crystal-structure",
+          "available": false
+        },
+        {
+          "code": "S2",
+          "name": "Band Theory of Solids",
+          "file": "s2-band-theory",
+          "available": false
+        },
+        {
+          "code": "S3",
+          "name": "Superconductivity",
+          "file": "s3-superconductivity",
+          "available": false
+        },
+        {
+          "code": "S4",
+          "name": "Semiconductors / Solar Cell",
+          "file": "s4-semiconductors",
+          "available": false
+        },
+        {
+          "code": "S5",
+          "name": "Digital Electronics / Microprocessors",
+          "file": "s5-digital-electronics",
+          "available": false
+        }
       ],
-      "formulaSheet": { "file": "formulas", "available": false }
+      "formulaSheet": {
+        "file": "formulas",
+        "available": false
+      }
     }
   ]
 }

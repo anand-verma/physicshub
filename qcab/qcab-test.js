@@ -1,6 +1,6 @@
 import { loadQuestions } from "../assets/js/data.js";
 import { markdownToHtml } from "../assets/js/renderer.js";
-import { loadSelectionIds, saveSelectionIds, buildComposition, totalMarks } from "./qcab-state.js";
+import { loadSelectionIds, saveSelectionIds, buildComposition, totalMarks, parseMarks } from "./qcab-state.js";
 
 const $ = id => document.getElementById(id);
 const els = {
@@ -35,7 +35,7 @@ function renderEditor() {
         <div class="question-main">${markdownToHtml(q.question_markdown || "", q.images || [])}</div>
         <div class="question-meta">
           <div class="meta-left"><span>${esc(q.unit || "—")}</span><span>${esc(q.section || "—")}</span><span>${esc(q._topics?.join(", ") || "Topic not tagged")}</span></div>
-          <div class="meta-right"><span class="exam">${esc(q.exam || "—")} | ${esc(q.year || "—")} | ${esc(q.marks || "—")} Marks</span></div>
+          <div class="meta-right"><span class="exam">${esc(q.exam || "—")} | ${esc(q.year || "—")} | ${parseMarks(q.marks) || "—"} M</span></div>
         </div>
       </div>
       <div class="reorder-buttons">

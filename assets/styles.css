@@ -148,6 +148,27 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 /* Print-friendly question sheet */
 .print-btn{display:inline-flex;align-items:center;justify-content:center;gap:8px;min-height:40px;border:1px solid #3157d5;background:#3157d5;color:#fff;border-radius:9px;padding:0 15px;font-size:12px;font-weight:700;letter-spacing:.01em;cursor:pointer;box-shadow:0 3px 10px rgba(49,87,213,.18);transition:.15s ease}.print-btn:hover{background:#2749b8;border-color:#2749b8;transform:translateY(-1px);box-shadow:0 5px 14px rgba(49,87,213,.22)}.print-btn:active{transform:translateY(0)}.print-btn:disabled{opacity:.65;cursor:wait;transform:none}.print-icon{font-size:17px;line-height:1}
 
+/* Print-friendly question sheet */
+.print-root{display:none}
+@media print{
+  @page{size:A4;margin:16mm 15mm 16mm 15mm}
+  body > *:not(#printRoot){display:none!important}
+  #printRoot{display:block!important;color:#111;background:#fff;font-family:Georgia,"Times New Roman",serif;font-size:11.5pt;line-height:1.45}
+  .print-title{border-bottom:1px solid #bbb;padding-bottom:8pt;margin-bottom:12pt}
+  .print-heading{display:flex;justify-content:space-between;align-items:baseline;font-size:10pt}
+  .print-heading strong{font-size:13pt}
+  .print-filters{display:flex;flex-wrap:wrap;align-items:center;gap:4pt 6pt;margin-top:7pt;font-family:Arial,Helvetica,sans-serif;font-size:8.5pt;color:#333}
+  .print-filters-label{font-weight:700;color:#666;margin-right:2pt}
+  .print-filter-chip{font-weight:500}
+  .print-question{display:grid;grid-template-columns:24pt minmax(0,1fr);column-gap:5pt;margin:0 0 13pt;break-inside:avoid-page;page-break-inside:avoid}
+  .print-number{font-weight:700;font-size:11.5pt;padding-top:1pt}
+  .print-question-body{min-width:0}
+  .print-question-body p{margin:0 0 6pt}
+  .print-question-body img{display:block;max-width:100%;height:auto;max-height:120mm;object-fit:contain;margin:5pt 0 7pt;break-inside:avoid}
+  .print-meta{margin-top:7pt;font-family:Arial,Helvetica,sans-serif;font-size:9pt;color:#333;text-align:right;border-top:1px solid #ddd;padding-top:3pt}
+  .print-question .MathJax{font-size:100%!important}
+}
+
 /* Analysis: client-side hybrid similarity panel */
 .analysis-btn{cursor:pointer}
 .analysis-btn[aria-expanded="true"]{color:var(--accent);border-color:#9aabef;background:var(--accent-soft)}

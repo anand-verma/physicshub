@@ -2,9 +2,7 @@
 
 > **Unit 1 · Formula Sheet** | UPSC Physics Optional
 
----
-
-## S1 — Mechanics of Particles
+## S1 — Mechanics Of Particles
 
 | Formula | Expression |
 |---|---|
@@ -20,7 +18,7 @@
 
 ---
 
-## S2 — Mechanics of Rigid Bodies
+## S2 — System Of Particles And Analytical Mechanics
 
 | Formula | Expression |
 |---|---|
@@ -33,7 +31,16 @@
 
 ---
 
-## S3 — Continuous Media
+## S3 — Rigid Body Dynamics
+
+| Formula | Expression |
+|---|---|
+| Moment of inertia | $I = \sum_i m_i r_i^2$ |
+| Parallel axis theorem | $I = I_{\text{cm}} + Md^2$ |
+| Perpendicular axis theorem | $I_z = I_x + I_y$ |
+| Rotational KE | $T = \frac{1}{2}I\omega^2$ |
+
+## S4 — Mechanics Of Continuous Media
 
 | Formula | Expression |
 |---|---|
@@ -45,7 +52,7 @@
 
 ---
 
-## S4 — Special Relativity
+## S5 — Special Theory Of Relativity
 
 | Formula | Expression |
 |---|---|

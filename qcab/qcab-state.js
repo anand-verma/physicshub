@@ -20,10 +20,18 @@ export function clearSelection() {
   try { sessionStorage.removeItem(KEY); } catch { /* ignore */ }
 }
 
+export function parseMarks(value) {
+  const text = String(value ?? "");
+  const matches = text.match(/\d+(?:\.\d+)?/g);
+  if (!matches?.length) return 0;
+  const last = Number(matches[matches.length - 1]);
+  return Number.isFinite(last) ? last : 0;
+}
+
 export function buildComposition(questions) {
   const groups = new Map();
   for (const q of questions) {
-    const marks = Number.parseFloat(q.marks) || 0;
+    const marks = parseMarks(q.marks) || 0;
     groups.set(marks, (groups.get(marks) || 0) + 1);
   }
   return [...groups.entries()]
@@ -33,5 +41,5 @@ export function buildComposition(questions) {
 }
 
 export function totalMarks(questions) {
-  return questions.reduce((sum, q) => sum + (Number.parseFloat(q.marks) || 0), 0);
+  return questions.reduce((sum, q) => sum + (parseMarks(q.marks) || 0), 0);
 }

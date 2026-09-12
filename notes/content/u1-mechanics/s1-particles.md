@@ -1,4 +1,4 @@
-# Mechanics of Particles — Short Notes
+# Mechanics Of Particles — Short Notes
 
 > **Unit 1 · Section 1** | UPSC Physics Optional
 

@@ -2,10 +2,11 @@
 .qcab-container{max-width:1280px}
 .qcab-action-btn{height:44px;white-space:nowrap}
 
-.selection-summary-card{margin:14px 0 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:13px 16px;display:grid;grid-template-columns:auto 1fr auto;align-items:center;gap:18px;font-size:13px}
+.selection-summary-card{margin:14px 0 16px;background:var(--surface);border:1px solid var(--line);border-radius:var(--radius);box-shadow:var(--shadow);padding:13px 16px;display:grid;grid-template-columns:auto minmax(0,1fr) auto auto;align-items:center;gap:18px;font-size:13px}
 .selection-summary-card>div:first-child strong{font-size:17px}
 .selection-summary-card>div:first-child span{color:var(--muted)}
 .selection-composition{color:var(--muted);font-size:12px;line-height:1.5}
+.purge-selection-btn{white-space:nowrap}
 .selection-total{text-align:right;display:flex;align-items:baseline;gap:8px}
 .selection-total span{font-size:11px;color:var(--muted);text-transform:uppercase;letter-spacing:.06em}
 .selection-total strong{font-size:19px;color:var(--accent)}
@@ -75,9 +76,10 @@
 }
 
 @media(max-width:800px){
-  .selection-summary-card{grid-template-columns:1fr 1fr}
+  .selection-summary-card{grid-template-columns:1fr auto}
   .selection-composition{grid-column:1/-1;grid-row:2}
   .selection-total{justify-content:flex-end}
+  .purge-selection-btn{grid-column:1/-1;justify-self:end}
   .test-editor-toolbar{align-items:stretch;flex-direction:column}
   .editor-actions{justify-content:stretch}
   .editor-actions>*{flex:1}
