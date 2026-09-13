@@ -174,16 +174,33 @@ async function init() {
         return;
       }
 
-      // Send the message once after a short delay to allow Parallel Notes to load.
-      // (Using setInterval was causing the message to be sent multiple times, 
-      // generating multiple documents).
-      setTimeout(() => {
-        pnWindow.postMessage({
-          type: "IMPORT_DOCUMENT",
-          title: noteTitle,
-          sourceHtml: noteHtmlContent
-        }, "https://anand-verma.github.io");
-      }, 1500); 
+      const handshakeListener = (event) => {
+        // 1. Check Origin
+        if (event.origin !== "https://anand-verma.github.io") return;
+        
+        // 2. Check Source (Prevents duplicate firings on multiple clicks)
+        if (event.source !== pnWindow) return;
+
+        if (event.data && event.data.type === "PARALLEL_NOTES_READY") {
+          pnWindow.postMessage({
+            type: "IMPORT_DOCUMENT",
+            title: noteTitle,
+            sourceHtml: noteHtmlContent
+          }, "https://anand-verma.github.io");
+
+          window.removeEventListener("message", handshakeListener);
+        }
+      };
+
+      window.addEventListener("message", handshakeListener);
+
+      // 3. Cleanup fallback if window is closed before loading
+      const checkClosed = setInterval(() => {
+        if (pnWindow.closed) {
+          clearInterval(checkClosed);
+          window.removeEventListener("message", handshakeListener);
+        }
+      }, 1000);
     });
   }
 }
