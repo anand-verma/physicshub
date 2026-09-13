@@ -159,6 +159,33 @@ async function init() {
       setTimeout(() => { document.title = prevTitle; }, 500);
     });
   }
+
+  // Wire Edit in Parallel Notes button
+  const editParallelBtn = document.getElementById("editParallelBtn");
+  if (editParallelBtn) {
+    editParallelBtn.addEventListener("click", () => {
+      const noteHtmlContent = proseEl.innerHTML;
+      const noteTitle = printTitle;
+      
+      const pnWindow = window.open("https://anand-verma.github.io/parallel-notes/", "_blank");
+      
+      if (!pnWindow) {
+        alert("Please allow popups to open Parallel Notes.");
+        return;
+      }
+
+      // Send the message once after a short delay to allow Parallel Notes to load.
+      // (Using setInterval was causing the message to be sent multiple times, 
+      // generating multiple documents).
+      setTimeout(() => {
+        pnWindow.postMessage({
+          type: "IMPORT_DOCUMENT",
+          title: noteTitle,
+          sourceHtml: noteHtmlContent
+        }, "https://anand-verma.github.io");
+      }, 1500); 
+    });
+  }
 }
 
 // ─────────────────────────────────────────────
