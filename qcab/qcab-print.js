@@ -5,6 +5,7 @@ import { loadSelectionIds, parseMarks } from "./qcab-state.js";
 const root = document.getElementById("qcabPrintRoot");
 const status = document.getElementById("printStatus");
 const backButton = document.getElementById("backToTest");
+const printButton = document.getElementById("printBtn");
 
 const esc = value => String(value ?? "").replace(/[&<>\"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;",'"':"&quot;","'":"&#39;"}[c]));
 
@@ -137,6 +138,7 @@ async function build() {
 
   root.replaceChildren();
   root.classList.add("is-building");
+  if (printButton) printButton.disabled = true;
 
   // Build a visible, measurable question-list page first.
   const listPages = layoutListPages(selected);
@@ -161,13 +163,16 @@ async function build() {
   root.classList.remove("is-building");
   status.textContent = `${selected.length} questions • ${selected.reduce((s, q) => s + (parseMarks(q.marks) || 0), 0)} marks • ${paper.length} pages`;
   document.title = `PYQ Test — ${selected.length} Questions`;
+  if (printButton) printButton.disabled = false;
 }
 
 backButton.addEventListener("click", () => { location.href = "./qcab-test.html"; });
+printButton?.addEventListener("click", () => { window.print(); });
 
 document.addEventListener("DOMContentLoaded", () => {
   build().catch(error => {
     console.error("PYQ Test print view failed", error);
     status.textContent = error.message;
+    if (printButton) printButton.disabled = true;
   });
 });
