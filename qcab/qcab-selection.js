@@ -5,6 +5,7 @@ import { loadSelectionIds, saveSelectionIds, buildComposition, totalMarks, clear
 
 const state = {
   questions: [],
+  currentResults: [],
   syllabusOrder: null,
   filters: createFilterState(),
   selectedIds: new Set(loadSelectionIds()),
@@ -28,6 +29,7 @@ const els = {
   composition: $("selectionComposition"),
   selectedMarks: $("selectedMarks"),
   purge: $("purgeSelectionBtn"),
+  selectAll: $("selectAllDisplayed"),
   modeRadios: [...document.querySelectorAll('input[name="filterMode"]')]
 };
 
@@ -45,6 +47,25 @@ function updateSummary() {
   els.composition.textContent = selected.length ? buildComposition(selected) : "No questions selected";
   els.selectedMarks.textContent = totalMarks(selected);
 }
+
+function updateSelectAllState() {
+  if (!els.selectAll) return;
+  const results = state.currentResults || [];
+  if (results.length === 0) {
+    els.selectAll.checked = false;
+    els.selectAll.indeterminate = false;
+    els.selectAll.disabled = true;
+    return;
+  }
+  els.selectAll.disabled = false;
+  let selectedCount = 0;
+  for (let q of results) {
+    if (state.selectedIds.has(String(q.id))) selectedCount++;
+  }
+  els.selectAll.checked = selectedCount === results.length;
+  els.selectAll.indeterminate = selectedCount > 0 && selectedCount < results.length;
+}
+
 
 function syncFilterControls() {
   els.search.value = state.filters.search || "";
@@ -92,6 +113,7 @@ function rowForQuestion(q, visibleNumber) {
     const label = checkbox.closest("label");
     if (label) label.title = checkbox.checked ? "Remove from test" : "Add to test";
     updateSummary();
+    updateSelectAllState();
   });
 
   return tr;
@@ -103,6 +125,7 @@ let mathObserver;
 function render() {
   const token = ++state.renderToken;
   const results = sortQuestions(applyFilters(state.questions, state.filters), state.filters, state.syllabusOrder);
+  state.currentResults = results;
 
   els.resultCount.textContent = results.length.toLocaleString("en-IN");
   els.empty.hidden = results.length !== 0;
@@ -132,6 +155,7 @@ function render() {
   };
 
   appendChunk();
+  updateSelectAllState();
   updateSummary();
 }
 
@@ -197,6 +221,20 @@ function wireControls() {
 
   els.clear.addEventListener("click", resetFilters);
   els.emptyReset.addEventListener("click", resetFilters);
+  
+  els.selectAll?.addEventListener("change", (e) => {
+    const results = state.currentResults || [];
+    if (!results.length) return;
+    const isChecked = e.target.checked;
+    results.forEach(q => {
+      const id = String(q.id);
+      if (isChecked) state.selectedIds.add(id);
+      else state.selectedIds.delete(id);
+    });
+    saveSelectionIds([...state.selectedIds]);
+    updateSummary();
+    render();
+  });
 
   els.purge?.addEventListener("click", () => {
     if (!state.selectedIds.size) return;
