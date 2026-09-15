@@ -165,57 +165,63 @@ async function copyRichQuestion(q, button, includePrompt = false) {
 }
 
 let html2canvasPromise = null;
+
 function ensureHtml2Canvas() {
   if (window.html2canvas) return Promise.resolve(window.html2canvas);
   if (!html2canvasPromise) {
     html2canvasPromise = new Promise((resolve, reject) => {
       const script = document.createElement("script");
       script.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+      script.crossOrigin = "anonymous";
       script.onload = () => resolve(window.html2canvas);
-      script.onerror = () => reject(new Error("Failed to load html2canvas library"));
+      script.onerror = () => {
+        html2canvasPromise = null; // Allow retry on transient failure
+        reject(new Error("Failed to load html2canvas library"));
+      };
       document.head.appendChild(script);
     });
   }
   return html2canvasPromise;
 }
 
-/**
- * Clones a question content container and pre-composes all figures and
- * MathJax formulas into self-contained vector/bitmap data URLs.
- */
 async function prepareQuestionCardClone(qContent) {
   const clone = qContent.cloneNode(true);
 
-  // 1. Convert diagram figure images into memory data URLs without lazy-loading stalls
+  // 1. Process diagram figure images
   const origImgs = Array.from(qContent.querySelectorAll("img"));
   const cloneImgs = Array.from(clone.querySelectorAll("img"));
+
   await Promise.all(cloneImgs.map(async (cImg, idx) => {
     cImg.removeAttribute("loading");
     cImg.setAttribute("loading", "eager");
+
     const orig = origImgs[idx];
-    if (orig) {
-      if (!orig.complete) {
-        await new Promise(r => {
-          orig.onload = orig.onerror = r;
-          setTimeout(r, 800);
-        });
-      }
-      if (orig.naturalWidth > 0) {
-        try {
-          const cvs = document.createElement("canvas");
-          cvs.width = orig.naturalWidth;
-          cvs.height = orig.naturalHeight;
-          const ctx = cvs.getContext("2d");
-          ctx.drawImage(orig, 0, 0);
-          cImg.src = cvs.toDataURL("image/png");
-        } catch (e) {
-          // Keep existing src
-        }
+    if (!orig) return;
+
+    if (!orig.complete) {
+      await new Promise(r => {
+        orig.onload = orig.onerror = r;
+        setTimeout(r, 1000);
+      });
+    }
+
+    if (orig.naturalWidth > 0) {
+      try {
+        const cvs = document.createElement("canvas");
+        cvs.width = orig.naturalWidth;
+        cvs.height = orig.naturalHeight;
+        const ctx = cvs.getContext("2d");
+        ctx.drawImage(orig, 0, 0);
+        cImg.src = cvs.toDataURL("image/png");
+      } catch (e) {
+        // Tainted canvas fallback: maintain existing crossOrigin/src for html2canvas to fetch via proxy/CORS
+        cImg.crossOrigin = "anonymous";
+        cImg.src = orig.currentSrc || orig.src;
       }
     }
   }));
 
-  // 2. Convert each MathJax SVG equation to an SVG Data URL <img> with exact spacing and baseline
+  // 2. Convert MathJax SVGs to self-contained SVG Data URLs
   const mathCache = document.getElementById("MJX-SVG-global-cache");
   const globalDefs = mathCache ? mathCache.innerHTML : "";
 
@@ -234,6 +240,10 @@ async function prepareQuestionCardClone(qContent) {
     svgClone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
     svgClone.style.overflow = "visible";
 
+    // Retain root em sizing baseline inside the standalone SVG
+    const compStyle = window.getComputedStyle(svg);
+    svgClone.style.fontSize = compStyle.fontSize || "16px";
+
     if (globalDefs && !svgClone.querySelector("defs")) {
       const defsEl = document.createElementNS("http://www.w3.org/2000/svg", "defs");
       defsEl.innerHTML = globalDefs;
@@ -247,8 +257,8 @@ async function prepareQuestionCardClone(qContent) {
     mathImg.className = "math-img";
     mathImg.src = svgDataUrl;
     mathImg.style.cssText = isDisplay
-      ? `display: block; margin: 0.8em auto; max-width: 100%; height: ${h}; border: none !important; background: transparent !important; border-radius: 0 !important; box-shadow: none !important;`
-      : `display: inline-block; vertical-align: ${vAlign}; width: ${w}; height: ${h}; margin: 0 3px; border: none !important; background: transparent !important; border-radius: 0 !important; box-shadow: none !important;`;
+      ? `display: block; margin: 0.8em auto; max-width: 100%; height: ${h}; border: none !important; background: transparent !important;`
+      : `display: inline-block; vertical-align: ${vAlign}; width: ${w}; height: ${h}; margin: 0 3px; border: none !important; background: transparent !important;`;
 
     container.parentNode.replaceChild(mathImg, container);
   });
@@ -257,7 +267,7 @@ async function prepareQuestionCardClone(qContent) {
 }
 
 async function copyQuestionAsImage(tr, button) {
-  if (!navigator.clipboard?.write || !window.ClipboardItem) {
+  if (!navigator.clipboard?.write || typeof window.ClipboardItem === "undefined") {
     throw new Error("Image clipboard is not supported in this browser.");
   }
   const qContent = tr.querySelector(".q-content");
@@ -267,9 +277,8 @@ async function copyQuestionAsImage(tr, button) {
 
   const width = Math.min(Math.max(qContent.offsetWidth || 760, 600), 920);
 
-  // Render in an isolated sandbox iframe
   const iframe = document.createElement("iframe");
-  iframe.style.cssText = "position:fixed;left:-9999px;top:0;width:" + (width + 60) + "px;height:1200px;border:0;visibility:hidden;pointer-events:none;";
+  iframe.style.cssText = `position:fixed;left:-9999px;top:0;width:${width + 60}px;height:1200px;border:0;visibility:hidden;pointer-events:none;`;
   document.body.appendChild(iframe);
 
   try {
@@ -283,17 +292,19 @@ async function copyQuestionAsImage(tr, button) {
 <html>
 <head>
   <meta charset="utf-8">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,400;8..60,600&display=swap" rel="stylesheet">
   <style>
-    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,450;8..60,500&display=swap');
     * { box-sizing: border-box; }
-    body { background: #ffffff; margin: 0; padding: 22px 26px; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #0f172a; width: ${width}px; }
-    .question-main { font-family: "Source Serif 4", Georgia, serif; font-size: 16px; line-height: 1.62; word-spacing: normal; letter-spacing: normal; color: #0f172a; }
+    body { background: #ffffff; margin: 0; padding: 22px 26px; font-family: Inter, system-ui, sans-serif; color: #0f172a; width: ${width}px; }
+    .question-main { font-family: "Source Serif 4", Georgia, serif; font-size: 16px; line-height: 1.62; color: #0f172a; }
     .question-main p { margin: 0.2em 0 0.7em; }
     .question-main p:last-child { margin-bottom: 0; }
     .question-main ol, .question-main ul { margin: 0.3em 0 0.7em; padding-left: 24px; }
     .question-main img:not(.math-img) { display: block; max-width: min(100%, 620px); max-height: 480px; object-fit: contain; margin: 12px 0; border: 1px solid #e2e8f0; border-radius: 7px; background: #fff; }
     .math-img { border: none !important; background: transparent !important; border-radius: 0 !important; padding: 0 !important; box-shadow: none !important; }
-    .question-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #e2e8f0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; color: #64748b; line-height: 1.45; }
+    .question-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #e2e8f0; font-family: Inter, system-ui, sans-serif; font-size: 12px; color: #64748b; line-height: 1.45; }
     .meta-left { min-width: 0; }
     .meta-left span { display: inline-block; }
     .meta-left span + span:before { content: " · "; margin: 0 4px; color: #94a3b8; }
@@ -307,7 +318,15 @@ async function copyQuestionAsImage(tr, button) {
 </html>`);
     doc.close();
 
-    // Ensure all images (diagrams and SVG math equations) are decoded before capturing, with safety timeout
+    // 1. Await dynamic font settlement to prevent layout jitter
+    if (doc.fonts?.ready) {
+      await Promise.race([
+        doc.fonts.ready,
+        new Promise(r => setTimeout(r, 1200))
+      ]);
+    }
+
+    // 2. Ensure all clone and math SVG images are fully decoded
     const allImages = Array.from(doc.querySelectorAll("img"));
     await Promise.all(allImages.map(img => {
       img.removeAttribute("loading");
@@ -326,18 +345,23 @@ async function copyQuestionAsImage(tr, button) {
       logging: false,
       useCORS: true,
       allowTaint: false,
-      imageTimeout: 2000
+      imageTimeout: 3000
     });
 
     const blob = await new Promise((resolve, reject) => {
-      canvas.toBlob(b => b ? resolve(b) : reject(new Error("Failed to create image blob")), "image/png");
+      canvas.toBlob(
+        b => b ? resolve(b) : reject(new Error("Failed to create image blob")),
+        "image/png"
+      );
     });
 
     await navigator.clipboard.write([
       new ClipboardItem({ "image/png": blob })
     ]);
 
-    showToast("Question image copied to clipboard!");
+    if (typeof showToast === "function") {
+      showToast("Question image copied to clipboard!");
+    }
     button?.classList.add("copied");
     setTimeout(() => button?.classList.remove("copied"), 1200);
   } finally {
