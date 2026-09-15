@@ -1,5 +1,7 @@
+import { getPracticeState } from "./practiced.js";
+
 export function createFilterState() {
-  return { mode: "unit-section-topic", year: "", unit: "", section: "", topic: "", search: "", exam: "both", sort: "smart" };
+  return { mode: "unit-section-topic", year: "", unit: "", section: "", topic: "", search: "", exam: "both", sort: "smart", practice: "all" };
 }
 
 export function buildFilterUI(container, state, onChange) {
@@ -64,6 +66,12 @@ export function applyFilters(questions, filters) {
   const search = filters.search;
   for (const q of questions) {
     if (filters.exam !== "both" && q.exam !== filters.exam) continue;
+    if (filters.practice !== "all") {
+      const pState = getPracticeState(q.id);
+      if (filters.practice === "unsolved" && pState !== 0) continue;
+      if (filters.practice === "solved" && pState !== 1) continue;
+      if (filters.practice === "doubt" && pState !== 2) continue;
+    }
     if (filters.year && String(q._year) !== filters.year) continue;
     if (filters.unit && q.unit !== filters.unit) continue;
     if (filters.section && q.section !== filters.section) continue;

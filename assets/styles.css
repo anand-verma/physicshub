@@ -138,6 +138,19 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 .bookmark-btn.active svg{fill:#d4a017;stroke:#d4a017;filter:drop-shadow(0 1px 3px rgba(212,160,23,.25))}
 .bookmark-btn:active{transform:scale(.92)}
 
+/* Practice button in column 1 */
+.practice-btn{display:flex;align-items:center;justify-content:center;width:26px;height:26px;padding:0;border:none;border-radius:6px;background:transparent;color:#b0b6bd;cursor:pointer;transition:all .15s ease;margin:4px auto 0}
+.practice-btn svg{width:16px;height:16px;transition:all .15s ease}
+.practice-btn:hover{color:#475569;background:rgba(71,85,105,.08)}
+.practice-btn:hover svg{transform:scale(1.12)}
+.practice-btn.solved{color:#15803d}
+.practice-btn.solved svg{filter:drop-shadow(0 1px 3px rgba(21,128,61,.25))}
+.practice-btn.solved:hover{background:rgba(21,128,61,.08)}
+.practice-btn.doubt{color:#d97706}
+.practice-btn.doubt svg{filter:drop-shadow(0 1px 3px rgba(217,119,6,.25))}
+.practice-btn.doubt:hover{background:rgba(217,119,6,.08)}
+.practice-btn:active{transform:scale(.92)}
+
 /* Bookmark filter toolbar button */
 .bookmark-filter-btn{position:relative;height:44px;border:1px solid var(--line);border-radius:9px;background:#fff;color:#374151;font:inherit;font-size:12px;font-weight:600;cursor:pointer;padding:0 13px;display:inline-flex;align-items:center;gap:6px;white-space:nowrap;flex-shrink:0;transition:all .15s ease}
 .bookmark-filter-btn svg{width:14px;height:14px;fill:none;stroke:currentColor;stroke-width:2;stroke-linecap:round;stroke-linejoin:round;transition:all .15s ease}

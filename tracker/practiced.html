@@ -3,16 +3,50 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="UPSC Physics Optional — Short Notes and Formula Sheets for all 8 units">
-  <title>Physics Notes | UPSC PhysicsHub</title>
+  <meta name="description" content="UPSC PhysicsHub — Practice Statistics Dashboard">
+  <title>Practice Statistics | UPSC PhysicsHub</title>
   <link rel="icon" type="image/svg+xml" href="../assets/favicon.svg">
   <link rel="icon" type="image/jpeg" href="../assets/favicon.jpg">
   <link rel="stylesheet" href="../assets/site.css">
-  <link rel="stylesheet" href="./notes.css">
+  <link rel="stylesheet" href="./tracker.css">
+  <style>
+    .stats-badge {
+      display: inline-flex;
+      align-items: center;
+      justify-content: center;
+      min-width: 24px;
+      height: 24px;
+      padding: 0 8px;
+      border-radius: 12px;
+      font-size: 11px;
+      font-weight: 700;
+      margin-left: 6px;
+    }
+    .badge-solved {
+      background: #f0fdf4;
+      color: #15803d;
+      border: 1px solid #bbf7d0;
+    }
+    .badge-doubt {
+      background: #fffbeb;
+      color: #d97706;
+      border: 1px solid #fde68a;
+    }
+    .badge-unsolved {
+      background: #f1f5f9;
+      color: #64748b;
+      border: 1px solid #e2e8f0;
+    }
+    .tracker-table th, .tracker-table td {
+      text-align: center;
+    }
+    .tracker-table th.col-name, .tracker-table td.col-name {
+      text-align: left;
+    }
+  </style>
 </head>
 <body>
 
-  <!-- ── Site Nav ─────────────────────────────────────────────────────── -->
   <!-- ── Site Nav ──────────────────────────────────────────────────────── -->
   <nav class="site-nav" aria-label="Site navigation">
     <button class="menu-toggle" id="mobileMenuBtn" aria-label="Toggle menu" aria-expanded="false">
@@ -28,7 +62,7 @@
       PYQ Repository
     </a>
     
-    <a class="nav-tab active" href="./index.html" id="tabNotes" aria-current="page">
+    <a class="nav-tab" href="../notes/index.html" id="tabNotes">
       <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M12 20h9M16.5 3.5a2.121 2.121 0 0 1 3 3L7 19l-4 1 1-4L16.5 3.5z"/></svg>
       Notes
     </a>
@@ -49,11 +83,11 @@
         <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M20 21v-2a4 4 0 0 0-4-4H8a4 4 0 0 0-4 4v2"></path><circle cx="12" cy="7" r="4"></circle></svg>
       </button>
       <div class="user-dropdown" id="userDropdown">
-        <a class="user-dropdown-item" href="../tracker/index.html">
+        <a class="user-dropdown-item" href="./index.html">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M3 9l9-7 9 7v11a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2z"></path><polyline points="9 22 9 12 15 12 15 22"></polyline></svg>
           Tracking Dashboard
         </a>
-        <a class="user-dropdown-item" href="../tracker/practiced.html">
+        <a class="user-dropdown-item" href="./practiced.html">
           <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M9 11l3 3L22 4" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path><path d="M21 12v7a2 2 0 0 1-2 2H5a2 2 0 0 1-2-2V5a2 2 0 0 1 2-2h11" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round"></path></svg>
           Practiced Stats
         </a>
@@ -69,31 +103,57 @@
   <div class="nav-overlay" id="navOverlay"></div>
   <script src="../assets/js/site.js"></script>
 
-
-
-  <!-- ── Page Header ──────────────────────────────────────────────────── -->
+  <!-- ── Page Header ───────────────────────────────────────────────────── -->
   <header class="page-header"><div class="page-header-inner">
-    <h1>Short Notes &amp; Formula Sheets</h1>
-    <p>Unit and section wise notes for all 8 units of UPSC Physics Optional syllabus.</p>
+    <h1>Practiced Questions Statistics</h1>
+    <p>Track your PYQ practice progress across units and sections.</p>
   </div></header>
 
-  <!-- ── Notes Grid (populated by notes-index.js) ─────────────────────── -->
-  <main class="notes-grid" id="notesGrid" aria-label="Notes index">
-    <!-- Unit cards rendered by JS -->
-    <div class="prose-loading">
-      <div class="prose-spinner"></div>
-      <span>Loading notes index…</span>
+  <!-- ── Tracker Dashboard ─────────────────────────────────────────────── -->
+  <main class="tracker-container">
+    
+    <div id="loading" style="text-align:center; padding: 40px; color: var(--muted);">
+      Loading data...
+    </div>
+
+    <div id="trackerContent" hidden>
+      <!-- Stats -->
+      <div class="tracker-stats">
+        <div class="stats-row">
+          <div class="stats-title" id="progressText">0% Questions Practiced</div>
+          <div class="stats-summary" id="statsSummary">Solved: 0 · Doubt: 0 · Unsolved: 0</div>
+        </div>
+        <div class="progress-bar-bg">
+          <div class="progress-bar-fill" id="progressFill" style="background:#15803d"></div>
+          <div class="progress-bar-fill" id="progressFillDoubt" style="background:#d97706"></div>
+        </div>
+      </div>
+
+      <!-- Table -->
+      <div class="tracker-table-card">
+        <table class="tracker-table">
+          <thead>
+            <tr>
+              <th class="col-name">Unit / Section / Topic</th>
+              <th>Total PYQs</th>
+              <th>Solved</th>
+              <th>Doubt</th>
+              <th>Unsolved</th>
+            </tr>
+          </thead>
+          <tbody id="trackerBody">
+            <!-- Rendered by practiced.js -->
+          </tbody>
+        </table>
+      </div>
     </div>
   </main>
 
   <footer class="site-footer">
     <div style="display:flex;flex-direction:column;gap:12px;width:100%;">
       <div class="footer-row" style="display:flex;justify-content:space-between;flex-wrap:wrap;gap:6px;">
-        <span><span class="brand-inline"><span class="brand-prefix">UPSC </span>Physics<span class="brand-suffix">Hub</span></span> • Short Notes &amp; Formula Sheets</span>
-        <span>Client-side • Offline-ready</span>
-      </div>
-      <div style="text-align:center;font-size:9.5px;opacity:0.8;">
-        Concise formula sheets &amp; revision notes for all 8 syllabus units of UPSC CSE &amp; IFoS Physics Optional.
+        <span><span class="brand-inline"><span class="brand-prefix">UPSC </span>Physics<span class="brand-suffix">Hub</span></span> • Practice Statistics</span>
+        <span>Client-side • Local progress tracking</span>
       </div>
     </div>
   </footer>
@@ -102,6 +162,6 @@
     <svg viewBox="0 0 24 24"><path d="M18 15l-6-6-6 6"/></svg>
   </button>
 
-  <script src="./notes-index.js"></script>
+  <script type="module" src="./practiced-app.js"></script>
 </body>
 </html>

@@ -1,4 +1,5 @@
 import { isBookmarked } from "./bookmarks.js";
+import { getPracticeState } from "./practiced.js";
 
 const esc = s => String(s ?? "").replace(/[&<>"']/g, c => ({"&":"&amp;","<":"&lt;",">":"&gt;","\"":"&quot;","'":"&#39;"}[c]));
 
@@ -10,12 +11,18 @@ export function renderQuestion(q, number) {
   const encoded = encodeURIComponent(fullPrompt);
   const chatgptTarget = `https://chatgpt.com/?q=${encoded}`;
   const bookmarked = isBookmarked(q.id);
+  const practiceState = getPracticeState(q.id);
+  const practiceClass = practiceState === 1 ? " solved" : (practiceState === 2 ? " doubt" : "");
+  const practiceTitle = practiceState === 1 ? "Solved" : (practiceState === 2 ? "Doubt" : "Unchecked");
 
   tr.innerHTML = `
     <td class="q-number" aria-label="Question number">
       ${number}
       <button class="bookmark-btn${bookmarked ? " active" : ""}" type="button" data-id="${esc(q.id)}" title="${bookmarked ? "Remove bookmark" : "Bookmark this question"}" aria-label="${bookmarked ? "Remove bookmark" : "Bookmark this question"}" aria-pressed="${bookmarked}">
         ${bookmarked ? bookmarkFilledIcon() : bookmarkOutlineIcon()}
+      </button>
+      <button class="practice-btn${practiceClass}" type="button" data-id="${esc(q.id)}" title="${practiceTitle}" aria-label="Mark practice state">
+        ${getPracticeIcon(practiceState)}
       </button>
     </td>
     <td class="q-content">
@@ -82,3 +89,15 @@ function analysisIcon(){return `<svg viewBox="0 0 24 24" aria-hidden="true"><pat
 function bookmarkOutlineIcon(){return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z"></path></svg>`}
 function bookmarkFilledIcon(){return `<svg viewBox="0 0 24 24" aria-hidden="true"><path d="M19 21l-7-5-7 5V5a2 2 0 0 1 2-2h10a2 2 0 0 1 2 2z" fill="currentColor"></path></svg>`}
 
+export function getPracticeIcon(state) {
+  if (state === 1) {
+    // Solved (Green tick)
+    return `<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-solved"><circle cx="12" cy="12" r="10" fill="currentColor"></circle><path d="M9 12l2 2 4-4" stroke="white" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" fill="none"></path></svg>`;
+  } else if (state === 2) {
+    // Doubt (Orange dash)
+    return `<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-doubt"><circle cx="12" cy="12" r="10" fill="currentColor"></circle><line x1="8" y1="12" x2="16" y2="12" stroke="white" stroke-width="2" stroke-linecap="round"></line></svg>`;
+  } else {
+    // Unchecked (empty circle)
+    return `<svg viewBox="0 0 24 24" aria-hidden="true" class="icon-unchecked"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"></circle></svg>`;
+  }
+}

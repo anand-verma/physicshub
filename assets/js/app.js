@@ -4,7 +4,7 @@ import { createFilterState, buildFilterUI, updateFilterOptions, applyFilters, so
 import { renderQuestion, markdownToHtml, getPrompt } from "./renderer.js";
 import { AnalysisEngine } from "./analysis.js";
 import { initBookmarks, isBookmarked, toggleBookmark, getBookmarkCount, getBookmarkedIds, onChange as onBookmarkChange } from "./bookmarks.js";
-
+import { initPracticed, togglePracticeState, onChange as onPracticeChange } from "./practiced.js";
 const state = {
   questions: [], syllabus: null, syllabusOrder: null, analysis: null,
   filters: createFilterState(), renderToken: 0, currentResults: [],
@@ -14,6 +14,7 @@ const state = {
 const els = {
   search: document.querySelector("#searchInput"),
   exam: document.querySelector("#examFilter"),
+  practice: document.querySelector("#practiceFilter"),
   filters: document.querySelector("#filters"),
   body: document.querySelector("#questionBody"),
   resultCount: document.querySelector("#resultCount"),
@@ -37,8 +38,13 @@ async function init() {
   try {
     if (els.version) els.version.textContent = `v${CONFIG.version}`;
     await initBookmarks();
+    await initPracticed();
     updateBookmarkBadge();
     onBookmarkChange(updateBookmarkBadge);
+    onPracticeChange(() => {
+      // Re-render if filter is active
+      if (state.filters.practice !== "all") render();
+    });
     [state.questions, state.syllabus] = await Promise.all([loadQuestions(), loadSyllabus()]);
     state.syllabusOrder = buildSyllabusOrder(state.syllabus);
     // Build the lightweight lexical index up front; the semantic model/index is loaded lazily.
@@ -386,6 +392,7 @@ function reset() {
   els.search.value = "";
   els.search.closest(".search-box")?._close?.();
   els.exam.value = "both";
+  if (els.practice) els.practice.value = "all";
   els.sort.value = "smart";
   els.modeRadios.forEach(r => r.checked = r.value === "unit-section-topic");
   buildFilterUI(els.filters, state.filters, onFilterChange);
@@ -428,6 +435,13 @@ els.exam.addEventListener("change", () => {
   updateFilterOptions(state.questions, els.filters, state.filters, state.syllabusOrder);
   render();
 });
+if (els.practice) {
+  els.practice.addEventListener("change", () => {
+    state.filters.practice = els.practice.value;
+    updateFilterOptions(state.questions, els.filters, state.filters, state.syllabusOrder);
+    render();
+  });
+}
 els.modeRadios.forEach(r => r.addEventListener("change", () => {
   if (!r.checked) return;
   state.filters.mode = r.value;
@@ -448,6 +462,13 @@ els.body.addEventListener("click", e => {
   const bmBtn = e.target.closest(".bookmark-btn");
   if (bmBtn) {
     handleBookmarkClick(bmBtn, q);
+    return;
+  }
+
+  // Practice toggle
+  const prBtn = e.target.closest(".practice-btn");
+  if (prBtn) {
+    handlePracticeClick(prBtn, q);
     return;
   }
 
@@ -478,6 +499,18 @@ async function handleBookmarkClick(btn, q) {
   showToast(nowBookmarked ? "Bookmarked" : "Bookmark removed");
   // If viewing bookmarks and just unbookmarked, re-render to remove from view
   if (state.bookmarkFilterActive && !nowBookmarked) render();
+}
+
+import { getPracticeIcon } from "./renderer.js";
+
+async function handlePracticeClick(btn, q) {
+  const newState = await togglePracticeState(q.id);
+  btn.className = `practice-btn${newState === 1 ? " solved" : (newState === 2 ? " doubt" : "")}`;
+  btn.setAttribute("title", newState === 1 ? "Solved" : (newState === 2 ? "Doubt" : "Unchecked"));
+  btn.innerHTML = getPracticeIcon(newState);
+  const toastMsg = newState === 1 ? "Marked as Solved" : (newState === 2 ? "Marked as Doubt" : "Practice state cleared");
+  showToast(toastMsg);
+  if (state.filters.practice !== "all") render();
 }
 
 function updateBookmarkBadge() {
