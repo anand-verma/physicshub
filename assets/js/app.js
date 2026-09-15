@@ -164,6 +164,188 @@ async function copyRichQuestion(q, button, includePrompt = false) {
   return { plain, html };
 }
 
+let html2canvasPromise = null;
+function ensureHtml2Canvas() {
+  if (window.html2canvas) return Promise.resolve(window.html2canvas);
+  if (!html2canvasPromise) {
+    html2canvasPromise = new Promise((resolve, reject) => {
+      const script = document.createElement("script");
+      script.src = "https://cdn.jsdelivr.net/npm/html2canvas@1.4.1/dist/html2canvas.min.js";
+      script.onload = () => resolve(window.html2canvas);
+      script.onerror = () => reject(new Error("Failed to load html2canvas library"));
+      document.head.appendChild(script);
+    });
+  }
+  return html2canvasPromise;
+}
+
+/**
+ * Clones a question content container and pre-composes all figures and
+ * MathJax formulas into self-contained vector/bitmap data URLs.
+ */
+async function prepareQuestionCardClone(qContent) {
+  const clone = qContent.cloneNode(true);
+
+  // 1. Convert diagram figure images into memory data URLs without lazy-loading stalls
+  const origImgs = Array.from(qContent.querySelectorAll("img"));
+  const cloneImgs = Array.from(clone.querySelectorAll("img"));
+  await Promise.all(cloneImgs.map(async (cImg, idx) => {
+    cImg.removeAttribute("loading");
+    cImg.setAttribute("loading", "eager");
+    const orig = origImgs[idx];
+    if (orig) {
+      if (!orig.complete) {
+        await new Promise(r => {
+          orig.onload = orig.onerror = r;
+          setTimeout(r, 800);
+        });
+      }
+      if (orig.naturalWidth > 0) {
+        try {
+          const cvs = document.createElement("canvas");
+          cvs.width = orig.naturalWidth;
+          cvs.height = orig.naturalHeight;
+          const ctx = cvs.getContext("2d");
+          ctx.drawImage(orig, 0, 0);
+          cImg.src = cvs.toDataURL("image/png");
+        } catch (e) {
+          // Keep existing src
+        }
+      }
+    }
+  }));
+
+  // 2. Convert each MathJax SVG equation to an SVG Data URL <img> with exact spacing and baseline
+  const mathCache = document.getElementById("MJX-SVG-global-cache");
+  const globalDefs = mathCache ? mathCache.innerHTML : "";
+
+  const containers = Array.from(clone.querySelectorAll("mjx-container"));
+  containers.forEach(container => {
+    const svg = container.querySelector("svg");
+    if (!svg) return;
+
+    const isDisplay = container.getAttribute("display") === "true";
+    const vAlign = svg.style.verticalAlign || "0px";
+    const w = svg.getAttribute("width") || svg.style.width || "auto";
+    const h = svg.getAttribute("height") || svg.style.height || "auto";
+
+    const svgClone = svg.cloneNode(true);
+    svgClone.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+    svgClone.setAttribute("xmlns:xlink", "http://www.w3.org/1999/xlink");
+    svgClone.style.overflow = "visible";
+
+    if (globalDefs && !svgClone.querySelector("defs")) {
+      const defsEl = document.createElementNS("http://www.w3.org/2000/svg", "defs");
+      defsEl.innerHTML = globalDefs;
+      svgClone.insertBefore(defsEl, svgClone.firstChild);
+    }
+
+    const svgXml = new XMLSerializer().serializeToString(svgClone);
+    const svgDataUrl = "data:image/svg+xml;charset=utf-8," + encodeURIComponent(svgXml);
+
+    const mathImg = document.createElement("img");
+    mathImg.className = "math-img";
+    mathImg.src = svgDataUrl;
+    mathImg.style.cssText = isDisplay
+      ? `display: block; margin: 0.8em auto; max-width: 100%; height: ${h}; border: none !important; background: transparent !important; border-radius: 0 !important; box-shadow: none !important;`
+      : `display: inline-block; vertical-align: ${vAlign}; width: ${w}; height: ${h}; margin: 0 3px; border: none !important; background: transparent !important; border-radius: 0 !important; box-shadow: none !important;`;
+
+    container.parentNode.replaceChild(mathImg, container);
+  });
+
+  return clone;
+}
+
+async function copyQuestionAsImage(tr, button) {
+  if (!navigator.clipboard?.write || !window.ClipboardItem) {
+    throw new Error("Image clipboard is not supported in this browser.");
+  }
+  const qContent = tr.querySelector(".q-content");
+  if (!qContent) throw new Error("Question content not found");
+
+  button?.classList.add("btn-loading");
+
+  const width = Math.min(Math.max(qContent.offsetWidth || 760, 600), 920);
+
+  // Render in an isolated sandbox iframe
+  const iframe = document.createElement("iframe");
+  iframe.style.cssText = "position:fixed;left:-9999px;top:0;width:" + (width + 60) + "px;height:1200px;border:0;visibility:hidden;pointer-events:none;";
+  document.body.appendChild(iframe);
+
+  try {
+    const h2c = await ensureHtml2Canvas();
+    const doc = iframe.contentDocument || iframe.contentWindow.document;
+
+    const preparedClone = await prepareQuestionCardClone(qContent);
+
+    doc.open();
+    doc.write(`<!doctype html>
+<html>
+<head>
+  <meta charset="utf-8">
+  <style>
+    @import url('https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700&family=Source+Serif+4:opsz,wght@8..60,450;8..60,500&display=swap');
+    * { box-sizing: border-box; }
+    body { background: #ffffff; margin: 0; padding: 22px 26px; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; color: #0f172a; width: ${width}px; }
+    .question-main { font-family: "Source Serif 4", Georgia, serif; font-size: 16px; line-height: 1.62; word-spacing: normal; letter-spacing: normal; color: #0f172a; }
+    .question-main p { margin: 0.2em 0 0.7em; }
+    .question-main p:last-child { margin-bottom: 0; }
+    .question-main ol, .question-main ul { margin: 0.3em 0 0.7em; padding-left: 24px; }
+    .question-main img:not(.math-img) { display: block; max-width: min(100%, 620px); max-height: 480px; object-fit: contain; margin: 12px 0; border: 1px solid #e2e8f0; border-radius: 7px; background: #fff; }
+    .math-img { border: none !important; background: transparent !important; border-radius: 0 !important; padding: 0 !important; box-shadow: none !important; }
+    .question-meta { display: flex; justify-content: space-between; align-items: flex-end; gap: 18px; margin-top: 14px; padding-top: 10px; border-top: 1px solid #e2e8f0; font-family: Inter, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif; font-size: 12px; color: #64748b; line-height: 1.45; }
+    .meta-left { min-width: 0; }
+    .meta-left span { display: inline-block; }
+    .meta-left span + span:before { content: " · "; margin: 0 4px; color: #94a3b8; }
+    .meta-right { text-align: right; white-space: nowrap; }
+    .exam { font-weight: 700; color: #334155; font-size: 12.5px; }
+  </style>
+</head>
+<body>
+  <div id="card-root">${preparedClone.innerHTML}</div>
+</body>
+</html>`);
+    doc.close();
+
+    // Ensure all images (diagrams and SVG math equations) are decoded before capturing, with safety timeout
+    const allImages = Array.from(doc.querySelectorAll("img"));
+    await Promise.all(allImages.map(img => {
+      img.removeAttribute("loading");
+      if (img.complete && img.naturalWidth > 0) return Promise.resolve();
+      return new Promise(res => {
+        img.onload = img.onerror = res;
+        setTimeout(res, 800);
+      });
+    }));
+
+    const cardRoot = doc.getElementById("card-root");
+
+    const canvas = await h2c(cardRoot, {
+      scale: 2,
+      backgroundColor: "#ffffff",
+      logging: false,
+      useCORS: true,
+      allowTaint: false,
+      imageTimeout: 2000
+    });
+
+    const blob = await new Promise((resolve, reject) => {
+      canvas.toBlob(b => b ? resolve(b) : reject(new Error("Failed to create image blob")), "image/png");
+    });
+
+    await navigator.clipboard.write([
+      new ClipboardItem({ "image/png": blob })
+    ]);
+
+    showToast("Question image copied to clipboard!");
+    button?.classList.add("copied");
+    setTimeout(() => button?.classList.remove("copied"), 1200);
+  } finally {
+    iframe.remove();
+    button?.classList.remove("btn-loading");
+  }
+}
+
 function blobToDataURL(blob) {
   return new Promise((resolve, reject) => {
     const reader = new FileReader();
@@ -248,6 +430,12 @@ els.body.addEventListener("click", e => {
   const copy = e.target.closest(".copy-btn");
   if (copy) {
     copyRichQuestion(q, copy, false).catch(error => showToast(error.message || "Could not copy question", true));
+    return;
+  }
+
+  const copyImg = e.target.closest(".copy-img-btn");
+  if (copyImg) {
+    copyQuestionAsImage(tr, copyImg).catch(error => showToast(error.message || "Could not copy question image", true));
     return;
   }
 
