@@ -11,7 +11,9 @@ export async function loadQuestions() {
   const raw = await response.json();
 
   questionsCache = raw.map((q, index) => {
-    const topics = Array.isArray(q.syllabus_topic) ? q.syllabus_topic.filter(Boolean) : [];
+    // Retain only the first (primary) topic for each question to ensure strict syllabus alignment 
+    // and maintain coherency across PYQ Repository filters, printing, and PYQ tests.
+    const topics = Array.isArray(q.syllabus_topic) && q.syllabus_topic.length > 0 ? [q.syllabus_topic.filter(Boolean)[0]] : [];
     return {
       ...q,
       _index: index,

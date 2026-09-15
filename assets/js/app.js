@@ -731,22 +731,38 @@ async function printCurrentQuestions() {
     summary.innerHTML = `<div>${leftSide}</div><div>${rightSide}</div>`;
     title.appendChild(summary); printRoot.appendChild(title);
     // Build directly from data so printing never depends on progressive DOM completion.
-    const getGroup = q => q.section || q.topic || q.unit || "General";
-    const uniqueGroups = new Set(questions.map(getGroup));
-    const showGroups = uniqueGroups.size > 1;
-    let currentGroup = null;
+    // Sort questions by Smart Order (Syllabus Order) to ensure they are grouped properly for the Tutorial Sheet
+    const printQuestions = sortQuestions([...questions], { sort: "smart", mode: "unit-section-topic" }, state.syllabusOrder);
 
-    for (let i=0;i<questions.length;i++) {
+    const uniqueSections = new Set(printQuestions.map(q => q.section || q.unit || "General"));
+    const uniqueTopics = new Set(printQuestions.map(q => q._topics?.join(", ")).filter(Boolean));
+    const showSections = uniqueSections.size > 1 || uniqueTopics.size > 1;
+    const showTopics = uniqueTopics.size > 1;
+    let currentSection = null;
+    let currentTopic = null;
+
+    for (let i=0;i<printQuestions.length;i++) {
       if (tokenAtStart !== state.renderToken) return;
-      const q=questions[i];
-      const groupKey = getGroup(q);
+      const q=printQuestions[i];
       
-      if (showGroups && groupKey !== currentGroup) {
-        currentGroup = groupKey;
+      const secKey = q.section || q.unit || "General";
+      const topKey = q._topics?.join(", ");
+      
+      if (showSections && secKey !== currentSection) {
+        currentSection = secKey;
+        currentTopic = null; // reset topic for new section
         const header = document.createElement("div");
         header.className = "print-section-header";
-        header.textContent = currentGroup;
+        header.textContent = currentSection;
         printRoot.appendChild(header);
+      }
+      
+      if (showTopics && topKey && topKey !== currentTopic) {
+        currentTopic = topKey;
+        const subHeader = document.createElement("div");
+        subHeader.className = "print-topic-header";
+        subHeader.textContent = currentTopic;
+        printRoot.appendChild(subHeader);
       }
       
       const article=document.createElement("article"); article.className="print-question";
