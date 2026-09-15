@@ -190,6 +190,7 @@ function onFilterChange(patch) {
 function resetFilters() {
   state.filters = createFilterState();
   syncFilterControls();
+  els.search.closest(".search-box")?._close?.();
   buildFilterUI(els.filters, state.filters, onFilterChange);
   rebuildFilters();
 }
@@ -202,6 +203,32 @@ function wireControls() {
       onFilterChange({ search: els.search.value.trim().toLowerCase() });
     }, 100);
   });
+
+  // Collapsible search on small screens: click icon to expand to full width, blur to collapse
+  (function() {
+    const searchBox = els.search.closest(".search-box");
+    const toolbarRow = searchBox?.closest(".toolbar-row");
+    if (!searchBox) return;
+
+    function openSearch() {
+      searchBox.classList.add("search-open");
+      toolbarRow?.classList.add("search-active");
+      els.search.focus();
+    }
+    function closeSearch() {
+      searchBox.classList.remove("search-open");
+      toolbarRow?.classList.remove("search-active");
+    }
+
+    searchBox.addEventListener("click", () => {
+      if (!searchBox.classList.contains("search-open")) openSearch();
+    });
+    els.search.addEventListener("blur", () => {
+      if (!els.search.value) closeSearch();
+    });
+    // Expose so resetFilters() can collapse the search bar
+    searchBox._close = closeSearch;
+  })();
 
   els.exam.addEventListener("change", () => onFilterChange({ exam: els.exam.value }));
   els.sort.addEventListener("change", () => onFilterChange({ sort: els.sort.value }));

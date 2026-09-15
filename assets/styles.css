@@ -51,7 +51,7 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
 @media(max-width:800px){.actions-col{width:112px}.header-inner{padding:26px 16px 22px}.container{padding:14px 12px 32px}.question-table th,.question-table td{padding:13px 12px}.question-main{font-size:15px}.actions-col{width:76px}}
 /* Toolbar stays one row always; below 560px search collapses to icon, buttons go icon-only */
 @media(max-width:560px){
-  .toolbar-row{gap:6px}
+  .toolbar-row{gap:6px;flex-wrap:wrap;justify-content:flex-start}
   /* Collapsed search — icon only, styled like the other toolbar icon buttons */
   .search-box{flex:0 0 40px;height:40px;overflow:hidden;cursor:pointer;border-radius:9px;border:1px solid var(--line);background:#fff}
   .search-box svg{left:50%;transform:translateX(-50%);transition:left .2s ease,transform .2s ease}
@@ -75,6 +75,8 @@ h1{font-size:clamp(24px,3vw,34px);line-height:1.1;margin:0 0 8px;letter-spacing:
   .bookmark-count{position:absolute;top:-5px;right:-5px;min-width:16px;height:16px;padding:0 4px;font-size:9px;border:2px solid var(--surface,#fff)}
   .clear-btn{width:40px;height:40px;padding:0;justify-content:center}
   .clear-btn>span{display:none}
+  .exam-select{flex: 1 1 auto; height: 40px;}
+  .exam-select select{height: 32px;}
   .filter-grid{flex-direction:column;width:100%}
   .filters-row{flex-direction:column;align-items:stretch}
   .print-btn{width:100%}
