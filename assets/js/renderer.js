@@ -55,7 +55,7 @@ export function renderQuestions(questions) {
 }
 
 function makePrompt(q) {
-  return `Solve this UPSC Physics Optional previous-year question step-by-step. Explain the physical reasoning, assumptions, relevant equations/derivation, and final answer. Present the solution in an exam-oriented manner.\n\nQuestion:\n${q.question_markdown || ""}`;
+  return `Solve this UPSC Physics Optional previous-year question step-by-step. Explain the physical reasoning, assumptions, relevant equations/derivation, and final answer with physical interpretation. Present the solution in an exam-oriented manner.\n\nQuestion:\n${q.question_markdown || ""}`;
 }
 
 export function getPrompt(q) { return makePrompt(q); }
