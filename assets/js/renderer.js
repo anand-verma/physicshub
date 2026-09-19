@@ -33,6 +33,9 @@ export function renderQuestion(q, number) {
           <span>${esc(q.section || "—")}</span>
           <span>${esc(q._topics.join(", ") || "Topic not tagged")}</span>
         </div>
+        <button class="solution-toggle-btn" type="button" title="View solution" aria-label="View solution" aria-expanded="false" data-qid="${esc(q.id)}">
+          <span class="solution-btn-label">Solution</span><svg class="solution-chevron" viewBox="0 0 24 24" aria-hidden="true"><path d="M6 9l6 6 6-6"/></svg>
+        </button>
         <div class="meta-right"><span class="exam">${esc(q.exam)} | ${esc(q.year)} | ${esc(q.marks || "—")}</span></div>
       </div>
     </td>

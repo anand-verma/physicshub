@@ -9,6 +9,7 @@ const state = {
   questions: [], syllabus: null, syllabusOrder: null, analysis: null,
   filters: createFilterState(), renderToken: 0, currentResults: [],
   bookmarkFilterActive: false,
+  solutionsMap: null,
 };
 
 const els = {
@@ -472,6 +473,13 @@ els.body.addEventListener("click", e => {
     return;
   }
 
+  // Solution toggle
+  const solBtn = e.target.closest(".solution-toggle-btn");
+  if (solBtn) {
+    toggleSolution(tr, q, solBtn);
+    return;
+  }
+
   const copy = e.target.closest(".copy-btn");
   if (copy) {
     copyRichQuestion(q, copy, false).catch(error => showToast(error.message || "Could not copy question", true));
@@ -592,6 +600,97 @@ async function toggleAnalysis(tr, q, button) {
       cardRow.querySelector(".analysis-spinner")?.remove();
     }
   }
+}
+
+async function toggleSolution(tr, q, button) {
+  // Check if this question's solution drawer is already open
+  const qContent = tr.querySelector(".q-content");
+  const existingDrawer = qContent?.querySelector(".solution-drawer");
+  if (existingDrawer) {
+    // Close it
+    existingDrawer.classList.remove("open");
+    button.setAttribute("aria-expanded", "false");
+    button.classList.remove("active");
+    // Remove after animation
+    existingDrawer.addEventListener("transitionend", () => existingDrawer.remove(), { once: true });
+    // Fallback if no transition fires
+    setTimeout(() => existingDrawer.remove(), 350);
+    return;
+  }
+
+  // Close any other open solution drawer in the table
+  els.body.querySelectorAll(".solution-drawer").forEach(d => {
+    d.classList.remove("open");
+    d.addEventListener("transitionend", () => d.remove(), { once: true });
+    setTimeout(() => d.remove(), 350);
+  });
+  els.body.querySelectorAll(".solution-toggle-btn.active").forEach(b => {
+    b.classList.remove("active");
+    b.setAttribute("aria-expanded", "false");
+  });
+
+  // Lazy-load solutions on first click (cached for all subsequent clicks)
+  if (!state.solutionsMap) {
+    button.classList.add("loading");
+    try {
+      const { loadSolutions } = await import("./data.js");
+      state.solutionsMap = await loadSolutions();
+    } catch (err) {
+      console.warn("Solutions data could not be loaded:", err);
+      showToast("Could not load solutions", true);
+      button.classList.remove("loading");
+      return;
+    }
+    button.classList.remove("loading");
+    // Bail if the row is no longer in the DOM (e.g. user re-filtered while loading)
+    if (!tr.isConnected) return;
+  }
+
+  // Look up solution
+  const sol = state.solutionsMap.get(q.id);
+
+  // Build drawer
+  const drawer = document.createElement("div");
+  drawer.className = "solution-drawer";
+
+  if (!sol) {
+    drawer.innerHTML = `
+      <div class="solution-content solution-unavailable">
+        <svg viewBox="0 0 24 24" aria-hidden="true" class="solution-unavailable-icon"><circle cx="12" cy="12" r="10" stroke="currentColor" stroke-width="2" fill="none"></circle><line x1="15" y1="9" x2="9" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line><line x1="9" y1="9" x2="15" y2="15" stroke="currentColor" stroke-width="2" stroke-linecap="round"></line></svg>
+        <span>Solution not yet available for this question.</span>
+      </div>`;
+  } else {
+    const reviewBanner = sol.review_flag ? `
+      <div class="solution-review-warning">
+        <svg viewBox="0 0 24 24" aria-hidden="true"><path d="M10.29 3.86L1.82 18a2 2 0 0 0 1.71 3h16.94a2 2 0 0 0 1.71-3L13.71 3.86a2 2 0 0 0-3.42 0z"></path><line x1="12" y1="9" x2="12" y2="13"></line><line x1="12" y1="17" x2="12.01" y2="17"></line></svg>
+        <span>This solution is under review and may contain errors. Please verify independently.</span>
+      </div>` : "";
+    const hintHtml = markdownToHtml(sol.solution_hint || "", []);
+    drawer.innerHTML = `
+      ${reviewBanner}
+      <div class="solution-content solution-hint question-main">${hintHtml}</div>`;
+  }
+
+  // Insert below the question-meta row
+  const metaDiv = qContent.querySelector(".question-meta");
+  if (metaDiv) {
+    metaDiv.after(drawer);
+  } else {
+    qContent.appendChild(drawer);
+  }
+
+  button.setAttribute("aria-expanded", "true");
+  button.classList.add("active");
+
+  // Animate open
+  requestAnimationFrame(() => {
+    drawer.classList.add("open");
+    // Typeset math in the solution
+    if (sol && window.MathJax?.typesetPromise) {
+      const ready = window.MathJax.startup?.promise || Promise.resolve();
+      ready.then(() => window.MathJax.typesetPromise([drawer])).catch(() => {});
+    }
+  });
 }
 
 async function typesetAnalysis(el) {

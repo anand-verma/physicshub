@@ -2,6 +2,22 @@ import { CONFIG } from "./config.js";
 
 let questionsCache = null;
 let syllabusCache = null;
+let solutionsCache = null;
+
+export async function loadSolutions() {
+  if (solutionsCache) return solutionsCache;
+  const url = CONFIG.assetUrl(new URL("../../data/solutions.json", import.meta.url).href, "solutions");
+  const response = await fetch(url, { cache: "default" });
+  if (!response.ok) throw new Error(`solutions.json: HTTP ${response.status}`);
+  const raw = await response.json();
+  solutionsCache = new Map();
+  for (const sol of raw) {
+    if (sol.question_id) {
+      solutionsCache.set(sol.question_id, sol);
+    }
+  }
+  return solutionsCache;
+}
 
 export async function loadQuestions() {
   if (questionsCache) return questionsCache;

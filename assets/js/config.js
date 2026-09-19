@@ -22,7 +22,8 @@ export const CONFIG = {
     analysisIndex: "1.3.0",
     analysisVectors: "1.3.0",
     analysisWorker: "1.3.0",
-    qcabSelection: "1.0"
+    qcabSelection: "1.0",
+    solutions: "1.0"
   },
 
   // HTTP cache policy for fetch requests:
