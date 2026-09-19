@@ -41,7 +41,7 @@
       updateToggleBtn(open);
     });
     overlay?.addEventListener('click', closeNav);
-    document.querySelectorAll('.nav-links .nav-tab, .nav-links .user-dropdown-item').forEach(el => {
+    document.querySelectorAll('.nav-links .nav-tab, .nav-links .user-dropdown-item, .nav-feedback-btn').forEach(el => {
       el.addEventListener('click', closeNav);
     });
 
