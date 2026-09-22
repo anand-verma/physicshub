@@ -29,9 +29,24 @@ function addMargins(target) {
   target.append(left, right);
 }
 
+function questionMetaTag(q) {
+  const parts = [];
+  if (q.exam) parts.push(q.exam);
+  if (q.year) parts.push(q.year);
+  const m = parseMarks(q.marks);
+  if (m) parts.push(`${m} M`);
+  return parts.length ? `[${parts.join(" | ")}]` : "";
+}
+
 function questionPage(q, number, continuation) {
   const p = page(continuation ? "qcab-answer-page qcab-continuation-page" : "qcab-answer-page");
   addMargins(p);
+
+  // Right margin note on every page
+  const note = document.createElement("div");
+  note.className = "qcab-margin-note";
+  note.textContent = "Candidates must not write on this margin";
+  p.appendChild(note);
 
   if (!continuation) {
     const numberEl = document.createElement("div");
@@ -39,19 +54,18 @@ function questionPage(q, number, continuation) {
     numberEl.textContent = `Q. ${number}`;
     p.appendChild(numberEl);
 
-    const marksEl = document.createElement("div");
-    marksEl.className = "qcab-question-marks";
-    marksEl.textContent = `${parseMarks(q.marks) || "—"} M`;
-    p.appendChild(marksEl);
     const content = document.createElement("div");
     content.className = "qcab-question-content";
     content.innerHTML = markdownToHtml(q.question_markdown || "", q.images || []);
+
+    const tag = questionMetaTag(q);
+    if (tag) {
+      const meta = document.createElement("div");
+      meta.className = "qcab-question-meta-tag";
+      meta.textContent = tag;
+      content.appendChild(meta);
+    }
     p.appendChild(content);
-  } else {
-    const note = document.createElement("div");
-    note.className = "qcab-margin-note";
-    note.textContent = "Candidates must not write on this margin";
-    p.appendChild(note);
   }
   return p;
 }
@@ -114,6 +128,7 @@ function layoutListPages(questions) {
       pages.push(current);
       pageNo += 1;
       current = listPage(pageNo);
+      root.appendChild(current);   // attach to DOM so scrollHeight is measurable
       box = current.querySelector(".qcab-list-items");
       box.appendChild(item);
       if (box.scrollHeight > box.clientHeight) {
