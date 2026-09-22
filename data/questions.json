@@ -6,7 +6,7 @@
     "marks": "6+9=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Consider a particle of mass m in two dimensions experiencing a central force  $\\vec{F} = -k\\vec{r}$ , where k is a positive constant and  $\\vec{r}$  is the radius vector of the particle relative to the force center.\n\n- (i) What is the angular momentum  $\\vec{J}$  of the particle relative to the force center? Show that  $\\vec{J}$  is conserved.\n- (ii) Write down the system of equations of motion in two dimensions in polar coordinates. Reduce this system to a one-equation problem and find the equation for the effective potential energy  $U_{\\rm eff}$ .",
+    "question_markdown": "Consider a particle of mass m in two dimensions experiencing a central force  $\\vec{F} = -k\\vec{r}$ , where k is a positive constant and  $\\vec{r}$  is the radius vector of the particle relative to the force center.\n\n(i) What is the angular momentum  $\\vec{J}$  of the particle relative to the force center? Show that  $\\vec{J}$  is conserved.\n(ii) Write down the system of equations of motion in two dimensions in polar coordinates. Reduce this system to a one-equation problem and find the equation for the effective potential energy  $U_{\\rm eff}$ .",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -184,7 +184,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A monochromatic parallel beam of wavelength = 600 nm is incident on a single slit of width = 0 ⋅ 3 mm. A convex lens of focal length = 1 m forms the Fraunhofer diffraction pattern on a screen.\n\n- (i) Determine the angular width and linear width of the central maximum on the screen.\n- (ii) If the slit width is halved, explain quantitatively how diffraction pattern changes.\n- (iii) A second wavelength 450 nm is added. Will the minima of the two wavelengths coincide? Justify mathematically.",
+    "question_markdown": "A monochromatic parallel beam of wavelength = 600 nm is incident on a single slit of width = 0 ⋅ 3 mm. A convex lens of focal length = 1 m forms the Fraunhofer diffraction pattern on a screen.\n\n(i) Determine the angular width and linear width of the central maximum on the screen.\n(ii) If the slit width is halved, explain quantitatively how diffraction pattern changes.\n(iii) A second wavelength 450 nm is added. Will the minima of the two wavelengths coincide? Justify mathematically.",
     "unit": "Waves and Optics",
     "section": "Diffraction",
     "syllabus_topic": [
@@ -1870,7 +1870,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "From the pure rotational absorption spectra of a diatomic molecule (HF), the wave number difference between the consecutive rotational lines is found to be  $\\Delta \\bar{\\nu} = 4050 \\text{ m}^{-1}$ . Calculate the following :\n\n- (1) Rotational constant\n- (2) Moment of inertia\n- (3) Distance between two atoms (bond length)\n\n[ Given,  $M_{\\rm H} = 1 \\text{ u}, M_{\\rm F} = 19 \\text{ u}$  ]",
+    "question_markdown": "From the pure rotational absorption spectra of a diatomic molecule (HF), the wave number difference between the consecutive rotational lines is found to be  $\\Delta \\bar{\\nu} = 4050 \\text{ m}^{-1}$ . Calculate the following :\n\n(1) Rotational constant\n(2) Moment of inertia\n(3) Distance between two atoms (bond length)\n\n[ Given,  $M_{\\rm H} = 1 \\text{ u}, M_{\\rm F} = 19 \\text{ u}$  ]",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -2174,7 +2174,7 @@
     "marks": "10+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Define cyclic coordinates and find their connections with the symmetries of the system.\n- (ii) A system with two degrees of freedom is described by the Lagrangian  $L=\\frac{1}{2}m_1\\dot{q}_1^2+\\frac{1}{2}m_2q_1^2\\dot{q}_2^2-\\frac{\\alpha}{q_1},\\,\\alpha$  is constant.\n\nFind the cyclic coordinates, conserved quantities and symmetries for this system, if any.",
+    "question_markdown": "(i) Define cyclic coordinates and find their connections with the symmetries of the system.\n(ii) A system with two degrees of freedom is described by the Lagrangian  $L=\\frac{1}{2}m_1\\dot{q}_1^2+\\frac{1}{2}m_2q_1^2\\dot{q}_2^2-\\frac{\\alpha}{q_1},\\,\\alpha$  is constant.\n\nFind the cyclic coordinates, conserved quantities and symmetries for this system, if any.",
     "unit": "Mechanics",
     "section": "System Of Particles And Analytical Mechanics",
     "syllabus_topic": [
@@ -2302,7 +2302,7 @@
     "marks": "4+4=8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A parallel beam of sodium light of wavelength 5893 Å is incident on a diffraction grating. The angle between the first order spectra on either side of the normal is 27<sup>∘</sup> 42′ . Find :\n\n- (i) The number of rulings/mm on the grating.\n- (ii) The greatest number of bright images obtained.",
+    "question_markdown": "A parallel beam of sodium light of wavelength 5893 Å is incident on a diffraction grating. The angle between the first order spectra on either side of the normal is 27<sup>∘</sup> 42′ . Find :\n\n(i) The number of rulings/mm on the grating.\n(ii) The greatest number of bright images obtained.",
     "unit": "Waves and Optics",
     "section": "Diffraction",
     "syllabus_topic": [
@@ -2384,7 +2384,7 @@
       "q_1hene8xh_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "(i) What is the method of images? What are the conditions which must be satisfied while applying the method of images to deal with electrostatic problems?\n- (ii) A point charge Q is located at the point (a,0,b) between two semi-infinite conducting planes intersecting at right angles as shown in the figure. Using the method of images, determine the potential at point P(x,y,z) in the region  $z \\ge 0$  and  $x \\ge 0$  and the force on Q.\n\n![](q_1hene8xh_img_1.jpeg)",
+    "question_markdown": "(i) What is the method of images? What are the conditions which must be satisfied while applying the method of images to deal with electrostatic problems?\n(ii) A point charge Q is located at the point (a,0,b) between two semi-infinite conducting planes intersecting at right angles as shown in the figure. Using the method of images, determine the potential at point P(x,y,z) in the region  $z \\ge 0$  and  $x \\ge 0$  and the force on Q.\n\n![](q_1hene8xh_img_1.jpeg)",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electrostatics And Magnetostatics",
     "syllabus_topic": [
@@ -2400,7 +2400,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A certain linear, homogeneous, isotropic, dielectric material has a relative permittivity,  $\\varepsilon_{\\rm r}=1\\cdot 8$ . If potential V =  $-4000{\\rm y}$  volts in the material, then find :\n\n- (i) The electric flux density D, and\n- (ii) The polarisation P.\n\nTake vacuum permittivity  $\\varepsilon_0 = 8 \\cdot 85 \\times 10^{-12}$  farad/m.",
+    "question_markdown": "A certain linear, homogeneous, isotropic, dielectric material has a relative permittivity,  $\\varepsilon_{\\rm r}=1\\cdot 8$ . If potential V =  $-4000{\\rm y}$  volts in the material, then find :\n\n(i) The electric flux density D, and\n(ii) The polarisation P.\n\nTake vacuum permittivity  $\\varepsilon_0 = 8 \\cdot 85 \\times 10^{-12}$  farad/m.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electrostatics And Magnetostatics",
     "syllabus_topic": [
@@ -2434,7 +2434,7 @@
       "q_3qxo2nvi_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "For the following series LCR circuit,\n\n![](q_3qxo2nvi_img_1.jpeg)\n\nCalculate:\n\n- (i) The resonant frequency of the circuit.\n- (ii) The maximum current in the circuit.\n- (iii) The voltage across C at resonance.\n- (iv) The power absorbed by the circuit at resonance.",
+    "question_markdown": "For the following series LCR circuit,\n\n![](q_3qxo2nvi_img_1.jpeg)\n\nCalculate:\n\n(i) The resonant frequency of the circuit.\n(ii) The maximum current in the circuit.\n(iii) The voltage across C at resonance.\n(iv) The power absorbed by the circuit at resonance.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -2466,7 +2466,7 @@
     "marks": "5+10=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Show that the vector potential A⃗ at the position defined by the vector ⃗r in a uniform electric and magnetic field is A⃗ = 1 2 (B⃗ × ⃗r).\n- (ii) Find out the divergence and curl of the vector potential A. ⃗",
+    "question_markdown": "(i) Show that the vector potential $\\vec{A}$ at the position defined by the vector $\\vec{r}$ in a uniform electric and magnetic field is $\\vec{A} = \\frac{1}{2}(\\vec{B} \\times \\vec{r})$.\n\n(ii) Find out the divergence and curl of the vector potential $\\vec{A}$.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electromagnetic Theory",
     "syllabus_topic": [
@@ -2498,7 +2498,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Assume the Sun to be a black body at temperature 5800 K. Use Stefan's law to calculate :\n\n- (i) The total energy emitted by the Sun per second, and\n- (ii) The energy reaching the top of the Earth's atmosphere.\n\nGiven : = 5 ⋅ 672 × 10−8 SI units,\n\nRadius of the Sun = 7 × 10<sup>8</sup> m,\n\nThe distance of the Earth's atmosphere from the Sun = 1 ⋅ 5 × 10<sup>11</sup> m.",
+    "question_markdown": "Assume the Sun to be a black body at temperature 5800 K. Use Stefan's law to calculate :\n\n(i) The total energy emitted by the Sun per second, and\n(ii) The energy reaching the top of the Earth's atmosphere.\n\nGiven : = 5 ⋅ 672 × 10−8 SI units,\n\nRadius of the Sun = 7 × 10<sup>8</sup> m,\n\nThe distance of the Earth's atmosphere from the Sun = 1 ⋅ 5 × 10<sup>11</sup> m.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Black Body Radiation",
     "syllabus_topic": [
@@ -2514,7 +2514,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "One gram of water (1 cm<sup>3</sup>) becomes 1671 cm<sup>3</sup> of steam when boiled at constant pressure of 1 atm ( $1 \\cdot 013 \\times 10^5$  Pa). The heat of vapourisation at this pressure is L =  $2 \\cdot 256 \\times 10^6$  J/kg.\n\nCalculate:\n\n- (i) The work done by the water when it vapourizes, and\n- (ii) Increase in its internal energy.",
+    "question_markdown": "One gram of water (1 cm<sup>3</sup>) becomes 1671 cm<sup>3</sup> of steam when boiled at constant pressure of 1 atm ( $1 \\cdot 013 \\times 10^5$  Pa). The heat of vapourisation at this pressure is L =  $2 \\cdot 256 \\times 10^6$  J/kg.\n\nCalculate:\n\n(i) The work done by the water when it vapourizes, and\n(ii) Increase in its internal energy.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -2530,7 +2530,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "For silver, the specific heat at constant pressure in the\nrange of 50 K to 100 K is given by :\nCp = 0 ⋅076 T −0 ⋅00026 T2 −0 ⋅15 cal mol−1deg−1\nIf 2 moles of silver are heated from 50 K to 100 K, calculate\nthe change in entropy.",
+    "question_markdown": "For silver, the specific heat at constant pressure in the range of $50\\text{ K}$ to $100\\text{ K}$ is given by:\n$$C_p = 0.076\\,T - 0.00026\\,T^2 - 0.15\\text{ cal mol}^{-1}\\text{deg}^{-1}$$\nIf $2\\text{ moles}$ of silver are heated from $50\\text{ K}$ to $100\\text{ K}$, calculate the change in entropy.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -2546,7 +2546,7 @@
     "marks": "15+5=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Assuming the Maxwell's velocity distribution formula, find out the value of :\n\n- (A) Mean velocity (v),\n- (B) The most probable velocity  $(v_{mp})$ , and\n- (C) Root mean square speed  $(v_{rms})$\n\nin terms of the Boltzmann constant  $(k_B)$  and show that :\n\n$$v_{rms} > \\bar{v} > v_{mp}$$\n.\n\nIf nitrogen molecules are kept at 27°C, find out the value of  $v_{\\rm rms}, \\bar{v}$  and  $v_{\\rm mp}.$ \n\nGiven : Molecular mass of nitrogen  $M = 28 \\times 10^{-3} \\text{ kg/mol}$  and gas constant  $R = 8 \\cdot 314 \\text{ J.mol}^{-1} \\text{K}^{-1}$ .",
+    "question_markdown": "Assuming the Maxwell's velocity distribution formula, find out the value of :\n\n(A) Mean velocity (v),\n(B) The most probable velocity  $(v_{mp})$ , and\n(C) Root mean square speed  $(v_{rms})$\n\nin terms of the Boltzmann constant  $(k_B)$  and show that :\n\n$$v_{rms} > \\bar{v} > v_{mp}$$\n.\n\nIf nitrogen molecules are kept at 27°C, find out the value of  $v_{\\rm rms}, \\bar{v}$  and  $v_{\\rm mp}.$ \n\nGiven : Molecular mass of nitrogen  $M = 28 \\times 10^{-3} \\text{ kg/mol}$  and gas constant  $R = 8 \\cdot 314 \\text{ J.mol}^{-1} \\text{K}^{-1}$ .",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -2594,7 +2594,7 @@
     "marks": "6+2=8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A particle is described by the wave function  $\\psi(x,t) = e^{i(kx-\\omega t)}$ .\n\n- (i) Is this wave function an eigenfunction corresponding to any dynamical variable or variables? If so, name the variable(s).\n- (ii) Does this represent a ground state?",
+    "question_markdown": "A particle is described by the wave function  $\\psi(x,t) = e^{i(kx-\\omega t)}$ .\n\n(i) Is this wave function an eigenfunction corresponding to any dynamical variable or variables? If so, name the variable(s).\n(ii) Does this represent a ground state?",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -2658,7 +2658,7 @@
     "marks": "9+3+3=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Derive an expression for density of states for a free electron gas in one dimension. Hence, show its variation with energy for a one-dimensional metallic crystal.\n- (ii) Where do you find the applications of free electron gas model?",
+    "question_markdown": "(i) Derive an expression for density of states for a free electron gas in one dimension. Hence, show its variation with energy for a one-dimensional metallic crystal.\n(ii) Where do you find the applications of free electron gas model?",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -2754,7 +2754,7 @@
     "marks": "15+5=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) With suitable diagrams, explain the intensity distribution of spectral lines in vibrational-electronic spectra by using the Franck-Condon principle.\n- (ii) Calculate the positions of the first two rotational Raman lines in the spectrum of  $H_2$ , if its bond length is  $0 \\cdot 074$  nm. [Given:  ${}^1H = 1 \\cdot 673 \\times 10^{-27} \\text{ kg}$ ]",
+    "question_markdown": "(i) With suitable diagrams, explain the intensity distribution of spectral lines in vibrational-electronic spectra by using the Franck-Condon principle.\n(ii) Calculate the positions of the first two rotational Raman lines in the spectrum of  $H_2$ , if its bond length is  $0 \\cdot 074$  nm. [Given:  ${}^1H = 1 \\cdot 673 \\times 10^{-27} \\text{ kg}$ ]",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -2770,7 +2770,7 @@
     "marks": "4+4=8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Discuss the importance of studying the isotope effect in rotational spectroscopy.\n- (ii) If hydrogen is substituted by deuterium in hydrogen molecule, calculate the change in rotational constant *B*.",
+    "question_markdown": "(i) Discuss the importance of studying the isotope effect in rotational spectroscopy.\n(ii) If hydrogen is substituted by deuterium in hydrogen molecule, calculate the change in rotational constant *B*.",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -2898,7 +2898,7 @@
     "marks": "10+5+5=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Explain the Bravais lattice and non-Bravais lattice with suitable diagram.\n- (ii) Draw the (1 0 0), (1 1 0) and (1 1 1) planes in a cubic unit cell.\n- (iii) Obtain the Miller indices of a plane with intercepts a, b/2, 3c in a simple cubic unit cell.",
+    "question_markdown": "(i) Explain the Bravais lattice and non-Bravais lattice with suitable diagram.\n(ii) Draw the (1 0 0), (1 1 0) and (1 1 1) planes in a cubic unit cell.\n(iii) Obtain the Miller indices of a plane with intercepts a, b/2, 3c in a simple cubic unit cell.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Crystal Structure & Its Determination",
     "syllabus_topic": [
@@ -2930,7 +2930,7 @@
     "marks": "10+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Give a qualitative description of the BCS theory and explain how it accounts for the superconducting state.\n- (ii) The critical field of niobium is 1 × 10<sup>5</sup> A/m at 8 K and 2 × 10<sup>5</sup> A/m at absolute zero. Find the transition temperature of the element.",
+    "question_markdown": "(i) Give a qualitative description of the BCS theory and explain how it accounts for the superconducting state.\n(ii) The critical field of niobium is 1 × 10<sup>5</sup> A/m at 8 K and 2 × 10<sup>5</sup> A/m at absolute zero. Find the transition temperature of the element.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Superconductivity",
     "syllabus_topic": [
@@ -5114,7 +5114,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Derive the expressions for gravitational potentials at a point (I) outside the spherical shell, (II) inside the spherical shell.\n- (ii) Calculate the escape velocity of a body of mass 10 kg from the surface of Moon  $(g_{\\text{Moon}} = \\frac{1}{6}g_{\\text{Earth}})$ . Mass of Moon  $= 7 \\cdot 3 \\times 10^{22}$  kg Radius of Moon  $= 1 \\cdot 7 \\times 10^6$  m",
+    "question_markdown": "(i) Derive the expressions for gravitational potentials at a point (I) outside the spherical shell, (II) inside the spherical shell.\n(ii) Calculate the escape velocity of a body of mass 10 kg from the surface of Moon  $(g_{\\text{Moon}} = \\frac{1}{6}g_{\\text{Earth}})$ . Mass of Moon  $= 7 \\cdot 3 \\times 10^{22}$  kg Radius of Moon  $= 1 \\cdot 7 \\times 10^6$  m",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -5162,7 +5162,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Prove that the separation of two colliding particles is same, when observed in centre of mass and laboratory systems.\n- (ii) Determine the kinetic energy of a thin disc of mass 0.5 kg and radius 0.2 m rotating with 100 rotations per second around the axis passing through its centre and perpendicular to its plane.",
+    "question_markdown": "(i) Prove that the separation of two colliding particles is same, when observed in centre of mass and laboratory systems.\n(ii) Determine the kinetic energy of a thin disc of mass 0.5 kg and radius 0.2 m rotating with 100 rotations per second around the axis passing through its centre and perpendicular to its plane.",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -5178,7 +5178,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) The quantities of rotatory motion are analogous to those of translatory motion. Write the corresponding equations of translatory and rotatory motion.\n- (ii) Describe the theorems of perpendicular and parallel axes in case of a plane lamina.",
+    "question_markdown": "(i) The quantities of rotatory motion are analogous to those of translatory motion. Write the corresponding equations of translatory and rotatory motion.\n(ii) Describe the theorems of perpendicular and parallel axes in case of a plane lamina.",
     "unit": "Mechanics",
     "section": "Rigid Body Dynamics",
     "syllabus_topic": [
@@ -5274,7 +5274,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What are the requisite conditions for observation of interference pattern on a screen?\n- (ii) Derive the expression for fringe width and intensity at a point on the screen in a double slit experiment.",
+    "question_markdown": "(i) What are the requisite conditions for observation of interference pattern on a screen?\n(ii) Derive the expression for fringe width and intensity at a point on the screen in a double slit experiment.",
     "unit": "Waves and Optics",
     "section": "Interference",
     "syllabus_topic": [
@@ -5290,7 +5290,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What is the difference between Fresnel diffraction and Fraunhofer diffraction ?\n- (ii) What is resolving power of a telescope ? Why is the resolving power of microscope more with UV light than with visible light ?",
+    "question_markdown": "(i) What is the difference between Fresnel diffraction and Fraunhofer diffraction ?\n(ii) What is resolving power of a telescope ? Why is the resolving power of microscope more with UV light than with visible light ?",
     "unit": "Waves and Optics",
     "section": "Diffraction",
     "syllabus_topic": [
@@ -5306,7 +5306,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Write conditions for working of a step-index optical fiber. In a step-index fiber, the core and cladding materials have refractive indices  $1\\cdot 50$  and  $1\\cdot 43$ , respectively.\n\nFind the following:\n\n- (i) Critical propagation angle\n- (ii) Acceptance angle\n- (iii) Total time delay in 1 km length of the fiber\n- (iv) Total dispersion in 50 km length of the fiber",
+    "question_markdown": "Write conditions for working of a step-index optical fiber. In a step-index fiber, the core and cladding materials have refractive indices  $1\\cdot 50$  and  $1\\cdot 43$ , respectively.\n\nFind the following:\n\n(i) Critical propagation angle\n(ii) Acceptance angle\n(iii) Total time delay in 1 km length of the fiber\n(iv) Total dispersion in 50 km length of the fiber",
     "unit": "Waves and Optics",
     "section": "Polarisation And Modern Optics",
     "syllabus_topic": [
@@ -5500,7 +5500,7 @@
       "q_t4bjdrhh_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "A piston-cylinder device initially contains air at 150 kPa and  $27^{\\circ}$ C. At this state, the piston is resting on a pair of stops, as shown in the figure, and the enclosed volume is 400 L. The mass of the piston is such that a 350 kPa pressure is required to move it. The air is now heated until the volume is doubled. Determine :\n\n- (i) the final temperature,\n- (ii) the work done by the air, and\n- (iii) the total heat transferred to air.\n\nGiven :  $U_{300 \\text{ K}} = 214 \\text{ kJ/kg}$  and  $U_{\\text{final}} = 1113 \\text{ kJ/kg}$ Gas constant of air,  $R = 0 \\cdot 287 \\text{ kPa.m}^3/\\text{kg.K}$ \n\n![](q_t4bjdrhh_img_1.jpeg)",
+    "question_markdown": "A piston-cylinder device initially contains air at 150 kPa and  $27^{\\circ}$ C. At this state, the piston is resting on a pair of stops, as shown in the figure, and the enclosed volume is 400 L. The mass of the piston is such that a 350 kPa pressure is required to move it. The air is now heated until the volume is doubled. Determine :\n\n(i) the final temperature,\n(ii) the work done by the air, and\n(iii) the total heat transferred to air.\n\nGiven :  $U_{300 \\text{ K}} = 214 \\text{ kJ/kg}$  and  $U_{\\text{final}} = 1113 \\text{ kJ/kg}$ Gas constant of air,  $R = 0 \\cdot 287 \\text{ kPa.m}^3/\\text{kg.K}$ \n\n![](q_t4bjdrhh_img_1.jpeg)",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -5532,7 +5532,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Define Joule-Kelvin coefficient. Write it in its mathematical form.\n- (ii) Determine the Joule-Kelvin coefficient for a van der Waals gas. Hence, obtain an expression for temperature of inversion. Discuss the conditions under which heating or cooling is produced.",
+    "question_markdown": "(i) Define Joule-Kelvin coefficient. Write it in its mathematical form.\n(ii) Determine the Joule-Kelvin coefficient for a van der Waals gas. Hence, obtain an expression for temperature of inversion. Discuss the conditions under which heating or cooling is produced.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -5966,7 +5966,7 @@
       "q_qs09r0rz_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "![](q_qs09r0rz_img_1.jpeg)\n\n- (i) Determine the input and output impedances of the amplifier in given figure. The op-amp datasheet gives in = 2 MΩ, out = 75 Ω and ol = 200, 000 (open loop voltage gain).\n- (ii) Find the closed-loop voltage gain.",
+    "question_markdown": "![](q_qs09r0rz_img_1.jpeg)\n\n(i) Determine the input and output impedances of the amplifier in given figure. The op-amp datasheet gives in = 2 MΩ, out = 75 Ω and ol = 200, 000 (open loop voltage gain).\n(ii) Find the closed-loop voltage gain.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -6950,7 +6950,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Consider two frames of reference S and S' having a common origin O. The frame S' is rotating with respect to the fixed frame S with a uniform $\\vec{\\omega} = 3a_x \\operatorname{rad} \\operatorname{s}^{-1}$ . A projectile of unit mass at position vector $\\vec{r} = 7a_x + 4a_y \\operatorname{m}$  is moving with $\\vec{v} = 14a_y \\operatorname{m} \\operatorname{s}^{-1}$ . Calculate in the rotating frame S' the following forces on the projectile:\n\n- (i) Euler's force\n- (ii) Coriolis force\n- (iii) Centrifugal force",
+    "question_markdown": "Consider two frames of reference S and S' having a common origin O. The frame S' is rotating with respect to the fixed frame S with a uniform $\\vec{\\omega} = 3a_x \\operatorname{rad} \\operatorname{s}^{-1}$ . A projectile of unit mass at position vector $\\vec{r} = 7a_x + 4a_y \\operatorname{m}$  is moving with $\\vec{v} = 14a_y \\operatorname{m} \\operatorname{s}^{-1}$ . Calculate in the rotating frame S' the following forces on the projectile:\n\n(i) Euler's force\n(ii) Coriolis force\n(iii) Centrifugal force",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -7514,7 +7514,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(a) Why does Stern-Gerlach experiment enjoy so much importance in atomic physics?\n- (b) Draw the schematic diagram of this experiment and comment on the shapes of the magnet pole pieces.\n- (c) Why was the atomic beam of silver used in this experiment?",
+    "question_markdown": "(a) Why does Stern-Gerlach experiment enjoy so much importance in atomic physics?\n(b) Draw the schematic diagram of this experiment and comment on the shapes of the magnet pole pieces.\n(c) Why was the atomic beam of silver used in this experiment?",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -7578,7 +7578,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) In a diatomic molecule when one constituent atom is replaced by one of its heavier isotopes, what change takes place in the rotational spectrum?\n- (ii) Calculate the change in rotational constant *B* when hydrogen is replaced by deuterium in the hydrogen molecule.\n- (iii) Draw the spectra of rigid and non-rigid rotors by using the schematic representation of the rotational energy levels and comment on it.",
+    "question_markdown": "(i) In a diatomic molecule when one constituent atom is replaced by one of its heavier isotopes, what change takes place in the rotational spectrum?\n(ii) Calculate the change in rotational constant *B* when hydrogen is replaced by deuterium in the hydrogen molecule.\n(iii) Draw the spectra of rigid and non-rigid rotors by using the schematic representation of the rotational energy levels and comment on it.",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -7918,7 +7918,7 @@
       "q_t31yvb4z_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "Two spaceships are approaching each other as depicted below\n\n![](q_t31yvb4z_img_1.jpeg)\n\nSpaceship 1 is moving with a velocity  $\\vec{u}_1 = 0 \\cdot 7c \\ \\hat{x}$ , while spaceship 2 is moving with a velocity  $\\vec{u}_2 = -0 \\cdot 8c \\ \\hat{x}$  as measured by the stationary observer on Earth. Here, c is the velocity of light in vacuum and  $\\hat{x}$  is the unit vector along the x-axis.\n\n- (i) What, according to Galilean addition of velocity, is the speed of spaceship 2 with respect to spaceship 1 (in terms of c)?\n- (ii) What, according to relativistic addition of velocities, is the speed of spaceship 2 with respect to spaceship 1 (in terms of c)?\n- (iii) Spaceship 1 emits a light signal towards spaceship 2. The observer on spaceship 2 measures the frequency of the light signal to be 10<sup>16</sup> Hz. What was the original frequency of the light signal?",
+    "question_markdown": "Two spaceships are approaching each other as depicted below\n\n![](q_t31yvb4z_img_1.jpeg)\n\nSpaceship 1 is moving with a velocity  $\\vec{u}_1 = 0 \\cdot 7c \\ \\hat{x}$ , while spaceship 2 is moving with a velocity  $\\vec{u}_2 = -0 \\cdot 8c \\ \\hat{x}$  as measured by the stationary observer on Earth. Here, c is the velocity of light in vacuum and  $\\hat{x}$  is the unit vector along the x-axis.\n\n(i) What, according to Galilean addition of velocity, is the speed of spaceship 2 with respect to spaceship 1 (in terms of c)?\n(ii) What, according to relativistic addition of velocities, is the speed of spaceship 2 with respect to spaceship 1 (in terms of c)?\n(iii) Spaceship 1 emits a light signal towards spaceship 2. The observer on spaceship 2 measures the frequency of the light signal to be 10<sup>16</sup> Hz. What was the original frequency of the light signal?",
     "unit": "Mechanics",
     "section": "Special Theory Of Relativity",
     "syllabus_topic": [
@@ -8000,7 +8000,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "In a Newton's ring experiment, explain the following:\n\n- (i) Why are the fringes circular?\n- (ii) Why is the central spot dark as seen by reflection?\n- (iii) How can one obtain Newton's ring with bright centre?",
+    "question_markdown": "In a Newton's ring experiment, explain the following:\n\n(i) Why are the fringes circular?\n(ii) Why is the central spot dark as seen by reflection?\n(iii) How can one obtain Newton's ring with bright centre?",
     "unit": "Waves and Optics",
     "section": "Interference",
     "syllabus_topic": [
@@ -8048,7 +8048,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Discuss the phenomenon of birefringence in a crystal. What do you understand by positive and negative crystals ?\n\nIf the refractive indices of a calcite crystal for E-ray and O-ray are  $1\\cdot 488$  and  $1\\cdot 658$ , respectively, then calculate the thickness of the crystal for which it can work as\n\n- (i) quarter wave plate,\n- (ii) half wave plate.\n\n(Wavelength of the light is 5890 Å)",
+    "question_markdown": "Discuss the phenomenon of birefringence in a crystal. What do you understand by positive and negative crystals ?\n\nIf the refractive indices of a calcite crystal for E-ray and O-ray are  $1\\cdot 488$  and  $1\\cdot 658$ , respectively, then calculate the thickness of the crystal for which it can work as\n\n(i) quarter wave plate,\n(ii) half wave plate.\n\n(Wavelength of the light is 5890 Å)",
     "unit": "Waves and Optics",
     "section": "Polarisation And Modern Optics",
     "syllabus_topic": [
@@ -8882,7 +8882,7 @@
     "marks": "8+7=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Calculate the mass and momentum of a proton of rest mass  $1.67 \\times 10^{-27}$  kg moving with a velocity of 0.8c, where c is the velocity of light. If it collides and sticks to a stationary nucleus of mass  $5 \\cdot 0 \\times 10^{-26}$  kg, find the velocity of the resultant particle.\n- (ii) Calculate the mass of the particle whose kinetic energy is half of its total energy. Find the velocity with which the particle is travelling.",
+    "question_markdown": "(i) Calculate the mass and momentum of a proton of rest mass  $1.67 \\times 10^{-27}$  kg moving with a velocity of 0.8c, where c is the velocity of light. If it collides and sticks to a stationary nucleus of mass  $5 \\cdot 0 \\times 10^{-26}$  kg, find the velocity of the resultant particle.\n(ii) Calculate the mass of the particle whose kinetic energy is half of its total energy. Find the velocity with which the particle is travelling.",
     "unit": "Mechanics",
     "section": "Special Theory Of Relativity",
     "syllabus_topic": [
@@ -9144,7 +9144,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Explain the characteristics of the following thermodynamic processes for a perfect gas:\n\n- (i) Isothermal process\n- (ii) Adiabatic process\n- (iii) Isobaric process\n- (iv) Isochoric process\n\nObtain the expression for the work done by the gas during the above processes.",
+    "question_markdown": "Explain the characteristics of the following thermodynamic processes for a perfect gas:\n\n(i) Isothermal process\n(ii) Adiabatic process\n(iii) Isobaric process\n(iv) Isochoric process\n\nObtain the expression for the work done by the gas during the above processes.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -9384,7 +9384,7 @@
     "marks": "7 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "The quantum numbers of two electrons in a two-valence electron atom are;\n\n$$n_1 = 8$$\n  $l_1 = 4$   $s_1 = \\frac{1}{2}$ \n\n$$n_2 = 7$$\n  $l_2 = 2$   $s_2 = \\frac{1}{2}$ \n\n- (i) Assuming L S coupling, find the possible value of L and hence of J.\n- (ii) Assuming j j coupling, find the possible values of J.",
+    "question_markdown": "The quantum numbers of two electrons in a two-valence electron atom are;\n\n$$n_1 = 8$$\n  $l_1 = 4$   $s_1 = \\frac{1}{2}$ \n\n$$n_2 = 7$$\n  $l_2 = 2$   $s_2 = \\frac{1}{2}$ \n\n(i) Assuming L S coupling, find the possible value of L and hence of J.\n(ii) Assuming j j coupling, find the possible values of J.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -9676,7 +9676,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Define the angular velocity ω of a rigid body rotating about some axis.\n- (ii) Then derive the relation\n\n$$\\vec{v} = \\vec{\\omega} \\times \\vec{r}$$\n\nfor the velocity of a point in the body with position vector  $\\vec{r}$  relative to an origin on the axis. Draw a diagram explaining all the vectors.",
+    "question_markdown": "(i) Define the angular velocity ω of a rigid body rotating about some axis.\n(ii) Then derive the relation\n\n$$\\vec{v} = \\vec{\\omega} \\times \\vec{r}$$\n\nfor the velocity of a point in the body with position vector  $\\vec{r}$  relative to an origin on the axis. Draw a diagram explaining all the vectors.",
     "unit": "Mechanics",
     "section": "Rigid Body Dynamics",
     "syllabus_topic": [
@@ -9986,7 +9986,7 @@
       "q_ha54ha38_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "The impedance function of a parallel R, L and C circuit has poles loaded at  $-3 \\pm 4j$  radians/second. If the value of L = 1 Henry, determine the following:\n\n- (i) The value of R and C.\n- (ii) What is the quality factor of this circuit? Derive an expression for series and parallel circuit.\n\n![](q_ha54ha38_img_1.jpeg)",
+    "question_markdown": "The impedance function of a parallel R, L and C circuit has poles loaded at  $-3 \\pm 4j$  radians/second. If the value of L = 1 Henry, determine the following:\n\n(i) The value of R and C.\n(ii) What is the quality factor of this circuit? Derive an expression for series and parallel circuit.\n\n![](q_ha54ha38_img_1.jpeg)",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -10132,7 +10132,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A gas of N spinless Bose particles of mass m is enclosed in a volume V at a temperature T.\n\n- (i) Find an expression for the density of single-particle state  $D(\\varepsilon)$  as a function of the single-particle energy  $\\varepsilon$ . Sketch the result.\n- (ii) Write down an integral expression which implicitly determines  $\\mu(T)$ . Referring to your sketch in (i), determine in which direction  $\\mu(T)$  moves as T is lowered.",
+    "question_markdown": "A gas of N spinless Bose particles of mass m is enclosed in a volume V at a temperature T.\n\n(i) Find an expression for the density of single-particle state  $D(\\varepsilon)$  as a function of the single-particle energy  $\\varepsilon$ . Sketch the result.\n(ii) Write down an integral expression which implicitly determines  $\\mu(T)$ . Referring to your sketch in (i), determine in which direction  $\\mu(T)$  moves as T is lowered.",
     "unit": "Thermal and Statistical Physics",
     "section": "Statistical Physics",
     "syllabus_topic": [
@@ -10628,7 +10628,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Obtain expressions for the moment of inertia of a solid cone about its\n\n- (i) Vertical axis and\n- (ii) axis passing through the vertex and parallel to its base.",
+    "question_markdown": "Obtain expressions for the moment of inertia of a solid cone about its\n\n(i) Vertical axis and\n(ii) axis passing through the vertex and parallel to its base.",
     "unit": "Mechanics",
     "section": "Rigid Body Dynamics",
     "syllabus_topic": [
@@ -10872,7 +10872,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "In a certain cyclotron, the maximum radius that the path of a deuteron may have before it is deflected out of the magnetic field is 20 cm.\n\n- (i) Calculate the velocity of the deuteron at this radius.\n- (ii) What is the energy of deuteron in MeV?\n\nGiven, magnetic field = 1500 gauss and mass of deuteron =  $3.34 \\times 10^{-27}$  kg.",
+    "question_markdown": "In a certain cyclotron, the maximum radius that the path of a deuteron may have before it is deflected out of the magnetic field is 20 cm.\n\n(i) Calculate the velocity of the deuteron at this radius.\n(ii) What is the energy of deuteron in MeV?\n\nGiven, magnetic field = 1500 gauss and mass of deuteron =  $3.34 \\times 10^{-27}$  kg.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -10904,7 +10904,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A  $10\\Omega$  resistor is connected in series with a capacitor of  $1.0\\mu\\text{F}$  and a battery with emf 12.0 V. Before the switch is closed at time t=0, the capacitor is uncharged.\n\nCalculate the following:\n\n- (i) The time constant.\n- (ii) What fraction of the final charge is on the plates at the time t = 46 seconds?\n- (iii) What fraction of the initial current remains at the time t = 46 seconds?\n\nConsider that the internal resistance of the battery is zero and neglect the resistance of all the connecting wires.",
+    "question_markdown": "A  $10\\Omega$  resistor is connected in series with a capacitor of  $1.0\\mu\\text{F}$  and a battery with emf 12.0 V. Before the switch is closed at time t=0, the capacitor is uncharged.\n\nCalculate the following:\n\n(i) The time constant.\n(ii) What fraction of the final charge is on the plates at the time t = 46 seconds?\n(iii) What fraction of the initial current remains at the time t = 46 seconds?\n\nConsider that the internal resistance of the battery is zero and neglect the resistance of all the connecting wires.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -11628,7 +11628,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A rod of length  $L_0$  moves with speed v along the horizontal direction. The rod makes an angle  $\\theta_0$  with respect to the x'-axis\n\n- (i) Determine the length of the rod as measured by a stationary observer.\n- (ii) Determine the angle  $\\theta$  the rod makes with the *x*-axis. (*v* is comparable to *c*)",
+    "question_markdown": "A rod of length  $L_0$  moves with speed v along the horizontal direction. The rod makes an angle  $\\theta_0$  with respect to the x'-axis\n\n(i) Determine the length of the rod as measured by a stationary observer.\n(ii) Determine the angle  $\\theta$  the rod makes with the *x*-axis. (*v* is comparable to *c*)",
     "unit": "Mechanics",
     "section": "Special Theory Of Relativity",
     "syllabus_topic": [
@@ -11676,7 +11676,7 @@
     "marks": "8+7=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Obtain an expression for the displacement of the damped harmonic oscillator where the damping force is proportional to the velocity. Discuss the effect of the damping on the displacement and frequency of the oscillator. Discuss the difference physically between overdamped and critically damped by taking example of a pendulum.\n- (ii) A particle of mass 3 moves along the x-axis attracted towards the origin by a force whose magnitude is numerically equal to 12x. The particle is also subjected to damping force whose magnitude is numerically equal to 12 times the instantaneous speed. If it is initially at rest at x = 10, find the position and the velocity of the particle at any time.",
+    "question_markdown": "(i) Obtain an expression for the displacement of the damped harmonic oscillator where the damping force is proportional to the velocity. Discuss the effect of the damping on the displacement and frequency of the oscillator. Discuss the difference physically between overdamped and critically damped by taking example of a pendulum.\n(ii) A particle of mass 3 moves along the x-axis attracted towards the origin by a force whose magnitude is numerically equal to 12x. The particle is also subjected to damping force whose magnitude is numerically equal to 12 times the instantaneous speed. If it is initially at rest at x = 10, find the position and the velocity of the particle at any time.",
     "unit": "Waves and Optics",
     "section": "Waves",
     "syllabus_topic": [
@@ -11980,7 +11980,7 @@
     "marks": "5+10=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) What do you mean by expectation value of a physical quantity? How does it help to extract information from a wave function?\n- (ii) A particle limited to move along x-axis has the wave function  $\\psi = ax$  between x = 0 and x = 1,  $\\psi = 0$  elsewhere. Find the probability that the particle can be found between  $x = 0 \\cdot 45$  and  $x = 0 \\cdot 55$ . Find the expectation value < x > of the particles position x = 0 to x = 1.",
+    "question_markdown": "(i) What do you mean by expectation value of a physical quantity? How does it help to extract information from a wave function?\n(ii) A particle limited to move along x-axis has the wave function  $\\psi = ax$  between x = 0 and x = 1,  $\\psi = 0$  elsewhere. Find the probability that the particle can be found between  $x = 0 \\cdot 45$  and  $x = 0 \\cdot 55$ . Find the expectation value < x > of the particles position x = 0 to x = 1.",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -12028,7 +12028,7 @@
     "marks": "10+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Draw a neat sketch of a finite rectangular potential barrier well of height 'U' and width 'L' that contains a particle whose energy 'E' is less than 'U'. Solve the Schrödinger equations of the particles outside the well.\n- (ii) Plot wave functions and probability densities  $|\\psi|^2$  of the particle for the first three states. Compare the results with that of a particle in a box of infinite potential  $(U = \\infty)$ .",
+    "question_markdown": "(i) Draw a neat sketch of a finite rectangular potential barrier well of height 'U' and width 'L' that contains a particle whose energy 'E' is less than 'U'. Solve the Schrödinger equations of the particles outside the well.\n(ii) Plot wave functions and probability densities  $|\\psi|^2$  of the particle for the first three states. Compare the results with that of a particle in a box of infinite potential  $(U = \\infty)$ .",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -12044,7 +12044,7 @@
     "marks": "5+5=10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Discuss about the validity criterion for the WKB approximation.\n- (ii) Qualitatively explain alpha ( $\\alpha$ ) particle emission by WKB approximation.",
+    "question_markdown": "(i) Discuss about the validity criterion for the WKB approximation.\n(ii) Qualitatively explain alpha ( $\\alpha$ ) particle emission by WKB approximation.",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -12204,7 +12204,7 @@
     "marks": "10+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Plot mass number A versus binding energy per nucleon. How does this curve help to explain the nuclear fission and fusion?\n- (ii) In their old age, heavy stars obtain part of their energy by the following nuclear reaction\n\n$${}_{2}^{4}\\text{He} + {}_{6}^{12}\\text{C} = {}_{8}^{16}\\text{O}.$$\n\nHow much energy does each such event give off? [Given:  ${}_{2}^{4}$ He =  $4 \\cdot 002603 \\text{ u}$ ,  ${}_{6}^{12}$ C =  $12 \\cdot 000000 \\text{ u}$ ,  ${}_{8}^{16}$ O = 15 · 999 u]",
+    "question_markdown": "(i) Plot mass number A versus binding energy per nucleon. How does this curve help to explain the nuclear fission and fusion?\n(ii) In their old age, heavy stars obtain part of their energy by the following nuclear reaction\n\n$${}_{2}^{4}\\text{He} + {}_{6}^{12}\\text{C} = {}_{8}^{16}\\text{O}.$$\n\nHow much energy does each such event give off? [Given:  ${}_{2}^{4}$ He =  $4 \\cdot 002603 \\text{ u}$ ,  ${}_{6}^{12}$ C =  $12 \\cdot 000000 \\text{ u}$ ,  ${}_{8}^{16}$ O = 15 · 999 u]",
     "unit": "Nuclear and Particle Physics",
     "section": "Nuclear Physics",
     "syllabus_topic": [
@@ -12220,7 +12220,7 @@
     "marks": "4+4=8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Plot proton number (Z) versus neutron number (N). What is the inference from the plot with regards to light and heavy nuclides?\n- (ii) Which nucleus would you expect to be more stable,  ${}_{3}^{7}$ Li or <sup>8</sup><sub>3</sub>Li? Justify your answer.",
+    "question_markdown": "(i) Plot proton number (Z) versus neutron number (N). What is the inference from the plot with regards to light and heavy nuclides?\n(ii) Which nucleus would you expect to be more stable,  ${}_{3}^{7}$ Li or <sup>8</sup><sub>3</sub>Li? Justify your answer.",
     "unit": "Nuclear and Particle Physics",
     "section": "Nuclear Physics",
     "syllabus_topic": [
@@ -12236,7 +12236,7 @@
     "marks": "8+7=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Write semi-empirical mass formula for the nuclei. Discuss in brief the physical significance of each term.\n- (ii) The meson theory of nuclear forces assumes the virtual exchange of pions. If a nucleon emits a virtual pion of rest mass 270 m<sub>e</sub>, calculate the range of the nuclear force. (m<sub>e</sub> is the mass of electron =  $9 \\cdot 11 \\times 10^{-31}$  kg)",
+    "question_markdown": "(i) Write semi-empirical mass formula for the nuclei. Discuss in brief the physical significance of each term.\n(ii) The meson theory of nuclear forces assumes the virtual exchange of pions. If a nucleon emits a virtual pion of rest mass 270 m<sub>e</sub>, calculate the range of the nuclear force. (m<sub>e</sub> is the mass of electron =  $9 \\cdot 11 \\times 10^{-31}$  kg)",
     "unit": "Nuclear and Particle Physics",
     "section": "Nuclear Physics",
     "syllabus_topic": [
@@ -12412,7 +12412,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What is central force? Give two examples of the central force.\n- (ii) Show that the angular momentum  $\\vec{L}$  of the particle in a central force field is a constant of motion.",
+    "question_markdown": "(i) What is central force? Give two examples of the central force.\n(ii) Show that the angular momentum  $\\vec{L}$  of the particle in a central force field is a constant of motion.",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -12444,7 +12444,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Find the moments of inertia of rigid diatomic molecule about different axes of symmetry through the centre of mass.\n- (ii) A proton is 1837 times heavier than an electron. Find the centre of mass of hydrogen atom.",
+    "question_markdown": "(i) Find the moments of inertia of rigid diatomic molecule about different axes of symmetry through the centre of mass.\n(ii) A proton is 1837 times heavier than an electron. Find the centre of mass of hydrogen atom.",
     "unit": "Mechanics",
     "section": "Rigid Body Dynamics",
     "syllabus_topic": [
@@ -12492,7 +12492,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) How does Reynolds number help in the study of fluid motion?\n- (ii) In a horizontal pipeline of uniform area of cross-section, the pressure falls by 5 N m<sup>−</sup><sup>2</sup> between two points separated by a distance of 1 km. Calculate the change in kinetic energy per kg of oil flowing at these points. Density of oil = 800 kg m<sup>−</sup><sup>3</sup> .",
+    "question_markdown": "(i) How does Reynolds number help in the study of fluid motion?\n(ii) In a horizontal pipeline of uniform area of cross-section, the pressure falls by 5 N m<sup>−</sup><sup>2</sup> between two points separated by a distance of 1 km. Calculate the change in kinetic energy per kg of oil flowing at these points. Density of oil = 800 kg m<sup>−</sup><sup>3</sup> .",
     "unit": "Mechanics",
     "section": "Mechanics Of Continuous Media",
     "syllabus_topic": [
@@ -12508,7 +12508,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) A reference frame S' moves with respect to rest frame S with a uniform velocity v parallel to x-direction. Show from Lorentz transformation that two events simultaneous ( $t_1 = t_2$ ) at different positions ( $x_1 \\neq x_2$ ) in S frame are not in general simultaneous in S' frame.\n- (ii) The mean life of  $\\pi$  meson is  $2 \\times 10^{-8}$  s. Calculate the mean life of a meson moving with a velocity of 0.8c, where c is the velocity of light.",
+    "question_markdown": "(i) A reference frame S' moves with respect to rest frame S with a uniform velocity v parallel to x-direction. Show from Lorentz transformation that two events simultaneous ( $t_1 = t_2$ ) at different positions ( $x_1 \\neq x_2$ ) in S frame are not in general simultaneous in S' frame.\n(ii) The mean life of  $\\pi$  meson is  $2 \\times 10^{-8}$  s. Calculate the mean life of a meson moving with a velocity of 0.8c, where c is the velocity of light.",
     "unit": "Mechanics",
     "section": "Special Theory Of Relativity",
     "syllabus_topic": [
@@ -12796,7 +12796,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "What is Gibbs' phase rule? Find the values of degrees of freedom when\n\n- (i) only the liquid CO<sub>2</sub> is in equilibrium with the gaseous CO<sub>2</sub>.\n- (ii) water is in the vapour-liquid saturation region.\n- (iii) water is in a single-phase region.\n- (iv) water is at the triple point.",
+    "question_markdown": "What is Gibbs' phase rule? Find the values of degrees of freedom when\n\n(i) only the liquid CO<sub>2</sub> is in equilibrium with the gaseous CO<sub>2</sub>.\n(ii) water is in the vapour-liquid saturation region.\n(iii) water is in a single-phase region.\n(iv) water is at the triple point.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -12812,7 +12812,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Einstein's molar specific heat capacity of a solid is given by\n\n$$C_V = 3R \\left(\\frac{\\theta_E}{T}\\right)^2 \\frac{e^{\\theta_E/T}}{\\left(e^{\\theta_E/T}-1\\right)^2},$$\n\nwhere\n\n$$\\theta_E = \\frac{\\hbar\\omega}{k_B}.$$\n\nObtain the expressions for the cases:\n\n- (i) when  $T \\gg \\theta_F$\n- (ii) when  $T \\ll \\theta_E$\n\nWhat is the discrepancy of Einstein model to explain the variation of specific heat capacities of solids with the temperature?\n\nThe molar specific heat capacity of a solid at constant volume is  $2.77\\,\\mathrm{J\\,K^{-1}}$  at  $36.8\\,\\mathrm{K}$ . Determine the Debye temperature of the solid.",
+    "question_markdown": "Einstein's molar specific heat capacity of a solid is given by\n\n$$C_V = 3R \\left(\\frac{\\theta_E}{T}\\right)^2 \\frac{e^{\\theta_E/T}}{\\left(e^{\\theta_E/T}-1\\right)^2},$$\n\nwhere\n\n$$\\theta_E = \\frac{\\hbar\\omega}{k_B}.$$\n\nObtain the expressions for the cases:\n\n(i) when  $T \\gg \\theta_F$\n(ii) when  $T \\ll \\theta_E$\n\nWhat is the discrepancy of Einstein model to explain the variation of specific heat capacities of solids with the temperature?\n\nThe molar specific heat capacity of a solid at constant volume is  $2.77\\,\\mathrm{J\\,K^{-1}}$  at  $36.8\\,\\mathrm{K}$ . Determine the Debye temperature of the solid.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -13228,7 +13228,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Consider a face-centred cubic lattice of side a. Deduce –\n\n- (i) The primitive translation vectors;\n- (ii) The volume of the primitive cell;\n- (iii) The reciprocal primitive translation vectors;\n- (iv) The volume of the reciprocal lattice",
+    "question_markdown": "Consider a face-centred cubic lattice of side a. Deduce –\n\n(i) The primitive translation vectors;\n(ii) The volume of the primitive cell;\n(iii) The reciprocal primitive translation vectors;\n(iv) The volume of the reciprocal lattice",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Crystal Structure & Its Determination",
     "syllabus_topic": [
@@ -13292,7 +13292,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A silicon semiconductor sample is doped with  $6\\times10^{16}$  cm<sup>-3</sup> of aluminium and  $7\\times10^{15}$  cm<sup>-3</sup> of phosphorus atoms. Given at T=300 K, the intrinsic carrier concentration,  $n_i=1.5\\times10^{10}$  cm<sup>-3</sup>; the band gap,  $E_g=1.1$  eV; the electron mobility,  $\\mu_n=1250$  cm<sup>2</sup> V<sup>-1</sup> s<sup>-1</sup> and the hole mobility,  $\\mu_p=480$  cm<sup>2</sup> V<sup>-1</sup> s<sup>-1</sup>. Determine in the sample of the following:\n\n- (i) The type of the semiconductor, n or p\n- (ii) The hole carrier concentration\n- (iii) The electron carrier concentration\n- (iv) The position of the Fermi level in the sample with respect to the bottom of the conduction band\n- (v) The conductivity of the sample",
+    "question_markdown": "A silicon semiconductor sample is doped with  $6\\times10^{16}$  cm<sup>-3</sup> of aluminium and  $7\\times10^{15}$  cm<sup>-3</sup> of phosphorus atoms. Given at T=300 K, the intrinsic carrier concentration,  $n_i=1.5\\times10^{10}$  cm<sup>-3</sup>; the band gap,  $E_g=1.1$  eV; the electron mobility,  $\\mu_n=1250$  cm<sup>2</sup> V<sup>-1</sup> s<sup>-1</sup> and the hole mobility,  $\\mu_p=480$  cm<sup>2</sup> V<sup>-1</sup> s<sup>-1</sup>. Determine in the sample of the following:\n\n(i) The type of the semiconductor, n or p\n(ii) The hole carrier concentration\n(iii) The electron carrier concentration\n(iv) The position of the Fermi level in the sample with respect to the bottom of the conduction band\n(v) The conductivity of the sample",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -13324,7 +13324,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A 5 cm<sup>2</sup> Ge solar cell with a dark reverse saturation current of 2 nA has solar radiation incident upon it, producing  $4 \\times 10^{17}$  electron-hole pairs per second. The electron and hole diffusion lengths are given to be 5  $\\mu$ m and 2  $\\mu$ m, respectively. Calculate for the cell of the following:\n\n- (i) The short-circuit current\n- (ii) The open-circuit voltage",
+    "question_markdown": "A 5 cm<sup>2</sup> Ge solar cell with a dark reverse saturation current of 2 nA has solar radiation incident upon it, producing  $4 \\times 10^{17}$  electron-hole pairs per second. The electron and hole diffusion lengths are given to be 5  $\\mu$ m and 2  $\\mu$ m, respectively. Calculate for the cell of the following:\n\n(i) The short-circuit current\n(ii) The open-circuit voltage",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -13632,7 +13632,7 @@
     "marks": "6+4=10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Using the laws of transformation of the electric field,  $\\vec{E}$ , and the magnetic field,  $\\vec{B}$ , show that  $(E^2-C^2B^2)$  is relativistically invariant.\n- (ii) Suppose that in one inertial frame  $\\vec{B}=0$  but  $\\vec{E}\\neq 0$  (at some point P). Is it possible to find another inertial frame in which the electric field is zero at P?",
+    "question_markdown": "(i) Using the laws of transformation of the electric field,  $\\vec{E}$ , and the magnetic field,  $\\vec{B}$ , show that  $(E^2-C^2B^2)$  is relativistically invariant.\n(ii) Suppose that in one inertial frame  $\\vec{B}=0$  but  $\\vec{E}\\neq 0$  (at some point P). Is it possible to find another inertial frame in which the electric field is zero at P?",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electromagnetic Theory",
     "syllabus_topic": [
@@ -13776,7 +13776,7 @@
     "marks": "5+10=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Consider a quantum – mechanical gas of non-interacting spin zero bosons, each of mass m which are free to move within volume V.\n\n- (i) Find the energy and heat capacity in the very low temperature region. Discuss why it is appropriate at low temperatures to put chemical potential equal to zero.\n- (ii) Show how the calculation is modified for a photon (mass = 0) gas. Prove that the energy is proportional to  $T^4$ .",
+    "question_markdown": "Consider a quantum – mechanical gas of non-interacting spin zero bosons, each of mass m which are free to move within volume V.\n\n(i) Find the energy and heat capacity in the very low temperature region. Discuss why it is appropriate at low temperatures to put chemical potential equal to zero.\n(ii) Show how the calculation is modified for a photon (mass = 0) gas. Prove that the energy is proportional to  $T^4$ .",
     "unit": "Thermal and Statistical Physics",
     "section": "Statistical Physics",
     "syllabus_topic": [
@@ -13824,7 +13824,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Consider a particle whose wave function is given by  $\\psi(x) = Ae^{-\\alpha x^2}$ .\n\n- (i) What is the value of *A* if this wave function is normalized?\n- (ii) Calculate the expectation value of *x* for this particle.",
+    "question_markdown": "Consider a particle whose wave function is given by  $\\psi(x) = Ae^{-\\alpha x^2}$ .\n\n(i) What is the value of *A* if this wave function is normalized?\n(ii) Calculate the expectation value of *x* for this particle.",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -14096,7 +14096,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "By applying the conservation laws, state about the following decay equations, whether they are allowed or not allowed:\n\n- (i)  $\\Sigma^+ \\rightarrow p + \\pi^0$\n- (ii)  $\\Sigma^0 \\to \\Lambda^0 + \\gamma$\n- (iii)  $\\Lambda^0 \\to n + \\pi^0$",
+    "question_markdown": "By applying the conservation laws, state about the following decay equations, whether they are allowed or not allowed:\n\n(i)  $\\Sigma^+ \\rightarrow p + \\pi^0$\n(ii)  $\\Sigma^0 \\to \\Lambda^0 + \\gamma$\n(iii)  $\\Lambda^0 \\to n + \\pi^0$",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -14112,7 +14112,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "What are the properties of the particles made up of the following quarks? Also write the names of particles:\n\n- (i) ud\n- (ii) ūd\n- (iii) dds\n- (iv) uss",
+    "question_markdown": "What are the properties of the particles made up of the following quarks? Also write the names of particles:\n\n(i) ud\n(ii) ūd\n(iii) dds\n(iv) uss",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -14244,7 +14244,7 @@
       "q_x6lsju7q_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "- (i) If a particle of mass m is in a central force field  $f(r)\\hat{r}$ , then show that its path must be a plane curve, where  $\\hat{r}$  is a unit vector in the direction of position vector  $\\vec{r}$ .\n- (ii) A block of mass m having negligible dimension is sliding freely in x-direction with velocity  $\\vec{v} = \\hat{n}$  as shown in the diagram.\n\n![](q_x6lsju7q_img_1.jpeg)\n\nWhat is its angular momentum  $\\vec{L}_O$  about origin O and its angular momentum  $\\vec{L}_A$  about the point A on y-axis?",
+    "question_markdown": "(i) If a particle of mass m is in a central force field  $f(r)\\hat{r}$ , then show that its path must be a plane curve, where  $\\hat{r}$  is a unit vector in the direction of position vector  $\\vec{r}$ .\n(ii) A block of mass m having negligible dimension is sliding freely in x-direction with velocity  $\\vec{v} = \\hat{n}$  as shown in the diagram.\n\n![](q_x6lsju7q_img_1.jpeg)\n\nWhat is its angular momentum  $\\vec{L}_O$  about origin O and its angular momentum  $\\vec{L}_A$  about the point A on y-axis?",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -15288,7 +15288,7 @@
     "marks": "8+8+4=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) When a monochromatic light passes through a single slit, dark and bright fringes are observed on a screen kept far away from the slit. Draw an amplitude and intensity pattern of the light on the screen.\n- (ii) Write an expression for intensity distribution and give the conditions for bright and dark fringes.\n- (iii) If the slit width is  $0 \\cdot 3$  mm and the distance between the screen and the slit is about 30 cm, then what is the angle of diffraction for the first minimum?  $(\\lambda = 5 \\times 10^{-5} \\text{ cm})$",
+    "question_markdown": "(i) When a monochromatic light passes through a single slit, dark and bright fringes are observed on a screen kept far away from the slit. Draw an amplitude and intensity pattern of the light on the screen.\n(ii) Write an expression for intensity distribution and give the conditions for bright and dark fringes.\n(iii) If the slit width is  $0 \\cdot 3$  mm and the distance between the screen and the slit is about 30 cm, then what is the angle of diffraction for the first minimum?  $(\\lambda = 5 \\times 10^{-5} \\text{ cm})$",
     "unit": "Waves and Optics",
     "section": "Diffraction",
     "syllabus_topic": [
@@ -15304,7 +15304,7 @@
     "marks": "10+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) How are linearly polarised and circularly polarised lights generated from unpolarised light and are analysed?\n- (ii) A calcite crystal is to be used for producing a quarter wave plate. The refractive indices of the crystal for ordinary ray and extraordinary ray are  $1\\cdot 65836$  and  $1\\cdot 48641$  respectively. What is the thickness of the plate required if the light of wavelength  $632\\cdot 8$  nm is to be used?",
+    "question_markdown": "(i) How are linearly polarised and circularly polarised lights generated from unpolarised light and are analysed?\n(ii) A calcite crystal is to be used for producing a quarter wave plate. The refractive indices of the crystal for ordinary ray and extraordinary ray are  $1\\cdot 65836$  and  $1\\cdot 48641$  respectively. What is the thickness of the plate required if the light of wavelength  $632\\cdot 8$  nm is to be used?",
     "unit": "Waves and Optics",
     "section": "Polarisation And Modern Optics",
     "syllabus_topic": [
@@ -15320,7 +15320,7 @@
     "marks": "8+7=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) What is population inversion? How is it efficiently achieved in He-Ne laser? Show it with necessary energy levels diagram.\n- (ii) Show that for a normal optical source emitting at 600 nm at a temperature of 10<sup>3</sup> K, the spontaneous emission dominates over stimulated emission.",
+    "question_markdown": "(i) What is population inversion? How is it efficiently achieved in He-Ne laser? Show it with necessary energy levels diagram.\n(ii) Show that for a normal optical source emitting at 600 nm at a temperature of 10<sup>3</sup> K, the spontaneous emission dominates over stimulated emission.",
     "unit": "Waves and Optics",
     "section": "Polarisation And Modern Optics",
     "syllabus_topic": [
@@ -15403,7 +15403,7 @@
     "marks": "5+5+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) The equation for an alternating current is  $I=42\\cdot 42\\sin(314t)$ . Find the following : Maximum value of current, Frequency, RMS value and Average value\n\n- (ii) A condenser of capacity 1  $\\mu$ F is first charged and then discharged through a resistance of 1 M $\\Omega$ . Calculate the time in which the charge on the condenser will fall to 50% of its initial value.\n\n- (iii) Consider the displacement vector  $\\vec{D}$ , given by\n\n$$\\vec{D} = (10xyz^2 + 4x)\\hat{i} + (5x^2z^2)\\hat{j} + (10x^2yz)\\hat{k} \\text{ nC/m}^2$$\n\nFind the total charge enclosed in a cube of volume  $10^{-9}$  m<sup>3</sup> located at the point (1, 2, 3).",
+    "question_markdown": "(i) The equation for an alternating current is  $I=42\\cdot 42\\sin(314t)$ . Find the following : Maximum value of current, Frequency, RMS value and Average value\n\n(ii) A condenser of capacity 1  $\\mu$ F is first charged and then discharged through a resistance of 1 M $\\Omega$ . Calculate the time in which the charge on the condenser will fall to 50% of its initial value.\n\n(iii) Consider the displacement vector  $\\vec{D}$ , given by\n\n$$\\vec{D} = (10xyz^2 + 4x)\\hat{i} + (5x^2z^2)\\hat{j} + (10x^2yz)\\hat{k} \\text{ nC/m}^2$$\n\nFind the total charge enclosed in a cube of volume  $10^{-9}$  m<sup>3</sup> located at the point (1, 2, 3).",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -15435,7 +15435,7 @@
     "marks": "10+5=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Show that the electric and magnetic energy densities in a plane travelling wave are equal. Also prove that the total energy density  $= \\varepsilon_0 E^2 = \\mu_0 H^2$ .\n- (ii) Deduce the equation of continuity based on Maxwell's equations.",
+    "question_markdown": "(i) Show that the electric and magnetic energy densities in a plane travelling wave are equal. Also prove that the total energy density  $= \\varepsilon_0 E^2 = \\mu_0 H^2$ .\n(ii) Deduce the equation of continuity based on Maxwell's equations.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electromagnetic Theory",
     "syllabus_topic": [
@@ -16913,7 +16913,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Point out the interactions in which the following conservation laws are obeyed or violated\n\n- (a) Isotopic spin\n- (b) Hyper charge\n- (c) Lepton number\n- (d) Charge conjugation",
+    "question_markdown": "Point out the interactions in which the following conservation laws are obeyed or violated\n\n(a) Isotopic spin\n(b) Hyper charge\n(c) Lepton number\n(d) Charge conjugation",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -16929,7 +16929,7 @@
     "marks": "5 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Write down the quark constituents of each of the following:\n\n- (a)  $\\pi^{+}$\n- (b) K<sup>+</sup>\n- (c)  $\\Delta^{++}$\n- (d)  $\\Sigma^0$\n- (e) Ω<sup>-</sup>",
+    "question_markdown": "Write down the quark constituents of each of the following:\n\n(a)  $\\pi^{+}$\n(b) K<sup>+</sup>\n(c)  $\\Delta^{++}$\n(d)  $\\Sigma^0$\n(e) Ω<sup>-</sup>",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -17095,7 +17095,7 @@
     "marks": "8+7=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) State and prove Hamilton's principle and use it to prove that the shortest distance between two points in space is a straight line joining them.\n- (ii) Use Hamiltonian mechanics to find the differential equation for planetary motion, moving under force  $f(r) = -\\frac{k}{r^2}$  and prove that the areal velocity is constant.",
+    "question_markdown": "(i) State and prove Hamilton's principle and use it to prove that the shortest distance between two points in space is a straight line joining them.\n(ii) Use Hamiltonian mechanics to find the differential equation for planetary motion, moving under force  $f(r) = -\\frac{k}{r^2}$  and prove that the areal velocity is constant.",
     "unit": "Mechanics",
     "section": "System Of Particles And Analytical Mechanics",
     "syllabus_topic": [
@@ -17271,7 +17271,7 @@
     "marks": "10+5+5=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Using the concept of spontaneous and stimulated emission of radiation, obtain the relation between Einstein's A and B coefficients.\n- (ii) What is the physical significance of Einstein's A coefficient ?\n- (iii) Justify why lasing action is much more difficult at X-ray frequency than in case of infrared frequency spectrum.",
+    "question_markdown": "(i) Using the concept of spontaneous and stimulated emission of radiation, obtain the relation between Einstein's A and B coefficients.\n(ii) What is the physical significance of Einstein's A coefficient ?\n(iii) Justify why lasing action is much more difficult at X-ray frequency than in case of infrared frequency spectrum.",
     "unit": "Waves and Optics",
     "section": "Polarisation And Modern Optics",
     "syllabus_topic": [
@@ -17641,7 +17641,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "What is the main inference drawn from the Stern Gerlach experiment? What would be the change in the result in the following cases:\n\n- (i) electron spin is  $\\frac{3}{2}\\hbar$  instead of  $\\frac{\\hbar}{2}$ .\n- (ii) a beam of neutral atoms is passed through a homogeneous magnetic field.",
+    "question_markdown": "What is the main inference drawn from the Stern Gerlach experiment? What would be the change in the result in the following cases:\n\n(i) electron spin is  $\\frac{3}{2}\\hbar$  instead of  $\\frac{\\hbar}{2}$ .\n(ii) a beam of neutral atoms is passed through a homogeneous magnetic field.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -17979,7 +17979,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) The distance between the centres of the carbon and oxygen atoms in the carbon monoxide (CO) gas molecule is  $1.130 \\times 10^{-10}$  m. Locate the centre of mass of the molecule relative to the carbon atom.\n- (ii) Find the centre of mass of a homogeneous semicircular plate of radius *a*.",
+    "question_markdown": "(i) The distance between the centres of the carbon and oxygen atoms in the carbon monoxide (CO) gas molecule is  $1.130 \\times 10^{-10}$  m. Locate the centre of mass of the molecule relative to the carbon atom.\n(ii) Find the centre of mass of a homogeneous semicircular plate of radius *a*.",
     "unit": "Mechanics",
     "section": "System Of Particles And Analytical Mechanics",
     "syllabus_topic": [
@@ -18045,7 +18045,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Calculate the percentage contraction in the length of a rod in a frame of reference, moving with velocity 0.8c in a direction\n\n- (i) parallel to its length and\n- (ii) at an angle of 30° with its length.\n\nWhat is the orientation of the rod in the moving frame of reference in case (ii)?",
+    "question_markdown": "Calculate the percentage contraction in the length of a rod in a frame of reference, moving with velocity 0.8c in a direction\n\n(i) parallel to its length and\n(ii) at an angle of 30° with its length.\n\nWhat is the orientation of the rod in the moving frame of reference in case (ii)?",
     "unit": "Mechanics",
     "section": "Special Theory Of Relativity",
     "syllabus_topic": [
@@ -18817,7 +18817,7 @@
     "marks": "6+9=15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Write down the quark structure of the following hadrons:  $\\Delta^{++}$ ,  $\\Omega^{-}$ ,  $\\Sigma^{-}$  and  $\\Lambda^{0}$ \n\nWrite down the following decays in terms of quarks:\n\n- (i)  $n \\rightarrow p + e^- \\bar{v}_e$\n- (ii)  $\\Delta^+ \\rightarrow \\pi^+ + n$\n- (iii)  $\\Sigma^+ \\rightarrow p + \\pi^0$",
+    "question_markdown": "Write down the quark structure of the following hadrons:  $\\Delta^{++}$ ,  $\\Omega^{-}$ ,  $\\Sigma^{-}$  and  $\\Lambda^{0}$ \n\nWrite down the following decays in terms of quarks:\n\n(i)  $n \\rightarrow p + e^- \\bar{v}_e$\n(ii)  $\\Delta^+ \\rightarrow \\pi^+ + n$\n(iii)  $\\Sigma^+ \\rightarrow p + \\pi^0$",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -19665,7 +19665,7 @@
     "marks": "5×4=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Describe the following laws of Boolean algebra with one application each to logic circuit :\n\n- (i) Commutative law of addition\n- (ii) Associative law of addition\n- (iii) Associative law of multiplication\n- (iv) Distributive law",
+    "question_markdown": "Describe the following laws of Boolean algebra with one application each to logic circuit :\n\n(i) Commutative law of addition\n(ii) Associative law of addition\n(iii) Associative law of multiplication\n(iv) Distributive law",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Digital Electronics/Microprocessors",
     "syllabus_topic": [
@@ -20387,7 +20387,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Write down the following decays in terms of quarks:\n\n- (i)  $\\Omega^- \\to \\Lambda^0 + K^-$\n- (ii)  $\\Lambda^0 \\rightarrow p + \\pi^-$\n- (iii)  $K^- \\rightarrow \\mu^- \\bar{\\nu}_{\\mu}$",
+    "question_markdown": "Write down the following decays in terms of quarks:\n\n(i)  $\\Omega^- \\to \\Lambda^0 + K^-$\n(ii)  $\\Lambda^0 \\rightarrow p + \\pi^-$\n(iii)  $K^- \\rightarrow \\mu^- \\bar{\\nu}_{\\mu}$",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -21331,7 +21331,7 @@
     "marks": "10+10=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "With a suitable circuit diagram and theory explain the use of OP-Amps as\n\n- (i) Adder, and\n- (ii) Integrator.",
+    "question_markdown": "With a suitable circuit diagram and theory explain the use of OP-Amps as\n\n(i) Adder, and\n(ii) Integrator.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -21491,7 +21491,7 @@
     "marks": "25 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A mirror is moving through vacuum with a relativistic speed v in the x-direction. A beam of light with frequency  $\\omega_i$  is normally incident (from  $x = \\infty$ ) on the mirror.\n\n- (i) What is the frequency of the reflected light expressed in terms of  $\\omega_i$ , c and v?\n- (ii) What is the energy of each reflected photon?",
+    "question_markdown": "A mirror is moving through vacuum with a relativistic speed v in the x-direction. A beam of light with frequency  $\\omega_i$  is normally incident (from  $x = \\infty$ ) on the mirror.\n\n(i) What is the frequency of the reflected light expressed in terms of  $\\omega_i$ , c and v?\n(ii) What is the energy of each reflected photon?",
     "unit": "Mechanics",
     "section": "Special Theory Of Relativity",
     "syllabus_topic": [
@@ -21843,7 +21843,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Find the de Broglie wave length of\n\n- (i) a neutron\n- (ii) an electron moving with kinetic energy of 500 eV\n\n$$(1 \\, eV = 1.602 \\times 10^{-19} \\, I)$$",
+    "question_markdown": "Find the de Broglie wave length of\n\n(i) a neutron\n(ii) an electron moving with kinetic energy of 500 eV\n\n$$(1 \\, eV = 1.602 \\times 10^{-19} \\, I)$$",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -22631,7 +22631,7 @@
     "marks": "5+5+10=20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Write Maxwell's equations in the absence of a medium.\n- (ii) Explain the gauge transformation and gauge invariance. Show that the relation\n\n$$\\operatorname{div} \\bar{A} + \\frac{1}{c} \\frac{\\partial \\phi}{\\partial t}$$\n\nis Lorentz-covariant, where  $\\bar{A}$  and  $\\phi$  are the vector potential and the scalar potential respectively.\n\n(iii) Obtain Maxwell's wave equations satisfied by the scalar and vector potentials in the absence of charge and current.",
+    "question_markdown": "(i) Write Maxwell's equations in the absence of a medium.\n(ii) Explain the gauge transformation and gauge invariance. Show that the relation\n\n$$\\operatorname{div} \\bar{A} + \\frac{1}{c} \\frac{\\partial \\phi}{\\partial t}$$\n\nis Lorentz-covariant, where  $\\bar{A}$  and  $\\phi$  are the vector potential and the scalar potential respectively.\n\n(iii) Obtain Maxwell's wave equations satisfied by the scalar and vector potentials in the absence of charge and current.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electromagnetic Theory",
     "syllabus_topic": [
@@ -23385,7 +23385,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A parallel beam of light from a He–Ne laser ( $\\lambda=630$  nm) is made to fall on a narrow slit of width  $0.2\\times10^{-3}$  m. The Fraunhofer diffraction pattern is observed on a screen placed in the focal plane of a convex lens of focal length 0.3 m. Calculate the distance between the\n\n- (i) first two minima and\n- (ii) first two maxima on the screen.\n\n2 255",
+    "question_markdown": "A parallel beam of light from a He–Ne laser ( $\\lambda=630$  nm) is made to fall on a narrow slit of width  $0.2\\times10^{-3}$  m. The Fraunhofer diffraction pattern is observed on a screen placed in the focal plane of a convex lens of focal length 0.3 m. Calculate the distance between the\n\n(i) first two minima and\n(ii) first two maxima on the screen.\n\n2 255",
     "unit": "Waves and Optics",
     "section": "Diffraction",
     "syllabus_topic": [
@@ -23585,7 +23585,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Considering an isotropic, linear, non-conducting, nonmagnetic and inhomogeneous dielectric medium with\n\n$$\\vec{D} = \\epsilon \\vec{E} = \\epsilon_0 n^2(x, y, z) \\vec{E},$$\n\nshow that the electromagnetic wave equation for the field  $\\vec{E}$  is given by\n\n$$\\nabla^2 \\vec{E} + \\vec{\\nabla} \\left( \\frac{1}{n^2} \\vec{\\nabla} n^2 \\cdot \\vec{E} \\right) - \\mu_0 \\varepsilon_0 n^2 \\frac{\\partial^2 \\vec{E}}{\\partial t^2} = 0.$$\n\n- (ii) Write down the scalar equation for  $E_x$  from the above equation.\n- (iii) Interpret physically the situation if we move from homogeneous to an inhomogeneous medium.\n- (iv) Obtain the similar vector equation for the magnetic field  $\\vec{H}$  in inhomogeneous medium.",
+    "question_markdown": "(i) Considering an isotropic, linear, non-conducting, nonmagnetic and inhomogeneous dielectric medium with\n\n$$\\vec{D} = \\epsilon \\vec{E} = \\epsilon_0 n^2(x, y, z) \\vec{E},$$\n\nshow that the electromagnetic wave equation for the field  $\\vec{E}$  is given by\n\n$$\\nabla^2 \\vec{E} + \\vec{\\nabla} \\left( \\frac{1}{n^2} \\vec{\\nabla} n^2 \\cdot \\vec{E} \\right) - \\mu_0 \\varepsilon_0 n^2 \\frac{\\partial^2 \\vec{E}}{\\partial t^2} = 0.$$\n\n(ii) Write down the scalar equation for  $E_x$  from the above equation.\n(iii) Interpret physically the situation if we move from homogeneous to an inhomogeneous medium.\n(iv) Obtain the similar vector equation for the magnetic field  $\\vec{H}$  in inhomogeneous medium.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electromagnetic Theory",
     "syllabus_topic": [
@@ -23633,7 +23633,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "The coefficient of viscosity of helium at 27<sup>∘</sup>C is 2 × 10−5 kg m<sup>−</sup><sup>1</sup> s −1 . Calculate\n\n- (i) the average speed and\n- (ii) the diameter of a helium molecule,\n\nif it is assumed that the gas obeys Maxwell-Boltzmann distribution. Given Boltzmann constant <sup>B</sup> = 1.38×10−23 J K<sup>−</sup><sup>1</sup> and mass of helium atom = 6.67 × 10−27 kg.",
+    "question_markdown": "The coefficient of viscosity of helium at 27<sup>∘</sup>C is 2 × 10−5 kg m<sup>−</sup><sup>1</sup> s −1 . Calculate\n\n(i) the average speed and\n(ii) the diameter of a helium molecule,\n\nif it is assumed that the gas obeys Maxwell-Boltzmann distribution. Given Boltzmann constant <sup>B</sup> = 1.38×10−23 J K<sup>−</sup><sup>1</sup> and mass of helium atom = 6.67 × 10−27 kg.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -23699,7 +23699,7 @@
       "q_t07jut4w_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "![](q_t07jut4w_img_1.jpeg)\n\n- (a) Consider a beam of particles incident on a one-dimensional step function potential with energy  $E > V_0$  as shown in the above figure. Solve the Schrödinger equation and obtain expressions for the reflection and transmission coefficients.\n- (b) What are the limits of the reflection coefficient for  $E \\to V_0$  and  $E \\to \\infty$ ?\n- (c) Discuss the cases  $0 < E < V_0$  and E < 0.",
+    "question_markdown": "![](q_t07jut4w_img_1.jpeg)\n\n(a) Consider a beam of particles incident on a one-dimensional step function potential with energy  $E > V_0$  as shown in the above figure. Solve the Schrödinger equation and obtain expressions for the reflection and transmission coefficients.\n(b) What are the limits of the reflection coefficient for  $E \\to V_0$  and  $E \\to \\infty$ ?\n(c) Discuss the cases  $0 < E < V_0$  and E < 0.",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -23989,7 +23989,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A perfect conductor and a superconductor with  $T_c \\sim 10$  K are subjected to the following conditions:\n\n- (i) cooled under applied magnetic field to 4 K\n- (ii) cooled to 4 K and then magnetic field is applied with schematic diagrams, explain path of magnetic field lines in all these situations.",
+    "question_markdown": "A perfect conductor and a superconductor with  $T_c \\sim 10$  K are subjected to the following conditions:\n\n(i) cooled under applied magnetic field to 4 K\n(ii) cooled to 4 K and then magnetic field is applied with schematic diagrams, explain path of magnetic field lines in all these situations.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Superconductivity",
     "syllabus_topic": [
@@ -24583,7 +24583,7 @@
     "marks": "8 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Enumerate the possible values of quantum numbers j and  $m_i$  for state in which l = 2 and s = 1/2.\n- (ii) Draw the corresponding vector model diagram.",
+    "question_markdown": "(i) Enumerate the possible values of quantum numbers j and  $m_i$  for state in which l = 2 and s = 1/2.\n(ii) Draw the corresponding vector model diagram.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -24855,7 +24855,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A particle is moving in a central force field on an orbit given by  $r = ke^{\\alpha\\theta}$ , where k and  $\\alpha$  are positive constants, r is the radial distance and  $\\theta$  is the polar angle.\n\n- (a) Find the force law for the central force field.\n- (b) Find  $\\theta(t)$ .\n- (c) Find the total energy.",
+    "question_markdown": "A particle is moving in a central force field on an orbit given by  $r = ke^{\\alpha\\theta}$ , where k and  $\\alpha$  are positive constants, r is the radial distance and  $\\theta$  is the polar angle.\n\n(a) Find the force law for the central force field.\n(b) Find  $\\theta(t)$ .\n(c) Find the total energy.",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -25145,7 +25145,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "The volume between two concentric conducting spherical surfaces of radii a and b (a < b) is filled with an inhomogeneous dielectric with  $\\epsilon = \\epsilon_0/(1+cr)$ , where c is a constant and r is the radial coordinate. A charge +Q is placed on the inner surface, while the outer surface is grounded. Determine-\n\n- (a)  $\\hat{D}$  in the region a < r < b;\n- (b) capacitance of the device;\n- (c) polarization charge density in the region a < r < b;\n- (d) surface polarization charge densities at r = a and r = b.",
+    "question_markdown": "The volume between two concentric conducting spherical surfaces of radii a and b (a < b) is filled with an inhomogeneous dielectric with  $\\epsilon = \\epsilon_0/(1+cr)$ , where c is a constant and r is the radial coordinate. A charge +Q is placed on the inner surface, while the outer surface is grounded. Determine-\n\n(a)  $\\hat{D}$  in the region a < r < b;\n(b) capacitance of the device;\n(c) polarization charge density in the region a < r < b;\n(d) surface polarization charge densities at r = a and r = b.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electrostatics And Magnetostatics",
     "syllabus_topic": [
@@ -25193,7 +25193,7 @@
     "marks": "15/10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "The Einstein theory of specific heat of solids gives the expression\n\n$$C_V = \\frac{3Nk_B x^2 e^x}{(e^x - 1)^2}$$\n\nwhere  $x = \\frac{\\theta_E}{T}$  with  $\\theta_E$  as the Einstein temperature.\n\n- (i) Mention Einstein's assumptions in deriving it. Also obtain low- and high-temperature limiting expressions for it.\n- (ii) Give schematic plot of  $\\frac{C_V}{3Nk_B}$  versus  $\\frac{T}{\\theta_E}$  and comment on the validity of expressions in (i) in comparison with experiments.",
+    "question_markdown": "The Einstein theory of specific heat of solids gives the expression\n\n$$C_V = \\frac{3Nk_B x^2 e^x}{(e^x - 1)^2}$$\n\nwhere  $x = \\frac{\\theta_E}{T}$  with  $\\theta_E$  as the Einstein temperature.\n\n(i) Mention Einstein's assumptions in deriving it. Also obtain low- and high-temperature limiting expressions for it.\n(ii) Give schematic plot of  $\\frac{C_V}{3Nk_B}$  versus  $\\frac{T}{\\theta_E}$  and comment on the validity of expressions in (i) in comparison with experiments.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -25257,7 +25257,7 @@
     "marks": "4+8=12 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Consider the one-dimensional wavefunction  $\\psi(x) = Axe^{-kx}$ ,  $(0 \\le x \\le \\infty; k > 0)$ \n\n- (i) Calculate *A* so that  $\\psi(x)$  is normalized.\n- (ii) Using Schrödinger's equation find the potential V(x) and energy E for which  $\\psi(x)$  is an eigenfunction. (Assume that as  $x \\to \\infty$ ,  $V(x) \\to 0$ ).",
+    "question_markdown": "Consider the one-dimensional wavefunction  $\\psi(x) = Axe^{-kx}$ ,  $(0 \\le x \\le \\infty; k > 0)$ \n\n(i) Calculate *A* so that  $\\psi(x)$  is normalized.\n(ii) Using Schrödinger's equation find the potential V(x) and energy E for which  $\\psi(x)$  is an eigenfunction. (Assume that as  $x \\to \\infty$ ,  $V(x) \\to 0$ ).",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -25289,7 +25289,7 @@
     "marks": "45 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(a) Solve the radial part of the time-independent Schrödinger equation for a hydrogen atom. Obtain an expression for the energy eigenvalues.\n- (b) What is the degree of degeneracy of the energy eigenvalues? What happens if the spin of the electron is taken into account?",
+    "question_markdown": "(a) Solve the radial part of the time-independent Schrödinger equation for a hydrogen atom. Obtain an expression for the energy eigenvalues.\n(b) What is the degree of degeneracy of the energy eigenvalues? What happens if the spin of the electron is taken into account?",
     "unit": "Quantum Mechanics",
     "section": "Angular Momentum, Spin Etc.",
     "syllabus_topic": [
@@ -25305,7 +25305,7 @@
     "marks": "6 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Given that  $\\sigma_x$ ,  $\\sigma_y$ ,  $\\sigma_z$  are Pauli spin operators, prove the following relationships:\n\n- (i)  $\\sin(\\sigma_x \\varphi) = \\sigma_x \\sin \\varphi$\n- (ii)  $\\cos(\\sigma_z \\varphi) = \\cos \\varphi$",
+    "question_markdown": "Given that  $\\sigma_x$ ,  $\\sigma_y$ ,  $\\sigma_z$  are Pauli spin operators, prove the following relationships:\n\n(i)  $\\sin(\\sigma_x \\varphi) = \\sigma_x \\sin \\varphi$\n(ii)  $\\cos(\\sigma_z \\varphi) = \\cos \\varphi$",
     "unit": "Quantum Mechanics",
     "section": "Angular Momentum, Spin Etc.",
     "syllabus_topic": [
@@ -26249,7 +26249,7 @@
     "marks": "6+4=10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Explain how the helicity of neutrino can be measured.\n- (ii) What are 'strange particles' and what is 'strangeness number' ?",
+    "question_markdown": "(i) Explain how the helicity of neutrino can be measured.\n(ii) What are 'strange particles' and what is 'strangeness number' ?",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -26411,7 +26411,7 @@
     "marks": "30 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Determine the number of degrees of freedom for a rigid body-\n\n- (i) moving freely in space of three dimensions;\n- (ii) having one point fixed;\n- (iii) having two points fixed.",
+    "question_markdown": "Determine the number of degrees of freedom for a rigid body-\n\n(i) moving freely in space of three dimensions;\n(ii) having one point fixed;\n(iii) having two points fixed.",
     "unit": "Mechanics",
     "section": "System Of Particles And Analytical Mechanics",
     "syllabus_topic": [
@@ -26571,7 +26571,7 @@
     "marks": "15 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "In relation to a plane diffraction grating having 5000 lines per cm and irradiated by light of wavelength 6000 Å, answer the following:\n\n- (i) What is the highest order spectrum which may be observed?\n- (ii) If the width of opaque space is exactly twice that of the transparent space, which order of spectra will be absent?",
+    "question_markdown": "In relation to a plane diffraction grating having 5000 lines per cm and irradiated by light of wavelength 6000 Å, answer the following:\n\n(i) What is the highest order spectrum which may be observed?\n(ii) If the width of opaque space is exactly twice that of the transparent space, which order of spectra will be absent?",
     "unit": "Waves and Optics",
     "section": "Diffraction",
     "syllabus_topic": [
@@ -26763,7 +26763,7 @@
     "marks": "5+5=10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A resistor R(= 6.2 M $\\Omega$ ) and a capacitor C(= 2.4  $\\mu$ F) are connected in series and a 12 V battery of negligible internal resistance is connected across their combination.\n\n- (i) What is the capacitive time constant of this circuit?\n- (ii) At what time, after the battery is connected, does the potential difference across the capacitor become 5.6 V?",
+    "question_markdown": "A resistor R(= 6.2 M $\\Omega$ ) and a capacitor C(= 2.4  $\\mu$ F) are connected in series and a 12 V battery of negligible internal resistance is connected across their combination.\n\n(i) What is the capacitive time constant of this circuit?\n(ii) At what time, after the battery is connected, does the potential difference across the capacitor become 5.6 V?",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -27851,7 +27851,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What angles do the  $\\vec{L}$ (vector) make with the *z*-axis when l = 2 for an electron?\n- (ii) Determine the values of the total angular momentum for a 3d electron.",
+    "question_markdown": "(i) What angles do the  $\\vec{L}$ (vector) make with the *z*-axis when l = 2 for an electron?\n(ii) Determine the values of the total angular momentum for a 3d electron.",
     "unit": "Quantum Mechanics",
     "section": "Angular Momentum, Spin Etc.",
     "syllabus_topic": [
@@ -28091,7 +28091,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What are intrinsic and extrinsic semiconductors ? Explain.\n- (ii) How are n-type and p-type semiconductors obtained ?",
+    "question_markdown": "(i) What are intrinsic and extrinsic semiconductors ? Explain.\n(ii) How are n-type and p-type semiconductors obtained ?",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -29911,7 +29911,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Write the quark composition of the following :\n\n- (i) Neutron\n- (ii) Proton\n- (iii) Λ\n- (iv) K −\n- (v) +",
+    "question_markdown": "Write the quark composition of the following :\n\n(i) Neutron\n(ii) Proton\n(iii) Λ\n(iv) K −\n(v) +",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -30631,7 +30631,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Consider a positron in a box. If the energy released is 60 eV when it jumps from the third excited state to the ground state, show that the width of the potential is nearly  $0 \\cdot 3$  nm.\n- (ii) Prove that the most probable distance of an electron from the proton (in the hydrogen atom) is the Bohr radius of the hydrogen atom. Consider only the ground state.",
+    "question_markdown": "(i) Consider a positron in a box. If the energy released is 60 eV when it jumps from the third excited state to the ground state, show that the width of the potential is nearly  $0 \\cdot 3$  nm.\n(ii) Prove that the most probable distance of an electron from the proton (in the hydrogen atom) is the Bohr radius of the hydrogen atom. Consider only the ground state.",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -30695,7 +30695,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Show that the Pauli Spin Matrices obey the following relations:\n\n- (i)  $Tr(\\sigma_x) = Tr(\\sigma_y)$\n- (ii)  $\\det(\\sigma_v) = \\det(\\sigma_z)$\n- (iii) The eigenvalues of  $\\sigma_z$  and  $\\sigma_x$  are the same.\n- (iv) Write down the y-component of the spin angular momentum matrix corresponding to an antineutrino.",
+    "question_markdown": "Show that the Pauli Spin Matrices obey the following relations:\n\n(i)  $Tr(\\sigma_x) = Tr(\\sigma_y)$\n(ii)  $\\det(\\sigma_v) = \\det(\\sigma_z)$\n(iii) The eigenvalues of  $\\sigma_z$  and  $\\sigma_x$  are the same.\n(iv) Write down the y-component of the spin angular momentum matrix corresponding to an antineutrino.",
     "unit": "Quantum Mechanics",
     "section": "Angular Momentum, Spin Etc.",
     "syllabus_topic": [
@@ -30727,7 +30727,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Explain spin-orbit coupling of an atomic electron.\n- (ii) Show that the 2p state in the H atom splits up into two substates due to spin-orbit coupling.\n- (iii) Calculate the energy of separation in eV, resulting from the spin-orbit coupling when the magnetic field experienced by the electron is  $0 \\cdot 4$  T.",
+    "question_markdown": "(i) Explain spin-orbit coupling of an atomic electron.\n(ii) Show that the 2p state in the H atom splits up into two substates due to spin-orbit coupling.\n(iii) Calculate the energy of separation in eV, resulting from the spin-orbit coupling when the magnetic field experienced by the electron is  $0 \\cdot 4$  T.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -30759,7 +30759,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Find the ground state total orbital (L) and total spin (S) quantum numbers for nitrogen.\n- (ii) Find the L and S values of the two \"first excited states\" of helium atom.",
+    "question_markdown": "(i) Find the ground state total orbital (L) and total spin (S) quantum numbers for nitrogen.\n(ii) Find the L and S values of the two \"first excited states\" of helium atom.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -30775,7 +30775,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "2 2 2 level in H atom is 1058 MHz above the 2 <sup>2</sup><sup>2</sup> level.\n\n- (i) What is this known as ?\n- (ii) Express the above frequency in cm−1 .\n- (iii) Calculate the energy difference between the above two levels in eV.",
+    "question_markdown": "2 2 2 level in H atom is 1058 MHz above the 2 <sup>2</sup><sup>2</sup> level.\n\n(i) What is this known as ?\n(ii) Express the above frequency in cm−1 .\n(iii) Calculate the energy difference between the above two levels in eV.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -32413,7 +32413,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) State and explain Heisenberg's uncertainty principle. Experimental data reveal that no electron in an atom has energy greater than 4 MeV. Assuming that the radius of a nucleus is  $10^{-14}$  m, show using Heisenberg's uncertainty principle that an electron cannot exist inside the nucleus. (10)\n- (ii) Calculate the de Broglie wavelength of thermal neutrons at 300 K. (10)",
+    "question_markdown": "(i) State and explain Heisenberg's uncertainty principle. Experimental data reveal that no electron in an atom has energy greater than 4 MeV. Assuming that the radius of a nucleus is  $10^{-14}$  m, show using Heisenberg's uncertainty principle that an electron cannot exist inside the nucleus. (10)\n(ii) Calculate the de Broglie wavelength of thermal neutrons at 300 K. (10)",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -32525,7 +32525,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What is Lamb shift ? Has it been observed in any atom other than hydrogen? (10)\n- (ii) How does the 21 cm hydrogen line originate? Comment on its astronomical applications. (10)",
+    "question_markdown": "(i) What is Lamb shift ? Has it been observed in any atom other than hydrogen? (10)\n(ii) How does the 21 cm hydrogen line originate? Comment on its astronomical applications. (10)",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -35539,7 +35539,7 @@
       "q_eb4cnsc7_img_1.jpeg"
     ],
     "has_diagram": true,
-    "question_markdown": "(i) Explain what do you understand by Heisenberg uncertainty principle. Using this principle, determine the energy of the ground state of a one dimensional simple harmonic\n- (ii) An electron having an energy 2 eV is travelling in the region where V(x) varies as shown below:\n\n![](q_eb4cnsc7_img_1.jpeg)\n\nCalculate the de Broglie wavelength of the electron in regions I, II and III.",
+    "question_markdown": "(i) Explain what do you understand by Heisenberg uncertainty principle. Using this principle, determine the energy of the ground state of a one dimensional simple harmonic\n(ii) An electron having an energy 2 eV is travelling in the region where V(x) varies as shown below:\n\n![](q_eb4cnsc7_img_1.jpeg)\n\nCalculate the de Broglie wavelength of the electron in regions I, II and III.",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -35653,7 +35653,7 @@
     "marks": "6+14 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) What are the typical energies (eV) of the radiations, required to excite (i) electronic transitions. (ii) vibrational transitions and (iii) rotational transitions in a molecule?\n- (ii) The rotational spectrum of HI consists of equidistant lines with a separation of 12.8  $\\rm cm^{-1}$ . Calculate the (a) M.I. and (b) bond length of HI molecule.",
+    "question_markdown": "(i) What are the typical energies (eV) of the radiations, required to excite (i) electronic transitions. (ii) vibrational transitions and (iii) rotational transitions in a molecule?\n(ii) The rotational spectrum of HI consists of equidistant lines with a separation of 12.8  $\\rm cm^{-1}$ . Calculate the (a) M.I. and (b) bond length of HI molecule.",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -35749,7 +35749,7 @@
     "marks": "8+12 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) State the conservation law which is violated in each of the following processes: (1) → + <sup>−</sup> + (2) <sup>−</sup> + → <sup>+</sup> + <sup>−</sup> (3) <sup>−</sup> + → Σ<sup>+</sup> + <sup>−</sup> (4) Σ <sup>−</sup> → <sup>−</sup> + + ̄\n- (ii) Draw a bcc lattice. Determine its primitive lattice vectors and calculate the packing fraction.",
+    "question_markdown": "(i) State the conservation law which is violated in each of the following processes: (1) → + <sup>−</sup> + (2) <sup>−</sup> + → <sup>+</sup> + <sup>−</sup> (3) <sup>−</sup> + → Σ<sup>+</sup> + <sup>−</sup> (4) Σ <sup>−</sup> → <sup>−</sup> + + ̄\n(ii) Draw a bcc lattice. Determine its primitive lattice vectors and calculate the packing fraction.",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -36027,7 +36027,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "In an experiment using a Michelson interferometer, explain with the help of suitable ray diagrams.\n\n- (i) Why do we need extended source of light,\n- (ii) Why do we get circular fringes, and\n- (iii) Shifting of fringes inwards or outwards as we shift the movable mirror.",
+    "question_markdown": "In an experiment using a Michelson interferometer, explain with the help of suitable ray diagrams.\n\n(i) Why do we need extended source of light,\n(ii) Why do we get circular fringes, and\n(iii) Shifting of fringes inwards or outwards as we shift the movable mirror.",
     "unit": "Waves and Optics",
     "section": "Interference",
     "syllabus_topic": [
@@ -36107,7 +36107,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A Geiger tube consists of a wire a wire of radius 0.2 mm and length 12 cm and a co-axial metallic cylinder of radius 1.5 cm and length 12 cm. Find\n\n- (i) the capacitance of the system, and\n- (ii) the charge per unit length of the wire when the potential difference between the wire and the cylinder is  $1.2~{\\rm kV}$ .\n\n(Assume the dielectric constant of the gas in the tube to be 1)",
+    "question_markdown": "A Geiger tube consists of a wire a wire of radius 0.2 mm and length 12 cm and a co-axial metallic cylinder of radius 1.5 cm and length 12 cm. Find\n\n(i) the capacitance of the system, and\n(ii) the charge per unit length of the wire when the potential difference between the wire and the cylinder is  $1.2~{\\rm kV}$ .\n\n(Assume the dielectric constant of the gas in the tube to be 1)",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Electrostatics And Magnetostatics",
     "syllabus_topic": [
@@ -36157,7 +36157,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A series LCR circuit with L = 2 H, C = 2  $\\mu$ F and R = 20  $\\Omega$  is powered by a source of 100 volts and variable frequency. Find\n\n- (i) the resonance frequency,  $f_0$ ,\n- (ii) the value of Q\n- (iii) the width of resonance  $\\Delta f$  and\n- (iv) the maximum current at resonance.",
+    "question_markdown": "A series LCR circuit with L = 2 H, C = 2  $\\mu$ F and R = 20  $\\Omega$  is powered by a source of 100 volts and variable frequency. Find\n\n(i) the resonance frequency,  $f_0$ ,\n(ii) the value of Q\n(iii) the width of resonance  $\\Delta f$  and\n(iv) the maximum current at resonance.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -36205,7 +36205,7 @@
     "marks": "30 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A bulb filament is constructed from a tungsten wire of length 2 cm and diameter 50  $\\mu$ m. It is enclosed in a vacuum bulb. What temperature does it reach when it is operated at a power of 1 watt? Given:\n\n- (i) Emissivity of tungsten  $\\varepsilon = 0.4$\n- (ii) Stefan's constant  $\\sigma = 5.67 \\times 10^{-8} \\text{ watt/m}^2 \\text{ K}^4$ .",
+    "question_markdown": "A bulb filament is constructed from a tungsten wire of length 2 cm and diameter 50  $\\mu$ m. It is enclosed in a vacuum bulb. What temperature does it reach when it is operated at a power of 1 watt? Given:\n\n(i) Emissivity of tungsten  $\\varepsilon = 0.4$\n(ii) Stefan's constant  $\\sigma = 5.67 \\times 10^{-8} \\text{ watt/m}^2 \\text{ K}^4$ .",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Black Body Radiation",
     "syllabus_topic": [
@@ -36381,7 +36381,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Treating CH molecule as an united atom, derive its resultant molecular electronic states.\n- (ii) Calculate the moment of inertia of HCl molecule from the expression\n\n$$u_{\\text{HCl}} = 20.68(J+1),$$\n\nwhere J = 0, 1, 2, ...",
+    "question_markdown": "(i) Treating CH molecule as an united atom, derive its resultant molecular electronic states.\n(ii) Calculate the moment of inertia of HCl molecule from the expression\n\n$$u_{\\text{HCl}} = 20.68(J+1),$$\n\nwhere J = 0, 1, 2, ...",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -36413,7 +36413,7 @@
     "marks": "10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) A sample is irradiated by a 5000 Å radiation to give a Raman line at 5050.5 Å. Calculate the Raman frequency.\n- (ii) Explain, both red and violet degraded bands have been observed in electronic band systems, but rotation-vibration spectra show bands degraded to red only.",
+    "question_markdown": "(i) A sample is irradiated by a 5000 Å radiation to give a Raman line at 5050.5 Å. Calculate the Raman frequency.\n(ii) Explain, both red and violet degraded bands have been observed in electronic band systems, but rotation-vibration spectra show bands degraded to red only.",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -36493,7 +36493,7 @@
     "marks": "10,10 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) What is the lowest non zero angular momentum for an elementary particle? Name at least three elementary particles having such an angular momentum.\n- (ii) Write the spectral symbol of the term with S= 1/2, J = 5/2 and g = 6/7.",
+    "question_markdown": "(i) What is the lowest non zero angular momentum for an elementary particle? Name at least three elementary particles having such an angular momentum.\n(ii) Write the spectral symbol of the term with S= 1/2, J = 5/2 and g = 6/7.",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -36909,7 +36909,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Explain the use of a parallel resonance circuit\n\n- (i) as a rejector circuit\n- (ii) for current amplification.",
+    "question_markdown": "Explain the use of a parallel resonance circuit\n\n(i) as a rejector circuit\n(ii) for current amplification.",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -37053,7 +37053,7 @@
     "marks": "(5+10+5) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "(i) Quantum theoretical methods have established themselves to explain natural phenomena in contemporary Physics.\n\nComment.\n\n- (ii) Formulate the axioms of quantum theory.\n- (iii) State Born's condition on a wave function. What is its physical meaning?",
+    "question_markdown": "(i) Quantum theoretical methods have established themselves to explain natural phenomena in contemporary Physics.\n\nComment.\n\n(ii) Formulate the axioms of quantum theory.\n(iii) State Born's condition on a wave function. What is its physical meaning?",
     "unit": "Quantum Mechanics",
     "section": "Foundations Of Quantum Mechanics",
     "syllabus_topic": [
@@ -37069,7 +37069,7 @@
     "marks": "(30+10) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A particle is in a quantum system with a parabolic potential well.\n\n- (i) Using appropriate method find the ground state energy.\n- (ii) Obtain an expression for the ground state.",
+    "question_markdown": "A particle is in a quantum system with a parabolic potential well.\n\n(i) Using appropriate method find the ground state energy.\n(ii) Obtain an expression for the ground state.",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -37085,7 +37085,7 @@
     "marks": "(5+15) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Write down the matrix representation of the energy operator of a linear oscillator.\n- (ii) A linear oscillator is prepared in the state given by\n\n$$\\psi(x) = 1/\\sqrt{5}\\{\\hat{\\psi}_0(x) + \\sqrt{2}\\hat{\\psi}_1(x) + \\sqrt{2}\\hat{\\psi}_2(x)\\}\\$$\n\nEvaluate the energy of the oscillator in this state.",
+    "question_markdown": "(i) Write down the matrix representation of the energy operator of a linear oscillator.\n(ii) A linear oscillator is prepared in the state given by\n\n$$\\psi(x) = 1/\\sqrt{5}\\{\\hat{\\psi}_0(x) + \\sqrt{2}\\hat{\\psi}_1(x) + \\sqrt{2}\\hat{\\psi}_2(x)\\}\\$$\n\nEvaluate the energy of the oscillator in this state.",
     "unit": "Quantum Mechanics",
     "section": "Schrodinger's Wave Equation And Applications",
     "syllabus_topic": [
@@ -37101,7 +37101,7 @@
     "marks": "(10+10) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Find the eigenstates of the angular momentum vector component  $L_z$  of a spherically symmetric system.\n- (ii) Write down any two properties of the Pauli matrices after defining through an expression.",
+    "question_markdown": "(i) Find the eigenstates of the angular momentum vector component  $L_z$  of a spherically symmetric system.\n(ii) Write down any two properties of the Pauli matrices after defining through an expression.",
     "unit": "Quantum Mechanics",
     "section": "Angular Momentum, Spin Etc.",
     "syllabus_topic": [
@@ -37117,7 +37117,7 @@
     "marks": "(10+20) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Give briefly an account on the important historical developments to establish the concept of electron spin.\n- (ii) Write down the eigenvalue and spin state of an electron for the spin operator  $\\hat{S}$ .\n- \\* Show that the spin states of electron are orthogonal to each other.\n- \\* State the spin angular momentum commutation relations.\n- \\* Give the explicit forms of all the Pauli spin matrices.",
+    "question_markdown": "(i) Give briefly an account on the important historical developments to establish the concept of electron spin.\n(ii) Write down the eigenvalue and spin state of an electron for the spin operator  $\\hat{S}$ .\n- \\* Show that the spin states of electron are orthogonal to each other.\n- \\* State the spin angular momentum commutation relations.\n- \\* Give the explicit forms of all the Pauli spin matrices.",
     "unit": "Quantum Mechanics",
     "section": "Angular Momentum, Spin Etc.",
     "syllabus_topic": [
@@ -37133,7 +37133,7 @@
     "marks": "(12+6+12) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) On the basis of vector atom model, discuss briefly the L-S and J-J coupling schemes.\n- (ii) Write down expressions for spin angular momentum, orbital angular momentum and total angular momentum under L-S coupling scheme.\n- (iii) Obtain the energy states for <sup>2</sup>He atom for = 1, 2, 3 levels ( is principal quantum number). Draw the energy level diagram.\n\nDoes L-S coupling scheme hold good in <sup>80</sup>Hg atom which like He has 2 optical electrons (6<sup>2</sup> ) ? Comment.",
+    "question_markdown": "(i) On the basis of vector atom model, discuss briefly the L-S and J-J coupling schemes.\n(ii) Write down expressions for spin angular momentum, orbital angular momentum and total angular momentum under L-S coupling scheme.\n(iii) Obtain the energy states for <sup>2</sup>He atom for = 1, 2, 3 levels ( is principal quantum number). Draw the energy level diagram.\n\nDoes L-S coupling scheme hold good in <sup>80</sup>Hg atom which like He has 2 optical electrons (6<sup>2</sup> ) ? Comment.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -37149,7 +37149,7 @@
     "marks": "(12+8) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) What is Lamb shift? Explain it by illustrating through a suitable energy level diagram. Has Lamb shift been observed in any atom other than hydrogen?\n- (ii) How does the 21 cm hydrogen line originate? Comment on its astronomical applications.",
+    "question_markdown": "(i) What is Lamb shift? Explain it by illustrating through a suitable energy level diagram. Has Lamb shift been observed in any atom other than hydrogen?\n(ii) How does the 21 cm hydrogen line originate? Comment on its astronomical applications.",
     "unit": "Atomic and Molecular Physics",
     "section": "Atomic Physics",
     "syllabus_topic": [
@@ -37165,7 +37165,7 @@
     "marks": "(8+12) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) State and explain Franck-Condon principle.\n- (ii) In three separate pairs of electronic states (one ground and another upper state) of diatomic molecules, the average internuclear distances are :\n- (1) equal,\n- (2) slightly greater, and\n- (3) appreciably greater.\n\nIn accordance with Franck-Condon principle, obtain most favourable transitions from the ground state vibrational levels to the upper state vibrational levels in each of the three situations.\n\nIllustrate the transitions in all the aforesaid situations by\n\ndrawing suitable energy level diagrams.\n\n## **",
+    "question_markdown": "(i) State and explain Franck-Condon principle.\n(ii) In three separate pairs of electronic states (one ground and another upper state) of diatomic molecules, the average internuclear distances are :\n(1) equal,\n(2) slightly greater, and\n(3) appreciably greater.\n\nIn accordance with Franck-Condon principle, obtain most favourable transitions from the ground state vibrational levels to the upper state vibrational levels in each of the three situations.\n\nIllustrate the transitions in all the aforesaid situations by\n\ndrawing suitable energy level diagrams.\n\n## **",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -37181,7 +37181,7 @@
     "marks": "(15+6+9) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Discuss qualitatively the occurrence of rotational energy levels at a diatomic molecule. Write down the selection rule.\n- (ii) Is it possible to obtain rotational spectra of  $H_2$ , HF,  $O_2$ , and NO molecules?\n\nCan one obtain pure rotational spectra in emission? Comment (on both of the above-mentioned queries).\n\n(iii) In CO molecule  $J=0 \\rightarrow J=1$  line occurs at frequency  $1.153 \\times 10^{11}$  Hz. Calculate the moment of inertia of CO molecule.",
+    "question_markdown": "(i) Discuss qualitatively the occurrence of rotational energy levels at a diatomic molecule. Write down the selection rule.\n(ii) Is it possible to obtain rotational spectra of  $H_2$ , HF,  $O_2$ , and NO molecules?\n\nCan one obtain pure rotational spectra in emission? Comment (on both of the above-mentioned queries).\n\n(iii) In CO molecule  $J=0 \\rightarrow J=1$  line occurs at frequency  $1.153 \\times 10^{11}$  Hz. Calculate the moment of inertia of CO molecule.",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -37197,7 +37197,7 @@
     "marks": "(10+10+5+5) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) What is Raman effect? How does it differ from Rayleigh scattering? Write down its important applications.\n- (ii) Explain Raman effect with the aid of quantum mechanical theory.\n- (iii) Why is Raman effect considered complimentary to infrared absorption spectra?\n- (iv) A Raman Stokes' line is observed at 552 nm when a sample is excited by Hg green line of wavelength 546 nm. Calculate the wavelength of anti-Stokes' line.",
+    "question_markdown": "(i) What is Raman effect? How does it differ from Rayleigh scattering? Write down its important applications.\n(ii) Explain Raman effect with the aid of quantum mechanical theory.\n(iii) Why is Raman effect considered complimentary to infrared absorption spectra?\n(iv) A Raman Stokes' line is observed at 552 nm when a sample is excited by Hg green line of wavelength 546 nm. Calculate the wavelength of anti-Stokes' line.",
     "unit": "Atomic and Molecular Physics",
     "section": "Molecular Physics",
     "syllabus_topic": [
@@ -37341,7 +37341,7 @@
     "marks": "(6+8+6) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) Obtain reciprocal lattice to normal BCC lattice.\n- (ii) Describe Josephson junction and the effect. How is it exploited in the formation of a SQUID? Write down the applications of a SQUID.\n- (iii) Distinguish between intrinsic and extrinsic semiconductors. Explain the concept of hole.",
+    "question_markdown": "(i) Obtain reciprocal lattice to normal BCC lattice.\n(ii) Describe Josephson junction and the effect. How is it exploited in the formation of a SQUID? Write down the applications of a SQUID.\n(iii) Distinguish between intrinsic and extrinsic semiconductors. Explain the concept of hole.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Crystal Structure & Its Determination",
     "syllabus_topic": [
@@ -37373,7 +37373,7 @@
     "marks": "(6+14) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) FETs have unique properties which make BJTs not suitable for some important applications. What are these most important FET applications?\n- (ii) Briefly describe FETs as variable resistors.",
+    "question_markdown": "(i) FETs have unique properties which make BJTs not suitable for some important applications. What are these most important FET applications?\n(ii) Briefly describe FETs as variable resistors.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -37405,7 +37405,7 @@
     "marks": "(2+2+2+4) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Combinational switching circuit can perform an addition of the numbers held in two registers.\n\n- (i) Write down the math table for the addition of two bits.\n- (ii) Write down a Boolean expression for the necessary circuit functions.\n- (iii) Arrive at the Exclusive-OR function.\n- (iv) Draw the logic diagram for the circuit which performs the addition.",
+    "question_markdown": "Combinational switching circuit can perform an addition of the numbers held in two registers.\n\n(i) Write down the math table for the addition of two bits.\n(ii) Write down a Boolean expression for the necessary circuit functions.\n(iii) Arrive at the Exclusive-OR function.\n(iv) Draw the logic diagram for the circuit which performs the addition.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Digital Electronics/Microprocessors",
     "syllabus_topic": [
@@ -37421,7 +37421,7 @@
     "marks": "(5+15+10+10) M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "- (i) What are sequential switching circuits\n- (ii) Describe a simple sequential circuit.\n- (iii) Describe a clocked RS Flip-Flop,\n- (iv) Briefly describe ROMs.",
+    "question_markdown": "(i) What are sequential switching circuits\n(ii) Describe a simple sequential circuit.\n(iii) Describe a clocked RS Flip-Flop,\n(iv) Briefly describe ROMs.",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Digital Electronics/Microprocessors",
     "syllabus_topic": [
@@ -37501,7 +37501,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Ram and Shyam are two skaters weighing 40kg and 60 kg respectively. Ram travelling at 4 m/s meets Shyam travelling at 2 m/s in opposite direction and collides head-on.\n\n- (i) If they remain in contact what is their final velocity\n- (ii) How much kinetic energy is lost?",
+    "question_markdown": "Ram and Shyam are two skaters weighing 40kg and 60 kg respectively. Ram travelling at 4 m/s meets Shyam travelling at 2 m/s in opposite direction and collides head-on.\n\n(i) If they remain in contact what is their final velocity\n(ii) How much kinetic energy is lost?",
     "unit": "Mechanics",
     "section": "System Of Particles And Analytical Mechanics",
     "syllabus_topic": [
@@ -37661,7 +37661,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "The case of a Simple Harmonic Progressive Wave traversing through a medium is expressed as\n\n$$y = 4 \\times 10^{-5} \\sin(600 \\ \\pi t + \\varphi)$$\n\nDetermine\n\n- (i) amplitude of vibration of the particles.\n- (ii) wavelength of the sound wave and\n- (iii) the phase difference between the particles situated at a distance of 22 cm. (The sound velocity in the medium is  $3.4 \\times 10^4$  cm/s).",
+    "question_markdown": "The case of a Simple Harmonic Progressive Wave traversing through a medium is expressed as\n\n$$y = 4 \\times 10^{-5} \\sin(600 \\ \\pi t + \\varphi)$$\n\nDetermine\n\n(i) amplitude of vibration of the particles.\n(ii) wavelength of the sound wave and\n(iii) the phase difference between the particles situated at a distance of 22 cm. (The sound velocity in the medium is  $3.4 \\times 10^4$  cm/s).",
     "unit": "Waves and Optics",
     "section": "Waves",
     "syllabus_topic": [
@@ -37917,7 +37917,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "A tank whose capacity is 0.1 m<sup>3</sup> contains helium at a pressure of 10 atmospheres and a temperature of 20<sup>∘</sup>C. A rubber weather balloon is inflated with this helium.\n\n- (i) When the pressure of helium in the balloon is 1 atmosphere, its temperature is −40<sup>∘</sup> C. Find the volume of the balloon.\n- (ii) Eventually the helium in the balloon absorbs heat from the air around ii and returns to 20<sup>∘</sup> C. Find the volume of the balloon at this time.",
+    "question_markdown": "A tank whose capacity is 0.1 m<sup>3</sup> contains helium at a pressure of 10 atmospheres and a temperature of 20<sup>∘</sup>C. A rubber weather balloon is inflated with this helium.\n\n(i) When the pressure of helium in the balloon is 1 atmosphere, its temperature is −40<sup>∘</sup> C. Find the volume of the balloon.\n(ii) Eventually the helium in the balloon absorbs heat from the air around ii and returns to 20<sup>∘</sup> C. Find the volume of the balloon at this time.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -40307,7 +40307,7 @@
     "marks": "30 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "An alternating voltage,  $v = V_0 \\sin(\\omega t + \\phi)$  is applied to a series RL circuit through a switch. Find the sum total of the transient and steady currents. Find the conditions when transient current becomes\n\n- (i) zero, and\n- (ii) maximum",
+    "question_markdown": "An alternating voltage,  $v = V_0 \\sin(\\omega t + \\phi)$  is applied to a series RL circuit through a switch. Find the sum total of the transient and steady currents. Find the conditions when transient current becomes\n\n(i) zero, and\n(ii) maximum",
     "unit": "Electricity, Magnetism and Electromagnetic Waves",
     "section": "Current Electricity",
     "syllabus_topic": [
@@ -42699,7 +42699,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Derive expressions for the Maxwellian distribution of\n\n- (i) One component of velocities\n- (ii) one component of momenta, in the molecules of an ideal gas.",
+    "question_markdown": "Derive expressions for the Maxwellian distribution of\n\n(i) One component of velocities\n(ii) one component of momenta, in the molecules of an ideal gas.",
     "unit": "Thermal and Statistical Physics",
     "section": "Thermodynamics",
     "syllabus_topic": [
@@ -43643,7 +43643,7 @@
     "marks": "60 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Write an essay on elementary particles with the following points:\n\n- (i) Types of particles\n- (ii) Quantum numbers\n- (iii) Conservation laws\n- (iv) Types of interactions",
+    "question_markdown": "Write an essay on elementary particles with the following points:\n\n(i) Types of particles\n(ii) Quantum numbers\n(iii) Conservation laws\n(iv) Types of interactions",
     "unit": "Nuclear and Particle Physics",
     "section": "Particle Physics",
     "syllabus_topic": [
@@ -43707,7 +43707,7 @@
     "marks": "30 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Describe and explain the theory and operation of the Zener diode. Explain what is meant by\n\n- (i) Avalanche breakdown\n- (ii) Zener breakdown",
+    "question_markdown": "Describe and explain the theory and operation of the Zener diode. Explain what is meant by\n\n(i) Avalanche breakdown\n(ii) Zener breakdown",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -43723,7 +43723,7 @@
     "marks": "30 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Describe the characteristics of grounded emitter transistor amplifier circuit and determine expression for\n\n- (i) Input resistance\n- (ii) Output resistance\n- (iii) Current gain\n- (iv) Voltage gain\n- (v) Power gain",
+    "question_markdown": "Describe the characteristics of grounded emitter transistor amplifier circuit and determine expression for\n\n(i) Input resistance\n(ii) Output resistance\n(iii) Current gain\n(iv) Voltage gain\n(v) Power gain",
     "unit": "Solid State Physics, Devices and Electronics",
     "section": "Semiconductors/Solar Cell",
     "syllabus_topic": [
@@ -46091,7 +46091,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "State how Rutherford's experiments on alpha scattering by thin gold foils established that\n\n- (i) the positive charge in an atom is confined to a nucleus of radius far less than the atomic radii, and\n- (ii) the Coulomb law is valid down to such small distances. Why do the electrons not participate in the interactions appreciably?",
+    "question_markdown": "State how Rutherford's experiments on alpha scattering by thin gold foils established that\n\n(i) the positive charge in an atom is confined to a nucleus of radius far less than the atomic radii, and\n(ii) the Coulomb law is valid down to such small distances. Why do the electrons not participate in the interactions appreciably?",
     "unit": "Mechanics",
     "section": "Mechanics Of Particles",
     "syllabus_topic": [
@@ -46331,7 +46331,7 @@
     "marks": "20 M",
     "images": [],
     "has_diagram": false,
-    "question_markdown": "Explain the Laser actions in\n\n- (i) Helium Neon Laser\n- (ii) Gas Laser",
+    "question_markdown": "Explain the Laser actions in\n\n(i) Helium Neon Laser\n(ii) Gas Laser",
     "unit": "Waves and Optics",
     "section": "Polarisation And Modern Optics",
     "syllabus_topic": [
