@@ -228,7 +228,10 @@ async function prepareQuestionCardClone(qContent) {
     }
   }));
 
-  // 2. Convert MathJax SVGs to self-contained SVG Data URLs
+  // 2. Remove the Solution toggle button – we only want question + metadata in the image
+  clone.querySelector(".solution-toggle-btn")?.remove();
+
+  // 3. Convert MathJax SVGs to self-contained SVG Data URLs
   const mathCache = document.getElementById("MJX-SVG-global-cache");
   const globalDefs = mathCache ? mathCache.innerHTML : "";
 
