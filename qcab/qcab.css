@@ -55,7 +55,7 @@
 
   .qcab-margin{position:absolute;top:15mm;height:267mm;border-left:.3mm solid #111}
   .qcab-question-header,.qcab-question-marks{position:absolute;top:15mm;font-family:"Times New Roman",serif;font-size:12pt;line-height:1.2;white-space:nowrap;z-index:2}
-  .qcab-question-content{position:absolute;left:27mm;top:24mm;width:156mm;font-family:"Times New Roman",serif;font-size:12pt;line-height:1.45;overflow:visible}
+  .qcab-question-content{position:absolute;left:27mm;top:15mm;width:156mm;font-family:"Times New Roman",serif;font-size:12pt;line-height:1.45;overflow:visible}
   .qcab-question-content p{margin:0 0 3mm}
   .qcab-question-content ul,.qcab-question-content ol{margin:1mm 0 3mm;padding-left:7mm}
   .qcab-question-content li{margin:.5mm 0}
@@ -113,7 +113,7 @@
 .qcab-margin-left{left:25mm}.qcab-margin-right{left:185mm}
 .qcab-question-number,.qcab-question-marks{position:absolute;top:15mm;font-size:12pt;line-height:1.2;white-space:nowrap;z-index:2}
 .qcab-question-number{left:10mm}.qcab-question-marks{left:187mm}
-.qcab-question-content{position:absolute;left:27mm;top:24mm;width:156mm;box-sizing:border-box;font-size:12pt;line-height:1.45;overflow:visible}
+.qcab-question-content{position:absolute;left:27mm;top:15mm;width:156mm;box-sizing:border-box;font-size:12pt;line-height:1.45;overflow:visible}
 .qcab-question-content p{margin:0 0 3mm}.qcab-question-content ul,.qcab-question-content ol{margin:1mm 0 3mm;padding-left:7mm}.qcab-question-content li{margin:.5mm 0}
 .qcab-question-content img{display:block;max-width:100%;height:auto;max-height:55mm;object-fit:contain;margin:1mm 0}
 .qcab-question-content mjx-container{font-size:100%!important}.qcab-question-content mjx-container[display="true"]{margin:2mm 0!important}
@@ -122,7 +122,7 @@
 .qcab-list-title{position:absolute;left:25mm;top:18mm;font-size:16pt;font-weight:700}.qcab-list-subtitle{position:absolute;left:25mm;top:27mm;font-size:11pt;color:#555}
 .qcab-list-items{position:absolute;left:25mm;right:25mm;top:38mm;bottom:18mm;overflow:hidden}
 .qcab-list-item{display:grid;grid-template-columns:9mm minmax(0,1fr) 18mm;gap:2mm;align-items:start;margin-bottom:4mm;font-size:10.5pt;line-height:1.35;break-inside:avoid;page-break-inside:avoid}
-.qcab-list-number{font-weight:700}.qcab-list-question{min-width:0}.qcab-list-question img{max-width:55mm;max-height:25mm;object-fit:contain;display:block;margin:1mm 0}.qcab-list-question mjx-container{font-size:90%!important}.qcab-list-marks{text-align:right;white-space:nowrap;font-weight:700}
+.qcab-list-number{font-weight:700}.qcab-list-question{min-width:0}.qcab-list-question>:first-child{margin-top:0}.qcab-list-question img{max-width:55mm;max-height:25mm;object-fit:contain;display:block;margin:1mm 0}.qcab-list-question mjx-container{font-size:90%!important}.qcab-list-marks{text-align:right;white-space:nowrap;font-weight:700}
 
 @media(max-width:900px){.qcab-paper{transform-origin:top center;transform:scale(.75);margin-bottom:-74mm}.qcab-print-root{gap:0}.qcab-preview-toolbar{position:static;flex-direction:column;align-items:stretch}.qcab-preview-actions>*{flex:1}.qcab-preview-actions{width:100%}}
 
